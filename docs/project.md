@@ -31,7 +31,9 @@ src/
 │   └── navigation.ts   # Locale-aware Link, redirect, usePathname, useRouter
 ├── components/
 │   ├── __tests__/      # Component tests
-│   └── ui/             # shadcn/ui components
+│   ├── ui/             # shadcn/ui components (button, sheet, separator, navigation-menu)
+│   ├── header.tsx      # Site header with nav, language switcher, mobile menu
+│   └── footer.tsx      # Site footer with nav, legal links, social links
 ├── lib/
 │   └── utils.ts        # Utility functions (cn helper)
 ├── test/
@@ -56,6 +58,19 @@ The site supports Hebrew (primary, RTL) and English (LTR) via [next-intl](https:
 - **Server Components**: Use `getTranslations` from `next-intl/server` (async)
 - **Client Components**: Use `useTranslations` from `next-intl` (hook)
 - **CSS convention**: Prefer CSS logical properties (e.g., `margin-inline-start` instead of `margin-left`) for RTL/LTR support
+
+## Analytics & CTA Tracking
+
+- **Analytics placeholder**: A marked comment in `src/app/[locale]/layout.tsx` body indicates where to inject analytics scripts
+- **CTA tracking**: All outbound CTA elements have `data-track` attributes for future event tracking
+- **Convention**: `data-track="<location>-<action>"` (e.g., `header-request-demo`, `hero-learn-more`, `contact-form-submit`)
+- **Tracked elements**:
+  - `header-request-demo` / `mobile-request-demo` — Header CTA buttons
+  - `hero-request-demo` / `hero-learn-more` — Hero section CTAs
+  - `audience-learn-more-{segment}` — Audience card links
+  - `secondary-request-demo` / `secondary-contact-us` — Bottom CTA section
+  - `contact-form-submit` — Contact form submit button
+  - `footer-linkedin` — Footer social link
 
 ## Setup
 

@@ -11,20 +11,186 @@
     "about": "About",
     "contact": "Contact",
     "requestDemo": "Request a Demo",
-    "languageSwitcher": "עברית"
+    "languageSwitcher": "עברית",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skipToContent": "Skip to content"
   },
   "Footer": {
     "copyright": "© {year} Fixeet. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "social": "Social",
+    "linkedin": "LinkedIn"
+  },
+  "About": {
+    "meta": {
+      "title": "About Fixeet",
+      "description": "Learn about Fixeet's mission to transform construction defect management in Israel."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "Fixeet exists to bring order to the chaos of construction defect management. We're building a platform that connects everyone involved — residents, construction companies, contractors, and inspectors — in a single, transparent workflow. From the moment a defect is reported to its verified resolution, Fixeet ensures nothing falls through the cracks."
+    },
+    "problemDeepDive": {
+      "title": "Why Defect Management Is Broken",
+      "marketPain": "In Israel's construction market, the defect liability period after building handover is a source of constant friction. Residents chase construction companies for updates. Managers juggle complaints across spreadsheets and WhatsApp groups. Workers arrive on-site without clear priorities. The result: delays, frustration, and repeated visits that waste everyone's time and money.",
+      "existingTools": "Generic construction management tools were not designed for the defect liability period. They focus on project planning and scheduling — not on tracking individual defects across multiple stakeholders with different roles and needs. The gap between what's available and what's needed leaves everyone struggling with manual processes."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "We envision a future where every construction defect is resolved efficiently and transparently. Starting in the Israeli market, Fixeet is building the infrastructure for professional defect management that will scale across the construction and real estate industries — transforming how companies handle post-handover quality assurance."
+    }
   },
   "Home": {
     "hero": {
       "title": "Manage Construction Defects Without the Chaos",
       "subtitle": "One platform connecting residents, contractors, project managers, and tradespeople — from defect report to verified resolution.",
       "cta": "Request a Demo",
-      "learnMore": "Learn More"
+      "learnMore": "Learn More",
+      "imageAlt": "Fixeet platform illustration"
+    },
+    "problem": {
+      "title": "Construction Defect Management Is Broken",
+      "points": {
+        "chasing": "Residents spend weeks chasing workers just to find out if their issues are even scheduled",
+        "frustration": "Managers spend more time managing customer frustration than actually resolving defects",
+        "incomplete": "Workers arrive on-site without a complete task list, fix some issues, and have to return multiple times",
+        "noVisibility": "No one has a clear picture of what's outstanding, what's scheduled, and what's done"
+      }
+    },
+    "solution": {
+      "title": "One Platform. Full Visibility. Zero Chaos.",
+      "points": {
+        "connected": "One structured platform connecting residents, managers, workers, and contractors",
+        "tracked": "Every defect is logged, assigned, scheduled, and tracked to verified completion",
+        "visibility": "All stakeholders have the visibility they need — no more chasing, no more guessing"
+      }
+    },
+    "features": {
+      "title": "Everything You Need to Manage Defects",
+      "defectReporting": {
+        "name": "Defect Reporting with Media",
+        "description": "Report issues on-site with text, photos, and videos — everything in one place"
+      },
+      "visitScheduling": {
+        "name": "Visit Scheduling",
+        "description": "Assign tasks to scheduled visits and notify workers — no more informal coordination"
+      },
+      "realTimeStatus": {
+        "name": "Real-Time Status Tracking",
+        "description": "Every stakeholder sees the current status of every defect, from report to resolution"
+      },
+      "multiStakeholder": {
+        "name": "Multi-Stakeholder Coordination",
+        "description": "Residents, managers, workers, and contractors all connected in a single workflow"
+      }
+    },
+    "audiences": {
+      "title": "Built for Everyone in the Process",
+      "inspector": {
+        "label": "Inspector",
+        "benefit": "Eliminate hours of post-visit report writing. Capture defects on-site and generate reports automatically.",
+        "link": "Learn more"
+      },
+      "constructionCompany": {
+        "label": "Construction Company",
+        "benefit": "Gain full visibility into every defect lifecycle. Reduce operational costs and improve customer satisfaction.",
+        "link": "Learn more"
+      },
+      "contractor": {
+        "label": "Contractor",
+        "benefit": "Get a clear, structured task list for every visit with all the context you need to get the job done.",
+        "link": "Learn more"
+      },
+      "apartmentOwner": {
+        "label": "Apartment Owner",
+        "benefit": "Track every reported issue, see scheduled visits, and get real-time updates — without chasing anyone.",
+        "link": "Learn more"
+      }
+    },
+    "socialProof": {
+      "title": "Trusted by Industry Professionals",
+      "testimonials": {
+        "first": {
+          "name": "David Cohen",
+          "role": "Senior Inspector, InspectPro",
+          "quote": "Fixeet cut my report writing time in half. I can now focus on what matters — the inspection itself."
+        },
+        "second": {
+          "name": "Sarah Levi",
+          "role": "Operations Manager, BuildRight Ltd.",
+          "quote": "We finally have visibility into our entire defect pipeline. Customer complaints dropped significantly."
+        },
+        "third": {
+          "name": "Michael Azulay",
+          "role": "Independent Contractor",
+          "quote": "I know exactly what needs to be done before I arrive on-site. No more wasted trips."
+        }
+      },
+      "logoStripAlt": "Companies using Fixeet"
+    },
+    "secondaryCta": {
+      "title": "Ready to Transform Your Defect Management?",
+      "requestDemo": "Request a Demo",
+      "contactUs": "Contact Us"
     },
     "comingSoon": "Coming Soon"
+  },
+  "Contact": {
+    "meta": {
+      "title": "Contact Us",
+      "description": "Get in touch with the Fixeet team. Request a demo or ask us anything about construction defect management."
+    },
+    "title": "Get in Touch",
+    "subtitle": "Have questions about Fixeet? Want to see a demo? Fill out the form below and we'll get back to you.",
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "Your phone number",
+      "role": "Role",
+      "rolePlaceholder": "Select your role",
+      "companyName": "Company Name",
+      "companyNamePlaceholder": "Your company name",
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "roles": {
+        "inspector": "Inspector",
+        "constructionCompany": "Construction Company",
+        "contractor": "Contractor",
+        "propertyOwner": "Property Owner",
+        "investorPartner": "Investor / Partner",
+        "other": "Other"
+      }
+    },
+    "validation": {
+      "fullNameRequired": "Full name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "roleRequired": "Please select a role",
+      "messageRequired": "Message is required"
+    },
+    "success": {
+      "title": "Message sent!",
+      "description": "Thank you for reaching out. We'll get back to you within 1 business day."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "description": "We couldn't send your message. Please try again.",
+      "retry": "Try Again"
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "info@fixeet.co",
+      "location": "Tel Aviv, Israel",
+      "responseTime": "We respond within 1 business day"
+    }
   }
 }
