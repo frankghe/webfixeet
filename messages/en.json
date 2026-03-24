@@ -11,12 +11,18 @@
     "about": "About",
     "contact": "Contact",
     "requestDemo": "Request a Demo",
-    "languageSwitcher": "עברית"
+    "languageSwitcher": "עברית",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "Footer": {
     "copyright": "© {year} Fixeet. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "social": "Social",
+    "linkedin": "LinkedIn"
   },
   "Home": {
     "hero": {

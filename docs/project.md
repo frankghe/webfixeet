@@ -31,7 +31,9 @@ src/
 │   └── navigation.ts   # Locale-aware Link, redirect, usePathname, useRouter
 ├── components/
 │   ├── __tests__/      # Component tests
-│   └── ui/             # shadcn/ui components
+│   ├── ui/             # shadcn/ui components (button, sheet, separator, navigation-menu)
+│   ├── header.tsx      # Site header with nav, language switcher, mobile menu
+│   └── footer.tsx      # Site footer with nav, legal links, social links
 ├── lib/
 │   └── utils.ts        # Utility functions (cn helper)
 ├── test/

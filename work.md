@@ -37,7 +37,7 @@ Set up `next-intl` with Hebrew (primary, RTL) and English (LTR) support.
 ---
 
 ## WI-2: Shared Components — Header, Footer, Mobile Navigation
-**status=pending**
+**status=completed**
 **priority=2**
 
 Implement the shared layout components present on all pages.
@@ -74,6 +74,16 @@ Implement the shared layout components present on all pages.
 - All components support RTL and LTR layouts
 - Responsive at all three breakpoints (mobile < 768px, tablet 768–1024px, desktop > 1024px)
 - All strings externalized in translation files
+
+### Completion Summary
+- Installed shadcn/ui components: button, sheet, separator, navigation-menu
+- Created `src/components/header.tsx`: sticky header with backdrop blur, desktop nav links with active state, language switcher (he↔en) preserving current path, accent-colored "Request a Demo" CTA, mobile hamburger menu using Sheet component with RTL-aware side (left for RTL, right for LTR)
+- Created `src/components/footer.tsx`: three-column grid (navigation, legal, social) responsive to single column on mobile, Fixeet logo, copyright with dynamic year, LinkedIn external link
+- Updated `src/app/[locale]/layout.tsx` to include Header and Footer wrapping main content
+- Updated translation files (`messages/he.json`, `messages/en.json`) with new keys: Navigation.openMenu, Navigation.closeMenu, Footer.navigation, Footer.legal, Footer.social, Footer.linkedin
+- Added 15 tests across 2 test files: 7 header tests, 8 footer tests
+- Updated `docs/project.md` with new component structure
+- Build passes, all 25 tests pass, lint clean
 
 ---
 
