@@ -13,11 +13,6 @@ describe("About page translations", () => {
     expect(en.About.problemDeepDive.existingTools).toBeTruthy();
     expect(en.About.vision.title).toBeTruthy();
     expect(en.About.vision.description).toBeTruthy();
-    expect(en.About.team.title).toBeTruthy();
-    expect(en.About.team.members.first.name).toBeTruthy();
-    expect(en.About.team.members.second.name).toBeTruthy();
-    expect(en.About.team.members.third.name).toBeTruthy();
-    expect(en.About.team.avatarAlt).toBeTruthy();
   });
 
   it("Hebrew and English have matching About key structure", () => {

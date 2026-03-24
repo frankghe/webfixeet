@@ -41,27 +41,6 @@
     "vision": {
       "title": "Our Vision",
       "description": "We envision a future where every construction defect is resolved efficiently and transparently. Starting in the Israeli market, Fixeet is building the infrastructure for professional defect management that will scale across the construction and real estate industries — transforming how companies handle post-handover quality assurance."
-    },
-    "team": {
-      "title": "Our Team",
-      "members": {
-        "first": {
-          "name": "Team Member",
-          "title": "Co-Founder & CEO",
-          "bio": "Passionate about solving real-world problems in construction through technology."
-        },
-        "second": {
-          "name": "Team Member",
-          "title": "Co-Founder & CTO",
-          "bio": "Building the technical foundation for transparent defect management."
-        },
-        "third": {
-          "name": "Team Member",
-          "title": "Head of Product",
-          "bio": "Focused on creating intuitive experiences for all stakeholders in the construction process."
-        }
-      },
-      "avatarAlt": "Photo of {name}"
     }
   },
   "Home": {
