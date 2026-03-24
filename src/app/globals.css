@@ -69,8 +69,8 @@
   --muted: oklch(0.94 0.01 80);
   --muted-foreground: oklch(0.52 0.02 50);
 
-  /* Accent — warm orange for CTAs */
-  --accent: oklch(0.70 0.16 55);
+  /* Accent — warm orange for CTAs (darkened for 4.5:1 contrast with white text) */
+  --accent: oklch(0.55 0.16 55);
   --accent-foreground: oklch(0.99 0 0);
 
   /* Destructive */

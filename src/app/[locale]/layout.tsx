@@ -75,6 +75,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   const dir = locale === "he" ? "rtl" : "ltr";
+  const tNav = await getTranslations({ locale, namespace: "Navigation" });
 
   return (
     <html
@@ -84,8 +85,14 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:start-4 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:ring-2 focus:ring-ring"
+          >
+            {tNav("skipToContent")}
+          </a>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">{children}</main>
           <Footer />
         </NextIntlClientProvider>
         {/* Analytics placeholder: inject analytics scripts here (e.g., Google Analytics, Plausible) */}

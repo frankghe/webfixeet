@@ -105,7 +105,7 @@ export default async function Home({ params }: Props) {
             {problemPoints.map(({ key, icon: Icon }) => (
               <Card key={key}>
                 <CardContent className="flex items-start gap-4">
-                  <Icon className="mt-0.5 size-5 shrink-0 text-destructive" />
+                  <Icon aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-destructive" />
                   <p>{t(`problem.points.${key}`)}</p>
                 </CardContent>
               </Card>
@@ -123,7 +123,7 @@ export default async function Home({ params }: Props) {
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
             {solutionPoints.map(({ key, icon: Icon }) => (
               <div key={key} className="flex flex-col items-center text-center">
-                <Icon className="size-8 text-accent" />
+                <Icon aria-hidden="true" className="size-8 text-accent" />
                 <p className="mt-4 text-lg">{t(`solution.points.${key}`)}</p>
               </div>
             ))}
@@ -141,7 +141,7 @@ export default async function Home({ params }: Props) {
             {features.map(({ key, icon: Icon }) => (
               <Card key={key}>
                 <CardHeader>
-                  <Icon className="size-8 text-accent" />
+                  <Icon aria-hidden="true" className="size-8 text-accent" />
                   <CardTitle className="mt-2">
                     {t(`features.${key}.name`)}
                   </CardTitle>
@@ -167,7 +167,7 @@ export default async function Home({ params }: Props) {
             {audiences.map(({ key, icon: Icon }) => (
               <Card key={key} className="flex flex-col">
                 <CardHeader>
-                  <Icon className="size-8 text-accent" />
+                  <Icon aria-hidden="true" className="size-8 text-accent" />
                   <CardTitle className="mt-2">
                     {t(`audiences.${key}.label`)}
                   </CardTitle>
@@ -178,7 +178,7 @@ export default async function Home({ params }: Props) {
                   </p>
                 </CardContent>
                 <div className="px-4 pb-4">
-                  <Button variant="link" className="px-0" render={<a href="#" data-track={`audience-learn-more-${key}`} />}>
+                  <Button variant="link" className="px-0" render={<Link href="/contact" data-track={`audience-learn-more-${key}`} />}>
                     {t(`audiences.${key}.link`)}
                   </Button>
                 </div>
@@ -198,7 +198,7 @@ export default async function Home({ params }: Props) {
             {testimonials.map((key) => (
               <Card key={key}>
                 <CardContent className="flex flex-col gap-4">
-                  <Quote className="size-6 text-accent" />
+                  <Quote aria-hidden="true" className="size-6 text-accent" />
                   <p className="italic text-muted-foreground">
                     {t(`socialProof.testimonials.${key}.quote`)}
                   </p>
@@ -215,9 +215,11 @@ export default async function Home({ params }: Props) {
             ))}
           </div>
           <div className="mt-12">
-            <div className="h-16 rounded-lg bg-muted/50">
-              <span className="sr-only">{t("socialProof.logoStripAlt")}</span>
-            </div>
+            <div
+              className="h-16 rounded-lg bg-muted/50"
+              role="img"
+              aria-label={t("socialProof.logoStripAlt")}
+            />
           </div>
         </div>
       </section>

@@ -321,7 +321,7 @@ Implement analytics readiness per Section 8.5.
 ---
 
 ## WI-8: Accessibility Audit & Fixes
-**status=pending**
+**status=completed**
 **priority=8**
 
 Verify and fix WCAG 2.1 AA compliance per Section 7.6.
@@ -344,6 +344,16 @@ Verify and fix WCAG 2.1 AA compliance per Section 7.6.
 - Focus states visible on all interactive elements
 - No unlabeled form fields or images without alt text
 - Automated accessibility audit (e.g., axe-core) passes with no critical violations
+
+### Completion Summary
+- Fixed critical contrast issue: darkened accent color from oklch(0.70) to oklch(0.55) for 4.5:1 ratio with white text
+- Added skip-to-content link in layout (visible on focus, translated he/en)
+- Contact form: added `aria-describedby` linking inputs to error messages, `required` attribute on required fields, visual asterisks on required labels
+- Added `role="status"` with `aria-live="polite"` on success message, `role="alert"` on error banner
+- Added `aria-hidden="true"` to all decorative Lucide icons on home page
+- Fixed logo strip placeholder to use `role="img"` with `aria-label`
+- Changed audience "Learn more" links from `href="#"` to `/contact`
+- Build passes, all 47 tests pass, lint clean
 
 ---
 

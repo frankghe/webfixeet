@@ -13,7 +13,8 @@
     "requestDemo": "Request a Demo",
     "languageSwitcher": "עברית",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "skipToContent": "Skip to content"
   },
   "Footer": {
     "copyright": "© {year} Fixeet. All rights reserved.",

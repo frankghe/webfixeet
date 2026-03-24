@@ -98,7 +98,11 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-green-200 bg-green-50 p-8 text-center dark:border-green-800 dark:bg-green-950">
+      <div
+        role="status"
+        aria-live="polite"
+        className="rounded-lg border border-green-200 bg-green-50 p-8 text-center dark:border-green-800 dark:bg-green-950"
+      >
         <h3 className="text-lg font-semibold text-green-800 dark:text-green-200">
           {t("success.title")}
         </h3>
@@ -112,7 +116,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       {status === "error" && (
-        <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">
+        <div role="alert" className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">
           <p className="font-medium text-destructive">{t("error.title")}</p>
           <p className="mt-1 text-sm text-destructive">
             {t("error.description")}
@@ -132,33 +136,37 @@ export function ContactForm() {
       {/* Full Name + Email row */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="fullName">{t("form.fullName")}</Label>
+          <Label htmlFor="fullName">{t("form.fullName")} *</Label>
           <Input
             id="fullName"
             name="fullName"
+            required
             value={formData.fullName}
             onChange={handleChange}
             placeholder={t("form.fullNamePlaceholder")}
             aria-invalid={!!errors.fullName}
+            aria-describedby={errors.fullName ? "fullName-error" : undefined}
           />
           {errors.fullName && (
-            <p className="text-sm text-destructive">{errors.fullName}</p>
+            <p id="fullName-error" className="text-sm text-destructive">{errors.fullName}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email">{t("form.email")}</Label>
+          <Label htmlFor="email">{t("form.email")} *</Label>
           <Input
             id="email"
             name="email"
             type="email"
+            required
             value={formData.email}
             onChange={handleChange}
             placeholder={t("form.emailPlaceholder")}
             aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "email-error" : undefined}
           />
           {errors.email && (
-            <p className="text-sm text-destructive">{errors.email}</p>
+            <p id="email-error" className="text-sm text-destructive">{errors.email}</p>
           )}
         </div>
       </div>
@@ -178,13 +186,15 @@ export function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="role">{t("form.role")}</Label>
+          <Label htmlFor="role">{t("form.role")} *</Label>
           <select
             id="role"
             name="role"
+            required
             value={formData.role}
             onChange={handleChange}
             aria-invalid={!!errors.role}
+            aria-describedby={errors.role ? "role-error" : undefined}
             className="flex h-8 w-full rounded-lg border border-input bg-transparent px-2.5 py-1.5 text-sm transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
           >
             <option value="">{t("form.rolePlaceholder")}</option>
@@ -195,7 +205,7 @@ export function ContactForm() {
             ))}
           </select>
           {errors.role && (
-            <p className="text-sm text-destructive">{errors.role}</p>
+            <p id="role-error" className="text-sm text-destructive">{errors.role}</p>
           )}
         </div>
       </div>
@@ -214,17 +224,19 @@ export function ContactForm() {
 
       {/* Message */}
       <div className="space-y-2">
-        <Label htmlFor="message">{t("form.message")}</Label>
+        <Label htmlFor="message">{t("form.message")} *</Label>
         <Textarea
           id="message"
           name="message"
+          required
           value={formData.message}
           onChange={handleChange}
           placeholder={t("form.messagePlaceholder")}
           aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? "message-error" : undefined}
         />
         {errors.message && (
-          <p className="text-sm text-destructive">{errors.message}</p>
+          <p id="message-error" className="text-sm text-destructive">{errors.message}</p>
         )}
       </div>
 
