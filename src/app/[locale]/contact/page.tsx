@@ -16,6 +16,13 @@ export async function generateMetadata({
   return {
     title: t("meta.title"),
     description: t("meta.description"),
+    alternates: {
+      canonical: `https://fixeet.co/${locale}/contact`,
+      languages: {
+        he: "https://fixeet.co/he/contact",
+        en: "https://fixeet.co/en/contact",
+      },
+    },
   };
 }
 

@@ -253,7 +253,7 @@ Implement the contact page (`/contact`) per Section 4.3 and the server-side API 
 ---
 
 ## WI-6: SEO & Metadata
-**status=pending**
+**status=completed**
 **priority=6**
 
 Implement SEO requirements per Section 8.2.
@@ -280,6 +280,15 @@ Implement SEO requirements per Section 8.2.
 - `robots.txt` allows crawling, references sitemap
 - Canonical URLs are correct per locale
 - Build passes
+
+### Completion Summary
+- Created `src/app/sitemap.ts` — generates sitemap with all 6 URL combinations (3 pages × 2 locales)
+- Created `src/app/robots.ts` — allows all crawlers, references sitemap
+- Enhanced layout `generateMetadata` with `metadataBase`, `alternates` (canonical + language variants), OG `url` and `locale`
+- Added WebSite JSON-LD structured data on home page (alongside existing Organization JSON-LD in layout)
+- Added `alternates` with canonical URLs to About and Contact page metadata
+- Domain correctly set to `fixeet.co` throughout
+- Build passes, all 47 tests pass, lint clean
 
 ---
 

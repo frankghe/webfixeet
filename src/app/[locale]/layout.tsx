@@ -35,17 +35,29 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
+  const baseUrl = "https://fixeet.co";
+
   return {
+    metadataBase: new URL(baseUrl),
     title: {
       default: t("title.default"),
       template: t("title.template"),
     },
     description: t("description"),
+    alternates: {
+      canonical: `${baseUrl}/${locale}`,
+      languages: {
+        he: `${baseUrl}/he`,
+        en: `${baseUrl}/en`,
+      },
+    },
     openGraph: {
       type: "website",
       siteName: "Fixeet",
       title: t("title.default"),
       description: t("description"),
+      url: `${baseUrl}/${locale}`,
+      locale: locale === "he" ? "he_IL" : "en_US",
     },
     twitter: {
       card: "summary_large_image",

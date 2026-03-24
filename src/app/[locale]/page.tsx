@@ -246,6 +246,22 @@ export default async function Home({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Fixeet",
+            url: "https://fixeet.co",
+            inLanguage: [
+              { "@type": "Language", name: "Hebrew", alternateName: "he" },
+              { "@type": "Language", name: "English", alternateName: "en" },
+            ],
+          }),
+        }}
+      />
     </>
   );
 }
