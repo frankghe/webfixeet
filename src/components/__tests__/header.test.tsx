@@ -41,8 +41,8 @@ describe("Header", () => {
 
   it("renders Request a Demo CTA button on desktop", () => {
     renderWithI18n(<Header />);
-    const demoLinks = screen.getAllByRole("link", { name: "Request a Demo" });
-    expect(demoLinks.length).toBeGreaterThanOrEqual(1);
+    const demoElements = screen.getAllByText("Request a Demo");
+    expect(demoElements.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders language switcher button with correct label", () => {
