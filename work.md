@@ -151,7 +151,7 @@ Implement the home page (`/`) with all sections defined in Section 4.1.
 ---
 
 ## WI-4: About Page
-**status=pending**
+**status=completed**
 **priority=4**
 
 Implement the about page (`/about`) per Section 4.2.
@@ -181,6 +181,14 @@ Implement the about page (`/about`) per Section 4.2.
 - Team cards use placeholder avatars with reserved dimensions
 - All text externalized in translation files
 - Dark mode supported
+
+### Completion Summary
+- Created `src/app/[locale]/about/page.tsx` with 4 sections: Company Mission, Problem Deep-Dive, Vision, Team
+- Server Component with `generateMetadata` for SEO (locale-aware title/description)
+- Team section with 3 placeholder cards (avatar, name, title, bio)
+- Added About namespace to both translation files
+- Added 2 tests (key completeness + he/en structural parity)
+- Build passes, all 29 tests pass, lint clean
 
 ---
 

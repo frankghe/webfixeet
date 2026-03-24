@@ -24,6 +24,46 @@
     "social": "Social",
     "linkedin": "LinkedIn"
   },
+  "About": {
+    "meta": {
+      "title": "About Fixeet",
+      "description": "Learn about Fixeet's mission to transform construction defect management in Israel."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "Fixeet exists to bring order to the chaos of construction defect management. We're building a platform that connects everyone involved — residents, construction companies, contractors, and inspectors — in a single, transparent workflow. From the moment a defect is reported to its verified resolution, Fixeet ensures nothing falls through the cracks."
+    },
+    "problemDeepDive": {
+      "title": "Why Defect Management Is Broken",
+      "marketPain": "In Israel's construction market, the defect liability period after building handover is a source of constant friction. Residents chase construction companies for updates. Managers juggle complaints across spreadsheets and WhatsApp groups. Workers arrive on-site without clear priorities. The result: delays, frustration, and repeated visits that waste everyone's time and money.",
+      "existingTools": "Generic construction management tools were not designed for the defect liability period. They focus on project planning and scheduling — not on tracking individual defects across multiple stakeholders with different roles and needs. The gap between what's available and what's needed leaves everyone struggling with manual processes."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "We envision a future where every construction defect is resolved efficiently and transparently. Starting in the Israeli market, Fixeet is building the infrastructure for professional defect management that will scale across the construction and real estate industries — transforming how companies handle post-handover quality assurance."
+    },
+    "team": {
+      "title": "Our Team",
+      "members": {
+        "first": {
+          "name": "Team Member",
+          "title": "Co-Founder & CEO",
+          "bio": "Passionate about solving real-world problems in construction through technology."
+        },
+        "second": {
+          "name": "Team Member",
+          "title": "Co-Founder & CTO",
+          "bio": "Building the technical foundation for transparent defect management."
+        },
+        "third": {
+          "name": "Team Member",
+          "title": "Head of Product",
+          "bio": "Focused on creating intuitive experiences for all stakeholders in the construction process."
+        }
+      },
+      "avatarAlt": "Photo of {name}"
+    }
+  },
   "Home": {
     "hero": {
       "title": "Manage Construction Defects Without the Chaos",
