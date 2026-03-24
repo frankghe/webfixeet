@@ -1,0 +1,30 @@
+{
+  "Metadata": {
+    "title": {
+      "default": "Fixeet | Professional Construction Defect Management",
+      "template": "%s | Fixeet"
+    },
+    "description": "Fixeet connects you with trusted professionals for construction defect management and resolution."
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "requestDemo": "Request a Demo",
+    "languageSwitcher": "עברית"
+  },
+  "Footer": {
+    "copyright": "© {year} Fixeet. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "Home": {
+    "hero": {
+      "title": "Manage Construction Defects Without the Chaos",
+      "subtitle": "One platform connecting residents, contractors, project managers, and tradespeople — from defect report to verified resolution.",
+      "cta": "Request a Demo",
+      "learnMore": "Learn More"
+    },
+    "comingSoon": "Coming Soon"
+  }
+}

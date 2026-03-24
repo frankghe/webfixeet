@@ -1,0 +1,30 @@
+{
+  "Metadata": {
+    "title": {
+      "default": "Fixeet | ניהול ליקויי בנייה מקצועי",
+      "template": "%s | Fixeet"
+    },
+    "description": "Fixeet מחברת בינך לבין אנשי מקצוע מהימנים לניהול ותיקון ליקויי בנייה."
+  },
+  "Navigation": {
+    "home": "דף הבית",
+    "about": "אודות",
+    "contact": "צור קשר",
+    "requestDemo": "בקש הדגמה",
+    "languageSwitcher": "English"
+  },
+  "Footer": {
+    "copyright": "© {year} Fixeet. כל הזכויות שמורות.",
+    "privacyPolicy": "מדיניות פרטיות",
+    "termsOfService": "תנאי שימוש"
+  },
+  "Home": {
+    "hero": {
+      "title": "נהל ליקויי בנייה בלי הכאוס",
+      "subtitle": "פלטפורמה אחת שמחברת דיירים, קבלנים, מנהלי פרויקטים ובעלי מקצוע — מדיווח על ליקוי ועד לתיקון מאומת.",
+      "cta": "בקש הדגמה",
+      "learnMore": "למד עוד"
+    },
+    "comingSoon": "בקרוב"
+  }
+}

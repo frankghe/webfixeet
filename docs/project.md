@@ -17,16 +17,45 @@ WebFixeet is a web application built for the Fixeet company website.
 ```
 src/
 ├── app/                # Next.js App Router pages and layouts
-│   ├── __tests__/      # Page-level tests
-│   ├── layout.tsx      # Root layout
-│   ├── page.tsx        # Landing page (home)
+│   ├── [locale]/       # Locale-aware routes
+│   │   ├── __tests__/  # Page-level tests
+│   │   ├── layout.tsx  # Locale layout (html dir/lang, fonts, providers)
+│   │   └── page.tsx    # Home page
+│   ├── __tests__/      # Root layout tests
+│   ├── layout.tsx      # Root layout (passthrough)
 │   └── globals.css     # Global styles and Tailwind imports
+├── i18n/               # next-intl configuration
+│   ├── __tests__/      # i18n config tests
+│   ├── routing.ts      # Locale routing config (he, en)
+│   ├── request.ts      # Server request config (message loading)
+│   └── navigation.ts   # Locale-aware Link, redirect, usePathname, useRouter
 ├── components/
 │   ├── __tests__/      # Component tests
 │   └── ui/             # shadcn/ui components
-└── lib/
-    └── utils.ts        # Utility functions (cn helper)
+├── lib/
+│   └── utils.ts        # Utility functions (cn helper)
+├── test/
+│   ├── setup.ts        # Vitest setup (jest-dom matchers)
+│   └── i18n-helpers.tsx # Test utilities for i18n rendering
+└── proxy.ts            # next-intl middleware (locale routing)
+messages/
+├── he.json             # Hebrew translations (RTL)
+└── en.json             # English translations (LTR)
 ```
+
+## Internationalization (i18n)
+
+The site supports Hebrew (primary, RTL) and English (LTR) via [next-intl](https://next-intl.dev/).
+
+- **Locale routing**: All pages are under `src/app/[locale]/`, with URL prefixes `/he/...` and `/en/...`
+- **Default locale**: Hebrew (`he`) — visiting `/` redirects to `/he/`
+- **Translation files**: `messages/he.json` and `messages/en.json`
+- **RTL/LTR**: The `<html>` element gets `dir="rtl"` or `dir="ltr"` and `lang` attribute based on locale
+- **Middleware**: `src/proxy.ts` handles locale detection and routing (named `proxy.ts` per Next.js 16 convention)
+- **Navigation helpers**: Use `Link`, `redirect`, `usePathname`, `useRouter` from `@/i18n/navigation` instead of Next.js built-ins for locale-aware navigation
+- **Server Components**: Use `getTranslations` from `next-intl/server` (async)
+- **Client Components**: Use `useTranslations` from `next-intl` (hook)
+- **CSS convention**: Prefer CSS logical properties (e.g., `margin-inline-start` instead of `margin-left`) for RTL/LTR support
 
 ## Setup
 

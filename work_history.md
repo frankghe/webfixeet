@@ -25,3 +25,14 @@ Created `docs/requirements.md` (v1.0) — the website requirements specification
 - Design: Mobile-first, warm orange/amber theme, shadcn/ui, WCAG 2.1 AA, dark mode
 - Technical: SEO, Core Web Vitals, contact form API with Zod + Nodemailer
 - Future scope documented: blog, pricing, FAQ, case studies, app store links, chat, CRM
+
+## WI-1: Internationalization (i18n) Setup
+**status=completed**
+
+Set up `next-intl` with Hebrew (primary, RTL) and English (LTR) support:
+- Locale-based routing via `[locale]` dynamic segment with `/he/...` and `/en/...` URLs
+- Proxy middleware (`src/proxy.ts`) for locale detection and routing
+- Translation files (`messages/he.json`, `messages/en.json`) with Metadata, Navigation, Footer, Home namespaces
+- `<html>` element sets `dir="rtl"`/`dir="ltr"` and `lang` based on locale
+- Navigation helpers (`Link`, `redirect`, `usePathname`, `useRouter`) for locale-aware routing
+- 10 tests across 4 files: routing config, translation parity, page content, root layout

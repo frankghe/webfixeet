@@ -1,7 +1,7 @@
 # Work Items
 
 ## WI-1: Internationalization (i18n) Setup
-**status=pending**
+**status=completed**
 **priority=1** (foundation — all other work items depend on this)
 
 Set up `next-intl` with Hebrew (primary, RTL) and English (LTR) support.
@@ -23,6 +23,16 @@ Set up `next-intl` with Hebrew (primary, RTL) and English (LTR) support.
 - `/en` renders with `dir="ltr"`, `lang="en"`
 - Translation strings load from JSON files per locale
 - Build passes, tests pass
+
+### Completion Summary
+- Installed and configured `next-intl` with `createNextIntlPlugin` in `next.config.ts`
+- Created i18n configuration: `src/i18n/routing.ts`, `src/i18n/request.ts`, `src/i18n/navigation.ts`
+- Created locale middleware at `src/proxy.ts` (Next.js 16 convention)
+- Created translation files: `messages/he.json` and `messages/en.json` with Metadata, Navigation, Footer, and Home namespaces
+- Restructured app to `[locale]` dynamic segment with locale-aware layout setting `dir` and `lang` on `<html>`
+- Root layout (`src/app/layout.tsx`) simplified to passthrough (no html/body)
+- Added 10 tests across 4 test files: routing config, translation key parity, page translations, root layout
+- Build passes, all tests pass
 
 ---
 
