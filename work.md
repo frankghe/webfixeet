@@ -193,7 +193,7 @@ Implement the about page (`/about`) per Section 4.2.
 ---
 
 ## WI-5: Contact Page & Form API
-**status=pending**
+**status=completed**
 **priority=5**
 
 Implement the contact page (`/contact`) per Section 4.3 and the server-side API per Section 8.4.
@@ -237,6 +237,18 @@ Implement the contact page (`/contact`) per Section 4.3 and the server-side API 
 - Form works in both Hebrew (RTL) and English (LTR)
 - All strings externalized in translation files
 - Tests cover form validation, API route, and submission flow
+
+### Completion Summary
+- Created `src/lib/contact-schema.ts` with Zod validation schema and role types
+- Created `src/app/api/contact/route.ts` — POST handler with Zod validation, honeypot check, Nodemailer integration
+- Created `src/app/[locale]/contact/page.tsx` — server component with generateMetadata and contact info sidebar
+- Created `src/app/[locale]/contact/contact-form.tsx` — client component with full form state management, client-side validation, success/error states
+- Created `.env.example` documenting SMTP configuration variables
+- Installed shadcn/ui components: input, label, select, textarea
+- Used native `<select>` for role dropdown (better testability vs base-ui Select)
+- Added Contact namespace to both translation files
+- Added 18 tests across 3 files: 9 schema tests, 7 form component tests, 2 translation parity tests
+- Build passes, all 47 tests pass, lint clean
 
 ---
 

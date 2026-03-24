@@ -137,5 +137,59 @@
       "contactUs": "Contact Us"
     },
     "comingSoon": "Coming Soon"
+  },
+  "Contact": {
+    "meta": {
+      "title": "Contact Us",
+      "description": "Get in touch with the Fixeet team. Request a demo or ask us anything about construction defect management."
+    },
+    "title": "Get in Touch",
+    "subtitle": "Have questions about Fixeet? Want to see a demo? Fill out the form below and we'll get back to you.",
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "Your phone number",
+      "role": "Role",
+      "rolePlaceholder": "Select your role",
+      "companyName": "Company Name",
+      "companyNamePlaceholder": "Your company name",
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "roles": {
+        "inspector": "Inspector",
+        "constructionCompany": "Construction Company",
+        "contractor": "Contractor",
+        "propertyOwner": "Property Owner",
+        "investorPartner": "Investor / Partner",
+        "other": "Other"
+      }
+    },
+    "validation": {
+      "fullNameRequired": "Full name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "roleRequired": "Please select a role",
+      "messageRequired": "Message is required"
+    },
+    "success": {
+      "title": "Message sent!",
+      "description": "Thank you for reaching out. We'll get back to you within 1 business day."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "description": "We couldn't send your message. Please try again.",
+      "retry": "Try Again"
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "info@fixeet.co",
+      "location": "Tel Aviv, Israel",
+      "responseTime": "We respond within 1 business day"
+    }
   }
 }

@@ -137,5 +137,59 @@
       "contactUs": "צור קשר"
     },
     "comingSoon": "בקרוב"
+  },
+  "Contact": {
+    "meta": {
+      "title": "צור קשר",
+      "description": "צרו קשר עם צוות Fixeet. בקשו הדגמה או שאלו אותנו כל שאלה על ניהול ליקויי בנייה."
+    },
+    "title": "צרו קשר",
+    "subtitle": "יש לכם שאלות על Fixeet? רוצים לראות הדגמה? מלאו את הטופס ונחזור אליכם.",
+    "form": {
+      "fullName": "שם מלא",
+      "fullNamePlaceholder": "השם המלא שלך",
+      "email": "אימייל",
+      "emailPlaceholder": "your@email.com",
+      "phone": "טלפון",
+      "phonePlaceholder": "מספר הטלפון שלך",
+      "role": "תפקיד",
+      "rolePlaceholder": "בחר תפקיד",
+      "companyName": "שם חברה",
+      "companyNamePlaceholder": "שם החברה שלך",
+      "message": "הודעה",
+      "messagePlaceholder": "ספרו לנו איך נוכל לעזור...",
+      "submit": "שלח הודעה",
+      "submitting": "שולח...",
+      "roles": {
+        "inspector": "מפקח",
+        "constructionCompany": "חברת בנייה",
+        "contractor": "קבלן",
+        "propertyOwner": "בעל דירה",
+        "investorPartner": "משקיע / שותף",
+        "other": "אחר"
+      }
+    },
+    "validation": {
+      "fullNameRequired": "שם מלא הוא שדה חובה",
+      "emailRequired": "אימייל הוא שדה חובה",
+      "emailInvalid": "נא להזין כתובת אימייל תקינה",
+      "roleRequired": "נא לבחור תפקיד",
+      "messageRequired": "הודעה היא שדה חובה"
+    },
+    "success": {
+      "title": "ההודעה נשלחה!",
+      "description": "תודה שפניתם אלינו. נחזור אליכם תוך יום עסקים אחד."
+    },
+    "error": {
+      "title": "משהו השתבש",
+      "description": "לא הצלחנו לשלוח את ההודעה שלך. נא לנסות שוב.",
+      "retry": "נסה שוב"
+    },
+    "info": {
+      "title": "פרטי התקשרות",
+      "email": "info@fixeet.co",
+      "location": "תל אביב, ישראל",
+      "responseTime": "אנו משיבים תוך יום עסקים אחד"
+    }
   }
 }
