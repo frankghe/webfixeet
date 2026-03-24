@@ -86,7 +86,7 @@ export default async function Home({ params }: Props) {
             </div>
             <div className="flex-1">
               <div
-                className="aspect-video w-full max-w-xl rounded-lg bg-muted/30 p-4 sm:p-6"
+                className="aspect-video w-full max-w-xl"
                 role="img"
                 aria-label={t("hero.imageAlt")}
               >
