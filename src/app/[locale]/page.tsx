@@ -71,14 +71,14 @@ export default async function Home({ params }: Props) {
                 <Button
                   size="lg"
                   className="bg-accent text-accent-foreground hover:bg-accent/90"
-                  render={<Link href="/contact" />}
+                  render={<Link href="/contact" data-track="hero-request-demo" />}
                 >
                   {t("hero.cta")}
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  render={<a href="#features" />}
+                  render={<a href="#features" data-track="hero-learn-more" />}
                 >
                   {t("hero.learnMore")}
                 </Button>
@@ -178,7 +178,7 @@ export default async function Home({ params }: Props) {
                   </p>
                 </CardContent>
                 <div className="px-4 pb-4">
-                  <Button variant="link" className="px-0" render={<a href="#" />}>
+                  <Button variant="link" className="px-0" render={<a href="#" data-track={`audience-learn-more-${key}`} />}>
                     {t(`audiences.${key}.link`)}
                   </Button>
                 </div>
@@ -232,14 +232,14 @@ export default async function Home({ params }: Props) {
             <Button
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90"
-              render={<Link href="/contact" />}
+              render={<Link href="/contact" data-track="secondary-request-demo" />}
             >
               {t("secondaryCta.requestDemo")}
             </Button>
             <Button
               variant="outline"
               size="lg"
-              render={<Link href="/contact" />}
+              render={<Link href="/contact" data-track="secondary-contact-us" />}
             >
               {t("secondaryCta.contactUs")}
             </Button>

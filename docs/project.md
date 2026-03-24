@@ -59,6 +59,19 @@ The site supports Hebrew (primary, RTL) and English (LTR) via [next-intl](https:
 - **Client Components**: Use `useTranslations` from `next-intl` (hook)
 - **CSS convention**: Prefer CSS logical properties (e.g., `margin-inline-start` instead of `margin-left`) for RTL/LTR support
 
+## Analytics & CTA Tracking
+
+- **Analytics placeholder**: A marked comment in `src/app/[locale]/layout.tsx` body indicates where to inject analytics scripts
+- **CTA tracking**: All outbound CTA elements have `data-track` attributes for future event tracking
+- **Convention**: `data-track="<location>-<action>"` (e.g., `header-request-demo`, `hero-learn-more`, `contact-form-submit`)
+- **Tracked elements**:
+  - `header-request-demo` / `mobile-request-demo` — Header CTA buttons
+  - `hero-request-demo` / `hero-learn-more` — Hero section CTAs
+  - `audience-learn-more-{segment}` — Audience card links
+  - `secondary-request-demo` / `secondary-contact-us` — Bottom CTA section
+  - `contact-form-submit` — Contact form submit button
+  - `footer-linkedin` — Footer social link
+
 ## Setup
 
 For first-time setup, run the installation script:

@@ -74,7 +74,7 @@ export function Header() {
           <Button
             size="sm"
             className="bg-accent text-accent-foreground hover:bg-accent/90"
-            render={<Link href="/contact" />}
+            render={<Link href="/contact" data-track="header-request-demo" />}
           >
             {t("requestDemo")}
           </Button>
@@ -156,7 +156,7 @@ export function Header() {
               </Button>
               <Button
                 className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-                render={<Link href="/contact" onClick={() => setOpen(false)} />}
+                render={<Link href="/contact" data-track="mobile-request-demo" onClick={() => setOpen(false)} />}
               >
                 {t("requestDemo")}
               </Button>

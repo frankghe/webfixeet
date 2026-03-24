@@ -88,6 +88,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <main className="flex-1">{children}</main>
           <Footer />
         </NextIntlClientProvider>
+        {/* Analytics placeholder: inject analytics scripts here (e.g., Google Analytics, Plausible) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

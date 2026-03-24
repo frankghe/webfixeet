@@ -293,7 +293,7 @@ Implement SEO requirements per Section 8.2.
 ---
 
 ## WI-7: Analytics Placeholders & CTA Tracking Attributes
-**status=pending**
+**status=completed**
 **priority=7**
 
 Implement analytics readiness per Section 8.5.
@@ -310,6 +310,13 @@ Implement analytics readiness per Section 8.5.
 - Root layout has a marked analytics placeholder comment
 - All CTAs have `data-track` (or similar) attributes
 - Convention documented
+
+### Completion Summary
+- Added analytics placeholder comment in `src/app/[locale]/layout.tsx` body for future script injection
+- Added `data-track` attributes to all CTAs: header (desktop + mobile), hero (request demo + learn more), audience cards, secondary CTA section, contact form submit, footer LinkedIn link
+- Convention: `data-track="<location>-<action>"` (e.g., `header-request-demo`)
+- Documented tracking convention and all tracked elements in `docs/project.md`
+- Build passes, all 47 tests pass, lint clean
 
 ---
 

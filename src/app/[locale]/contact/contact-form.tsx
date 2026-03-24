@@ -243,6 +243,7 @@ export function ContactForm() {
       {/* Submit */}
       <Button
         type="submit"
+        data-track="contact-form-submit"
         className="w-full bg-accent text-accent-foreground hover:bg-accent/80"
         size="lg"
         disabled={status === "submitting"}
