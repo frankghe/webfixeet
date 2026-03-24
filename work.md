@@ -88,7 +88,7 @@ Implement the shared layout components present on all pages.
 ---
 
 ## WI-3: Home Page
-**status=pending**
+**status=completed**
 **priority=3**
 
 Implement the home page (`/`) with all sections defined in Section 4.1.
@@ -136,6 +136,17 @@ Implement the home page (`/`) with all sections defined in Section 4.1.
 - CTAs link to appropriate targets
 - Lucide React icons used for feature cards
 - Dark mode supported
+
+### Completion Summary
+- Rewrote `src/app/[locale]/page.tsx` from placeholder to full landing page with 7 sections: Hero, Problem Statement, Solution Overview, Feature Highlights, Audience Value Proposition, Social Proof, Secondary CTA
+- All sections use Server Component with `getTranslations` — no client-side JavaScript
+- Added comprehensive translations to `messages/en.json` and `messages/he.json` (Home namespace: hero, problem, solution, features, audiences, socialProof, secondaryCta)
+- Installed shadcn/ui Card component
+- Lucide React icons: Camera, CalendarCheck, Eye, Users, UserCheck, Building2, HardHat, Key, Quote, CircleAlert, CheckCircle2
+- Placeholder hero image with `role="img"` and translated `aria-label` for CLS prevention
+- Responsive grids with alternating section backgrounds
+- Updated page tests to cover all new translation keys + structural key parity test between locales
+- Build passes, all 27 tests pass, lint clean
 
 ---
 

@@ -29,7 +29,93 @@
       "title": "Manage Construction Defects Without the Chaos",
       "subtitle": "One platform connecting residents, contractors, project managers, and tradespeople — from defect report to verified resolution.",
       "cta": "Request a Demo",
-      "learnMore": "Learn More"
+      "learnMore": "Learn More",
+      "imageAlt": "Fixeet platform illustration"
+    },
+    "problem": {
+      "title": "Construction Defect Management Is Broken",
+      "points": {
+        "chasing": "Residents spend weeks chasing workers just to find out if their issues are even scheduled",
+        "frustration": "Managers spend more time managing customer frustration than actually resolving defects",
+        "incomplete": "Workers arrive on-site without a complete task list, fix some issues, and have to return multiple times",
+        "noVisibility": "No one has a clear picture of what's outstanding, what's scheduled, and what's done"
+      }
+    },
+    "solution": {
+      "title": "One Platform. Full Visibility. Zero Chaos.",
+      "points": {
+        "connected": "One structured platform connecting residents, managers, workers, and contractors",
+        "tracked": "Every defect is logged, assigned, scheduled, and tracked to verified completion",
+        "visibility": "All stakeholders have the visibility they need — no more chasing, no more guessing"
+      }
+    },
+    "features": {
+      "title": "Everything You Need to Manage Defects",
+      "defectReporting": {
+        "name": "Defect Reporting with Media",
+        "description": "Report issues on-site with text, photos, and videos — everything in one place"
+      },
+      "visitScheduling": {
+        "name": "Visit Scheduling",
+        "description": "Assign tasks to scheduled visits and notify workers — no more informal coordination"
+      },
+      "realTimeStatus": {
+        "name": "Real-Time Status Tracking",
+        "description": "Every stakeholder sees the current status of every defect, from report to resolution"
+      },
+      "multiStakeholder": {
+        "name": "Multi-Stakeholder Coordination",
+        "description": "Residents, managers, workers, and contractors all connected in a single workflow"
+      }
+    },
+    "audiences": {
+      "title": "Built for Everyone in the Process",
+      "inspector": {
+        "label": "Inspector",
+        "benefit": "Eliminate hours of post-visit report writing. Capture defects on-site and generate reports automatically.",
+        "link": "Learn more"
+      },
+      "constructionCompany": {
+        "label": "Construction Company",
+        "benefit": "Gain full visibility into every defect lifecycle. Reduce operational costs and improve customer satisfaction.",
+        "link": "Learn more"
+      },
+      "contractor": {
+        "label": "Contractor",
+        "benefit": "Get a clear, structured task list for every visit with all the context you need to get the job done.",
+        "link": "Learn more"
+      },
+      "apartmentOwner": {
+        "label": "Apartment Owner",
+        "benefit": "Track every reported issue, see scheduled visits, and get real-time updates — without chasing anyone.",
+        "link": "Learn more"
+      }
+    },
+    "socialProof": {
+      "title": "Trusted by Industry Professionals",
+      "testimonials": {
+        "first": {
+          "name": "David Cohen",
+          "role": "Senior Inspector, InspectPro",
+          "quote": "Fixeet cut my report writing time in half. I can now focus on what matters — the inspection itself."
+        },
+        "second": {
+          "name": "Sarah Levi",
+          "role": "Operations Manager, BuildRight Ltd.",
+          "quote": "We finally have visibility into our entire defect pipeline. Customer complaints dropped significantly."
+        },
+        "third": {
+          "name": "Michael Azulay",
+          "role": "Independent Contractor",
+          "quote": "I know exactly what needs to be done before I arrive on-site. No more wasted trips."
+        }
+      },
+      "logoStripAlt": "Companies using Fixeet"
+    },
+    "secondaryCta": {
+      "title": "Ready to Transform Your Defect Management?",
+      "requestDemo": "Request a Demo",
+      "contactUs": "Contact Us"
     },
     "comingSoon": "Coming Soon"
   }
