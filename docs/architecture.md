@@ -51,7 +51,7 @@ A single OVH VPS hosts all services. A host-level Caddy instance handles TLS ter
 ┌──────────────────┐ ┌──────────────────┐ ┌────────────────────┐
 │ Docker: Next.js  │ │ Docker: Next.js  │ │ Docker: aigent     │
 │ 127.0.0.1:3001   │ │ 127.0.0.1:3000   │ │ stack (meetr,      │
-│ fixeet.com       │ │ aigent.com       │ │ callr, grafana...) │
+│ fixeet.co       │ │ aigent.com       │ │ callr, grafana...) │
 │ (this project)   │ │ AIgent website   │ │ 127.0.0.1:8000-8002│
 └──────────────────┘ └──────────────────┘ └────────────────────┘
 ```
@@ -61,7 +61,7 @@ A single OVH VPS hosts all services. A host-level Caddy instance handles TLS ter
 | Service | Technology | Port (host-bound) | Domain | Purpose |
 |---------|------------|-------------------|--------|---------|
 | Reverse Proxy | Caddy (host) | 80, 443 | all domains | TLS termination, domain routing |
-| Fixeet Website | Next.js (Docker) | 127.0.0.1:3001 | fixeet.com | Fixeet marketing site (this project) |
+| Fixeet Website | Next.js (Docker) | 127.0.0.1:3001 | fixeet.co | Fixeet marketing site (this project) |
 | AIgent Website | Next.js (Docker) | 127.0.0.1:3000 | aigent.com | AIgent marketing site |
 | Meetr Platform | FastAPI (Docker) | 127.0.0.1:8001 | meetr.aigent.biz, meetr.fixeet.co | AI meeting scheduling service |
 | Callr Service | FastAPI (Docker) | 127.0.0.1:8000 | meetr.aigent.biz/callr | Call/messaging service |
@@ -90,6 +90,6 @@ A unified host-level Caddyfile (`deploy/Caddyfile`, installed to `/etc/caddy/Cad
 
 All domains resolve to the same OVH VPS; the host-level Caddy routes requests by hostname:
 
-- `fixeet.com` — Fixeet company website (this project)
+- `fixeet.co` — Fixeet company website (this project)
 - `aigent.com` — AIgent company website
 - `meetr.aigent.biz` / `meetr.fixeet.co` — Meetr scheduling platform

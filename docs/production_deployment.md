@@ -8,7 +8,7 @@
 ## Prerequisites
 
 - OVH VPS with root/sudo access
-- Domain `fixeet.com` DNS A record pointing to the VPS IP
+- Domain `fixeet.co` DNS A record pointing to the VPS IP
 - Caddy already installed and running
 - Node.js >= 20 installed (via nvm or system package)
 - Git installed
@@ -77,7 +77,7 @@ npm run build
 
 ### 5. Configure Caddy
 
-Add the `fixeet.com` block to the existing Caddyfile.
+Add the `fixeet.co` block to the existing Caddyfile.
 
 ```bash
 # Option A: Add the block directly to /etc/caddy/Caddyfile
@@ -108,7 +108,7 @@ sudo systemctl start webfixeet
 sudo systemctl status webfixeet
 
 # Check Caddy is routing correctly
-curl -I https://fixeet.com
+curl -I https://fixeet.co
 
 # Check application logs
 sudo journalctl -u webfixeet -f

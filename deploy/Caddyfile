@@ -2,7 +2,7 @@
 # Install location: /etc/caddy/Caddyfile
 #
 # This file replaces:
-#   - webfixeet/deploy/Caddyfile.snippet (fixeet.com)
+#   - webfixeet/deploy/Caddyfile.snippet (fixeet.co)
 #   - aigent/scripts/config_server/Caddyfile (meetr.aigent.biz, meetr.fixeet.co)
 #
 # After editing: sudo systemctl reload caddy
@@ -10,7 +10,7 @@
 # ===========================================================================
 # Fixeet website (Next.js in Docker, port 3001)
 # ===========================================================================
-fixeet.com {
+fixeet.co {
     reverse_proxy localhost:3001
 
     # Security headers
@@ -28,8 +28,8 @@ fixeet.com {
     encode gzip zstd
 }
 
-www.fixeet.com {
-    redir https://fixeet.com{uri} permanent
+www.fixeet.co {
+    redir https://fixeet.co{uri} permanent
 }
 
 # ===========================================================================

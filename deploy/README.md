@@ -7,7 +7,7 @@ WebFixeet runs as a Docker container behind a host-level Caddy reverse proxy on 
 - OVH VPS running Ubuntu 24.04 (shared with aigent services)
 - SSH access to the VPS
 - Docker installed on the VPS
-- Domain `fixeet.com` pointing to the VPS IP
+- Domain `fixeet.co` pointing to the VPS IP
 
 ## First-Time Server Setup
 
@@ -26,7 +26,7 @@ sudo apt update && sudo apt install caddy
 
 ### 2. Install the unified Caddyfile
 
-The Caddyfile handles routing for all domains on the VPS (`fixeet.com`, `meetr.aigent.biz`, `meetr.fixeet.co`).
+The Caddyfile handles routing for all domains on the VPS (`fixeet.co`, `meetr.aigent.biz`, `meetr.fixeet.co`).
 
 ```bash
 sudo cp /opt/webfixeet/deploy/Caddyfile /etc/caddy/Caddyfile
@@ -65,7 +65,7 @@ Edit `.env.local` with actual values:
 | `SMTP_USER` | SMTP username |
 | `SMTP_PASS` | SMTP password |
 | `CONTACT_EMAIL` | Contact form recipient email |
-| `NEXT_PUBLIC_SITE_URL` | `https://fixeet.com` |
+| `NEXT_PUBLIC_SITE_URL` | `https://fixeet.co` |
 
 ### 6. Build and start the container
 
@@ -84,7 +84,7 @@ docker compose -f deploy/docker-compose.prod.yml ps
 curl -s -o /dev/null -w "%{http_code}" http://localhost:3001/
 
 # Check Caddy is proxying correctly
-curl -s -o /dev/null -w "%{http_code}" https://fixeet.com/
+curl -s -o /dev/null -w "%{http_code}" https://fixeet.co/
 ```
 
 ## Migrating Aigent from Docker Caddy to Host Caddy
@@ -229,7 +229,7 @@ Internet
    ▼
 Caddy (host, :80/:443)     ← automatic HTTPS via Let's Encrypt
    │
-   ├── fixeet.com           → 127.0.0.1:3001 (webfixeet Docker container)
+   ├── fixeet.co           → 127.0.0.1:3001 (webfixeet Docker container)
    ├── meetr.aigent.biz     → 127.0.0.1:8000-8002 (aigent Docker containers)
    └── meetr.fixeet.co      → 127.0.0.1:8000-8002 (aigent Docker containers)
 ```

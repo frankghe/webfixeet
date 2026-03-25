@@ -14,7 +14,7 @@ Internet
    ▼
 Caddy (host-level, :80/:443)     ← automatic HTTPS via Let's Encrypt
    │
-   ├── fixeet.com                 → 127.0.0.1:3001  (webfixeet container)
+   ├── fixeet.co                 → 127.0.0.1:3001  (webfixeet container)
    ├── meetr.aigent.biz           → 127.0.0.1:8000-8002 (aigent containers)
    └── meetr.fixeet.co            → 127.0.0.1:8000-8002 (aigent containers)
 ```
@@ -29,8 +29,8 @@ All application containers bind to `127.0.0.1` — only Caddy is exposed to the 
 
 - OVH VPS running Ubuntu 24.04
 - SSH access (as `meetr` user, set up by aigent's `setup-vps.sh`)
-- Domain `fixeet.com` DNS A record pointing to the VPS IP
-- Domain `www.fixeet.com` DNS A record (or CNAME) pointing to the VPS IP
+- Domain `fixeet.co` DNS A record pointing to the VPS IP
+- Domain `www.fixeet.co` DNS A record (or CNAME) pointing to the VPS IP
 - Docker installed on the VPS (done by aigent's `setup-vps.sh`)
 
 ### Step 1: SSH into the VPS
@@ -114,10 +114,10 @@ Fill in the actual values:
 |----------|---------|-------------|
 | `SMTP_HOST` | `smtp.gmail.com` | SMTP server |
 | `SMTP_PORT` | `587` | SMTP port (TLS) |
-| `SMTP_USER` | `noreply@fixeet.com` | SMTP login |
+| `SMTP_USER` | `noreply@fixeet.co` | SMTP login |
 | `SMTP_PASS` | `app-password-here` | SMTP password / app password |
-| `CONTACT_EMAIL` | `contact@fixeet.com` | Where contact form emails go |
-| `NEXT_PUBLIC_SITE_URL` | `https://fixeet.com` | Public URL for meta tags |
+| `CONTACT_EMAIL` | `contact@fixeet.co` | Where contact form emails go |
+| `NEXT_PUBLIC_SITE_URL` | `https://fixeet.co` | Public URL for meta tags |
 
 ### Step 6: Install the unified Caddyfile
 
@@ -179,7 +179,7 @@ echo -n "meetr:     "; curl -sf http://localhost:8001/health && echo " OK" || ec
 echo -n "callr:     "; curl -sf http://localhost:8000/health && echo " OK" || echo " FAIL"
 
 echo "=== External (via Caddy) ==="
-echo -n "fixeet.com:         "; curl -sf -o /dev/null -w "%{http_code}" https://fixeet.com/ ; echo
+echo -n "fixeet.co:         "; curl -sf -o /dev/null -w "%{http_code}" https://fixeet.co/ ; echo
 echo -n "meetr.aigent.biz:   "; curl -sf -o /dev/null -w "%{http_code}" https://meetr.aigent.biz/health ; echo
 echo -n "meetr.fixeet.co:    "; curl -sf -o /dev/null -w "%{http_code}" https://meetr.fixeet.co/health ; echo
 
@@ -365,7 +365,7 @@ docker inspect --format='{{json .State.Health}}' $(docker compose -f deploy/dock
 
 ```bash
 # Check DNS
-dig fixeet.com +short
+dig fixeet.co +short
 
 # Should return the VPS IP. If not, update DNS and wait for propagation.
 # Caddy will retry TLS certificate issuance automatically.

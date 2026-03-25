@@ -1,6 +1,6 @@
 # Fixeet Website
 
-Company website for [Fixeet](https://fixeet.com) — professional repair services you can trust.
+Company website for [Fixeet](https://fixeet.co) — professional repair services you can trust.
 
 Built with Next.js, Tailwind CSS, and shadcn/ui.
 
