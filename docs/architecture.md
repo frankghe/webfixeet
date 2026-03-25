@@ -32,56 +32,64 @@ WebFixeet is the Fixeet company website, built with Next.js App Router with serv
 
 ### Infrastructure
 
-A single OVH VPS hosts all services. Caddy handles TLS termination (automatic HTTPS via Let's Encrypt) and routes incoming requests to the appropriate backend service by hostname.
+A single OVH VPS hosts all services. A host-level Caddy instance handles TLS termination (automatic HTTPS via Let's Encrypt) and routes incoming requests to the appropriate backend service by hostname. Each project runs in its own Docker stack, with containers binding to `127.0.0.1` so only Caddy can reach them.
 
 ### System Overview
 
 ```
-                        Internet
-                           │
-               ┌───────────┴───────────┐
-               │  Caddy (TLS, reverse  │
-               │        proxy)         │
-               └───────────┬───────────┘
-                           │
-          ┌────────────────┼────────────────┐
-          │                │                │
-          ▼                ▼                ▼
-┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐
-│ Next.js (:3000)  │ │ Next.js (:3001)  │ │ FastAPI (:8000)  │
-│ aigent.com       │ │ fixeet.com       │ │ meetr.aigent.com  │
-│ AIgent website   │ │ Fixeet website   │ │ Meetr scheduling  │
-│                  │ │ (this project)   │ │ platform          │
-└──────────────────┘ └──────────────────┘ └──────────────────┘
+                            Internet
+                               │
+                   ┌───────────┴───────────┐
+                   │  Caddy (host-level)   │
+                   │  TLS + reverse proxy  │
+                   │  /etc/caddy/Caddyfile │
+                   └───────────┬───────────┘
+                               │
+          ┌────────────────────┼────────────────────┐
+          │                    │                     │
+          ▼                    ▼                     ▼
+┌──────────────────┐ ┌──────────────────┐ ┌────────────────────┐
+│ Docker: Next.js  │ │ Docker: Next.js  │ │ Docker: aigent     │
+│ 127.0.0.1:3001   │ │ 127.0.0.1:3000   │ │ stack (meetr,      │
+│ fixeet.com       │ │ aigent.com       │ │ callr, grafana...) │
+│ (this project)   │ │ AIgent website   │ │ 127.0.0.1:8000-8002│
+└──────────────────┘ └──────────────────┘ └────────────────────┘
 ```
 
 ### Services
 
-| Service | Technology | Port | Domain | Purpose |
-|---------|------------|------|--------|---------|
-| Reverse Proxy | Caddy | 80, 443 | *.fixeet.com, *.aigent.com | TLS termination, domain routing |
-| AIgent Website | Next.js (Node.js) | 3000 | aigent.com | AIgent marketing site |
-| Fixeet Website | Next.js (Node.js) | 3001 | fixeet.com | Fixeet marketing site (this project) |
-| Meetr Platform | FastAPI (Python) | 8000 | meetr.aigent.com | AI meeting scheduling service |
+| Service | Technology | Port (host-bound) | Domain | Purpose |
+|---------|------------|-------------------|--------|---------|
+| Reverse Proxy | Caddy (host) | 80, 443 | all domains | TLS termination, domain routing |
+| Fixeet Website | Next.js (Docker) | 127.0.0.1:3001 | fixeet.com | Fixeet marketing site (this project) |
+| AIgent Website | Next.js (Docker) | 127.0.0.1:3000 | aigent.com | AIgent marketing site |
+| Meetr Platform | FastAPI (Docker) | 127.0.0.1:8001 | meetr.aigent.biz, meetr.fixeet.co | AI meeting scheduling service |
+| Callr Service | FastAPI (Docker) | 127.0.0.1:8000 | meetr.aigent.biz/callr | Call/messaging service |
+
+### Docker Configuration
+
+WebFixeet uses a multi-stage Dockerfile optimized for Next.js standalone output:
+
+- **Stage 1 (deps)**: Installs npm dependencies
+- **Stage 2 (builder)**: Builds the Next.js application
+- **Stage 3 (runner)**: Minimal production image with standalone server
+
+Docker Compose (`deploy/docker-compose.prod.yml`) runs the container bound to `127.0.0.1:3001`, accessible only from the host (where Caddy runs).
 
 ### Caddy Configuration
 
-Caddy provides automatic HTTPS via Let's Encrypt. A minimal Caddyfile block for this project:
-
-```
-fixeet.com {
-    reverse_proxy localhost:3001
-}
-```
+A unified host-level Caddyfile (`deploy/Caddyfile`, installed to `/etc/caddy/Caddyfile`) routes all domains on the VPS. Caddy provides automatic HTTPS via Let's Encrypt, security headers, static asset caching, and gzip/zstd compression.
 
 ### Process Management
 
-Services should be managed via systemd (or a comparable process manager) to ensure automatic restart on failure and startup on boot. Each service has its own systemd unit file.
+- **Caddy**: Runs as a systemd service (`caddy.service`, installed with the package)
+- **WebFixeet**: Runs via Docker Compose with `restart: unless-stopped`
+- **AIgent stack**: Runs via its own Docker Compose with `restart: unless-stopped`
 
 ## Domain Strategy
 
-All domains resolve to the same OVH VPS; Caddy routes requests by hostname:
+All domains resolve to the same OVH VPS; the host-level Caddy routes requests by hostname:
 
-- `aigent.com` — AIgent company website
 - `fixeet.com` — Fixeet company website (this project)
-- `meetr.aigent.com` — Meetr scheduling platform
+- `aigent.com` — AIgent company website
+- `meetr.aigent.biz` / `meetr.fixeet.co` — Meetr scheduling platform
