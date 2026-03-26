@@ -28,6 +28,14 @@ When adding new shadcn/ui components, use the CLI: `npx shadcn@latest add <compo
 
 Work items being worked on (and history of work items) available in work.md. When you complete a work item, move it to work_history.md so that work.md only contains items to be worked on or currently being worked on.
 
+## Deployment
+
+"Deploy" means pushing from `main` to a deploy branch:
+- **Production**: `git push origin main:deploy/prod`
+- **Test**: `git push origin main:deploy/test`
+
+If the target (prod or test) is ambiguous, ask the user to clarify before pushing.
+
 ## Execution Rules
 
 - When a command exits with a non-zero exit code, do NOT pause or ask for permission. Investigate the output, determine how to proceed, and continue working. Merge conflicts, test failures, and compilation errors are all expected situations that you should resolve autonomously.
