@@ -58,11 +58,14 @@ jobs:
 
             # Verify clean state
             echo "=== Verifying about page ==="
-            head -10 src/app/\[locale\]/about/page.tsx
+            cat src/app/\[locale\]/about/page.tsx | head -10
+            echo "=== Git status ==="
+            git status
 
-            # Prune Docker build cache and build fresh
+            # Full Docker cleanup and rebuild
+            docker compose -f deploy/docker-compose.prod.yml down --rmi all || true
             docker builder prune -af
-            docker compose -f deploy/docker-compose.prod.yml build --no-cache
+            docker compose -f deploy/docker-compose.prod.yml build --no-cache --progress=plain
             docker compose -f deploy/docker-compose.prod.yml up -d --remove-orphans
 
             # Wait for container to start
