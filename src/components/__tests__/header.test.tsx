@@ -13,13 +13,9 @@ vi.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ replace: vi.fn() }),
 }));
 
-vi.mock("next-intl", async () => {
-  const actual = await vi.importActual("next-intl");
-  return {
-    ...actual,
-    useLocale: () => "en",
-  };
-});
+vi.mock("next/navigation", () => ({
+  useParams: () => ({ locale: "en" }),
+}));
 
 describe("Header", () => {
   it("renders logo linking to home", () => {
@@ -45,11 +41,13 @@ describe("Header", () => {
     expect(demoElements.length).toBeGreaterThanOrEqual(1);
   });
 
-  it("renders language switcher button with correct label", () => {
+  it("renders inline locale switcher buttons", () => {
     renderWithI18n(<Header />);
-    // "עברית" is the en locale language switcher label
-    const switchers = screen.getAllByRole("button", { name: "עברית" });
-    expect(switchers.length).toBeGreaterThanOrEqual(1);
+    // Inline locale buttons: EN and עב
+    const enButtons = screen.getAllByRole("button", { name: "EN" });
+    const heButtons = screen.getAllByRole("button", { name: "עב" });
+    expect(enButtons.length).toBeGreaterThanOrEqual(1);
+    expect(heButtons.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders mobile hamburger menu button with aria-label", () => {
