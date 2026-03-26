@@ -1,21 +1,15 @@
 [Unit]
-Description=Fixeet Company Website (Next.js)
-After=network.target caddy.service
+Description=WebFixeet Website (Next.js in Docker)
+After=docker.service
+Requires=docker.service
 
 [Service]
 Type=simple
-User=www-data
-Group=www-data
 WorkingDirectory=/opt/webfixeet
-# If Node.js is installed via nvm, replace the ExecStart line with the full
-# path to the node binary, for example:
-#   ExecStart=/home/your-user/.nvm/versions/node/v20.x.x/bin/npm start
-# You can find the path by running: which npm
-ExecStart=/usr/bin/env npm start
-Restart=on-failure
+ExecStart=/usr/bin/docker compose -f deploy/docker-compose.prod.yml up
+ExecStop=/usr/bin/docker compose -f deploy/docker-compose.prod.yml down
+Restart=always
 RestartSec=5
-Environment=NODE_ENV=production
-Environment=PORT=3001
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=webfixeet
