@@ -57,7 +57,7 @@ export default async function Home({ params }: Props) {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-16 sm:py-24">
+      <section className="pt-8 pb-16 sm:pt-16 sm:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
             <div className="flex flex-1 flex-col items-center text-center lg:items-start lg:text-start">
@@ -340,7 +340,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       {/* Problem Statement Section */}
-      <section className="bg-muted/30 py-16 sm:py-20">
+      <section className="bg-muted/30 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold">
             {t("problem.title")}
@@ -359,7 +359,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       {/* Solution Overview Section */}
-      <section className="py-16 sm:py-20">
+      <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold">
             {t("solution.title")}
@@ -376,7 +376,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       {/* Feature Highlights Section */}
-      <section id="features" className="bg-muted/30 py-16 sm:py-20">
+      <section id="features" className="bg-muted/30 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold">
             {t("features.title")}
@@ -402,7 +402,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       {/* Audience Value Proposition Cards */}
-      <section className="py-16 sm:py-20">
+      <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold">
             {t("audiences.title")}
@@ -433,7 +433,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       {/* Social Proof Section */}
-      <section className="bg-muted/30 py-16 sm:py-20">
+      <section className="bg-muted/30 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold">
             {t("socialProof.title")}
@@ -469,7 +469,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       {/* Secondary CTA Section */}
-      <section className="bg-accent/5 py-16 sm:py-20">
+      <section className="bg-accent/5 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold sm:text-4xl">
             {t("secondaryCta.title")}
