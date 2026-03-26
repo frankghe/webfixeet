@@ -1,18 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { useParams } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   Sheet,
   SheetTrigger,
   SheetContent,
   SheetTitle,
-  SheetClose,
 } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 
 const navLinks = [
   { href: "/" as const, labelKey: "home" as const },
@@ -20,34 +21,53 @@ const navLinks = [
   { href: "/contact" as const, labelKey: "contact" as const },
 ];
 
+const localeLabels: Record<string, string> = {
+  en: "EN",
+  he: "עב",
+};
+
 export function Header() {
   const t = useTranslations("Navigation");
-  const locale = useLocale();
+  const params = useParams();
+  const locale = (params?.locale as string) ?? "he";
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const otherLocale = locale === "he" ? "en" : "he";
-  const isRTL = locale === "he";
-  const sheetSide = isRTL ? "left" : "right";
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  function switchLanguage() {
-    router.replace(pathname, { locale: otherLocale });
+  function switchLocale(nextLocale: string) {
+    router.replace(pathname, { locale: nextLocale });
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 h-18 backdrop-blur-xl transition-all duration-300",
+        scrolled
+          ? "bg-background/95 shadow-[0_1px_3px_rgba(0,0,0,0.12),0_1px_2px_rgba(0,0,0,0.08)]"
+          : "bg-muted/60"
+      )}
+    >
+      <div className="mx-auto max-w-7xl h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link
           href="/"
-          className="text-xl font-bold text-foreground hover:opacity-80 transition-opacity"
+          className="flex-shrink-0 text-3xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity"
         >
-          Fixeet
+          <span className="text-accent">Fix</span>
+          <span>eet</span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map(({ href, labelKey }) => {
             const isActive = pathname === href;
             return (
@@ -56,8 +76,8 @@ export function Header() {
                 href={href}
                 className={
                   isActive
-                    ? "text-sm font-medium text-foreground underline underline-offset-4"
-                    : "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                    ? "text-lg font-medium text-foreground underline underline-offset-4"
+                    : "text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
                 }
               >
                 {t(labelKey)}
@@ -68,16 +88,40 @@ export function Header() {
 
         {/* Desktop right side: language switcher + CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <Button variant="ghost" size="sm" onClick={switchLanguage}>
-            {t("languageSwitcher")}
-          </Button>
-          <Button
-            size="sm"
-            className="bg-accent text-accent-foreground hover:bg-accent/90"
-            render={<Link href="/contact" data-track="header-request-demo" />}
+          {/* Inline locale buttons */}
+          <div className="flex items-center gap-0 text-sm">
+            {routing.locales.map((loc, i) => (
+              <span key={loc} className="flex items-center">
+                {i > 0 && (
+                  <span className="mx-1.5 text-muted-foreground select-none">
+                    |
+                  </span>
+                )}
+                <button
+                  onClick={() => switchLocale(loc)}
+                  className={cn(
+                    "transition-colors",
+                    loc === locale
+                      ? "font-bold text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {localeLabels[loc] ?? loc.toUpperCase()}
+                </button>
+              </span>
+            ))}
+          </div>
+
+          <Link
+            href="/contact"
+            data-track="header-request-demo"
+            className={cn(
+              buttonVariants({ size: "lg" }),
+              "bg-accent text-accent-foreground hover:bg-accent/90 px-5 text-base font-semibold"
+            )}
           >
             {t("requestDemo")}
-          </Button>
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -95,34 +139,21 @@ export function Header() {
             <Menu className="size-5" />
           </SheetTrigger>
 
-          <SheetContent side={sheetSide} showCloseButton={false} className="p-0">
-            {/* Visually hidden title for accessibility */}
+          <SheetContent side="right" className="w-72 px-6 py-8">
             <SheetTitle className="sr-only">{t("openMenu")}</SheetTitle>
 
-            {/* Sheet header with close button using logical properties */}
-            <div className="flex items-center justify-between border-b border-border px-4 py-4">
-              <Link
-                href="/"
-                className="text-lg font-bold text-foreground"
-                onClick={() => setOpen(false)}
-              >
-                Fixeet
-              </Link>
-              <SheetClose
-                render={
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    aria-label={t("closeMenu")}
-                  />
-                }
-              >
-                <X className="size-5" />
-              </SheetClose>
-            </div>
+            {/* Logo */}
+            <Link
+              href="/"
+              className="mb-6 inline-block text-xl font-bold text-foreground hover:opacity-80 transition-opacity"
+              onClick={() => setOpen(false)}
+            >
+              <span className="text-accent">Fix</span>
+              <span>eet</span>
+            </Link>
 
             {/* Mobile nav links */}
-            <nav className="flex flex-col gap-1 px-4 py-4">
+            <nav className="flex flex-col">
               {navLinks.map(({ href, labelKey }) => {
                 const isActive = pathname === href;
                 return (
@@ -130,11 +161,12 @@ export function Header() {
                     key={href}
                     href={href}
                     onClick={() => setOpen(false)}
-                    className={
+                    className={cn(
+                      "py-3 text-sm font-medium border-b border-border/40 last:border-0 transition-colors",
                       isActive
-                        ? "rounded-md px-3 py-2 text-sm font-medium text-foreground bg-muted"
-                        : "rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                    }
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
                   >
                     {t(labelKey)}
                   </Link>
@@ -142,25 +174,45 @@ export function Header() {
               })}
             </nav>
 
-            {/* Mobile language switcher + CTA */}
-            <div className="flex flex-col gap-3 border-t border-border px-4 py-4 mt-auto">
-              <Button
-                variant="outline"
-                className="w-full"
-                onClick={() => {
-                  switchLanguage();
-                  setOpen(false);
-                }}
-              >
-                {t("languageSwitcher")}
-              </Button>
-              <Button
-                className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-                render={<Link href="/contact" data-track="mobile-request-demo" onClick={() => setOpen(false)} />}
-              >
-                {t("requestDemo")}
-              </Button>
+            {/* Mobile language switcher */}
+            <div className="mt-6 flex items-center gap-0 text-sm">
+              {routing.locales.map((loc, i) => (
+                <span key={loc} className="flex items-center">
+                  {i > 0 && (
+                    <span className="mx-1.5 text-muted-foreground select-none">
+                      |
+                    </span>
+                  )}
+                  <button
+                    onClick={() => {
+                      switchLocale(loc);
+                      setOpen(false);
+                    }}
+                    className={cn(
+                      "transition-colors",
+                      loc === locale
+                        ? "font-bold text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    {localeLabels[loc] ?? loc.toUpperCase()}
+                  </button>
+                </span>
+              ))}
             </div>
+
+            {/* Mobile CTA */}
+            <Link
+              href="/contact"
+              data-track="mobile-request-demo"
+              onClick={() => setOpen(false)}
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "mt-4 w-full bg-accent text-accent-foreground hover:bg-accent/90 font-semibold"
+              )}
+            >
+              {t("requestDemo")}
+            </Link>
           </SheetContent>
         </Sheet>
       </div>
