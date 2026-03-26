@@ -56,7 +56,12 @@ jobs:
             git reset --hard origin/deploy/prod
             git clean -fd
 
-            # Build and restart (--no-cache to avoid stale layers)
+            # Verify clean state
+            echo "=== Verifying about page ==="
+            head -10 src/app/\[locale\]/about/page.tsx
+
+            # Prune Docker build cache and build fresh
+            docker builder prune -af
             docker compose -f deploy/docker-compose.prod.yml build --no-cache
             docker compose -f deploy/docker-compose.prod.yml up -d --remove-orphans
 
@@ -91,7 +96,8 @@ jobs:
             git reset --hard origin/deploy/test
             git clean -fd
 
-            # Build and restart (--no-cache to avoid stale layers)
+            # Prune Docker build cache and build fresh
+            docker builder prune -af
             docker compose -f deploy/docker-compose.prod.yml build --no-cache
             docker compose -f deploy/docker-compose.prod.yml up -d --remove-orphans
 
