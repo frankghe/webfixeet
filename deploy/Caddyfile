@@ -3,6 +3,7 @@
 #
 # This file replaces:
 #   - webfixeet/deploy/Caddyfile.snippet (fixeet.co)
+#   - webaigent/deploy/Caddyfile (aigent.com)
 #   - aigent/scripts/config_server/Caddyfile (meetr.aigent.biz, meetr.fixeet.co)
 #
 # After editing: sudo systemctl reload caddy
@@ -30,6 +31,31 @@ fixeet.co {
 
 www.fixeet.co {
     redir https://fixeet.co{uri} permanent
+}
+
+# ===========================================================================
+# AIgent website (Next.js in Docker, port 3002)
+# ===========================================================================
+aigent.com {
+    reverse_proxy localhost:3002
+
+    # Security headers
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy strict-origin-when-cross-origin
+    }
+
+    # Cache static assets
+    @static path /static/* /_next/static/*
+    header @static Cache-Control "public, max-age=31536000, immutable"
+
+    # Compression
+    encode gzip zstd
+}
+
+www.aigent.com {
+    redir https://aigent.com{uri} permanent
 }
 
 # ===========================================================================
