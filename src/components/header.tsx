@@ -18,6 +18,8 @@ import { Menu } from "lucide-react";
 const navLinks = [
   { href: "/" as const, labelKey: "home" as const },
   { href: "/about" as const, labelKey: "about" as const },
+  { href: "/pricing" as const, labelKey: "pricing" as const },
+  { href: "/blog" as const, labelKey: "blog" as const },
   { href: "/contact" as const, labelKey: "contact" as const },
 ];
 

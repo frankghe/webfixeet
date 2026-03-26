@@ -94,7 +94,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             {tNav("skipToContent")}
           </a>
           <Header />
-          <main id="main-content" className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1 pt-18">{children}</main>
           <Footer />
         </NextIntlClientProvider>
         {/* Analytics placeholder: inject analytics scripts here (e.g., Google Analytics, Plausible) */}
