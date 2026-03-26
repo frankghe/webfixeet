@@ -57,7 +57,7 @@ export default async function Home({ params }: Props) {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-8 pb-16 sm:pt-16 sm:pb-24">
+      <section className="pt-20 pb-16 sm:pt-28 sm:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
             <div className="flex flex-1 flex-col items-center text-center lg:items-start lg:text-start">
