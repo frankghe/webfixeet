@@ -30,11 +30,25 @@ Work items being worked on (and history of work items) available in work.md. Whe
 
 ## Deployment
 
-"Deploy" means pushing from `main` to a deploy branch:
+"Deploy" means pushing from `main` to a deploy branch AND verifying the deployment succeeds:
 - **Production**: `git push origin main:deploy/prod`
 - **Test**: `git push origin main:deploy/test`
 
 If the target (prod or test) is ambiguous, ask the user to clarify before pushing.
+
+### Deploy verification (MANDATORY)
+
+After pushing to a deploy branch, you MUST:
+
+1. **Wait for the GitHub Actions workflow to complete** by polling with:
+   ```
+   gh run list --branch deploy/prod --limit 1
+   gh run view <run-id>
+   ```
+2. **Report the result** to the user: success or failure. Do NOT claim deployment succeeded based only on a successful `git push`.
+3. **On failure**: fetch the workflow logs (`gh run view <run-id> --log-failed`), analyze the root cause, fix the issue, and redeploy.
+
+A `git push` succeeding only means the code was pushed to the branch — it does NOT mean the deployment completed.
 
 ## Execution Rules
 
