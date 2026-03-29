@@ -15,6 +15,8 @@ Internet
 Caddy (host-level, :80/:443)     ← automatic HTTPS via Let's Encrypt
    │
    ├── fixeet.co                 → 127.0.0.1:3001  (webfixeet container)
+   │   └── /admin/*              → served from host filesystem (public/admin/)
+   ├── cms-auth.fixeet.co         → 127.0.0.1:3003  (cms-oauth container)
    ├── meetr.aigent.biz           → 127.0.0.1:8000-8002 (aigent containers)
    └── meetr.fixeet.co            → 127.0.0.1:8000-8002 (aigent containers)
 ```
@@ -191,6 +193,69 @@ Expected results:
 - `webfixeet`: `307` (locale redirect — this is correct)
 - `meetr` / `callr`: `200` with health response
 - External URLs: `200` or `307` (confirms Caddy is proxying and TLS works)
+
+### Step 11: Set up CMS authentication (for blog admin)
+
+The blog admin panel at `/admin` uses Sveltia CMS with GitHub OAuth for authentication.
+
+#### Step 11a: Create a GitHub OAuth App
+
+1. Go to https://github.com/settings/developers > OAuth Apps > **New OAuth App**
+2. Set:
+   - **Application name:** `Fixeet CMS`
+   - **Homepage URL:** `https://fixeet.co`
+   - **Authorization callback URL:** `https://cms-auth.fixeet.co/callback`
+3. Note the **Client ID** and generate a **Client Secret**
+
+#### Step 11b: Add DNS record
+
+Add an A record for `cms-auth.fixeet.co` pointing to the VPS IP address.
+
+#### Step 11c: Add OAuth credentials to .env.local
+
+```bash
+cd /opt/webfixeet
+nano .env.local
+```
+
+Add:
+```
+CMS_GITHUB_CLIENT_ID=Iv1.abc123...
+CMS_GITHUB_CLIENT_SECRET=secret_xyz...
+```
+
+#### Step 11d: Start the OAuth proxy
+
+The OAuth proxy is included in the Docker Compose stack. Restart the stack to pick up the new env vars:
+
+```bash
+cd /opt/webfixeet
+docker compose -f deploy/docker-compose.prod.yml up -d
+```
+
+#### Step 11e: Update and reload Caddyfile
+
+The updated Caddyfile includes:
+- `/admin` served from the host filesystem (Next.js standalone doesn't serve `public/` files)
+- `cms-auth.fixeet.co` routed to the OAuth proxy on port 3003
+
+```bash
+sudo cp /opt/webfixeet/deploy/Caddyfile /etc/caddy/Caddyfile
+sudo caddy validate --config /etc/caddy/Caddyfile
+sudo systemctl reload caddy
+```
+
+#### Step 11f: Verify CMS access
+
+```bash
+# OAuth proxy is running
+curl -sf -o /dev/null -w "%{http_code}" http://localhost:3003/ ; echo
+
+# Admin panel loads via Caddy
+curl -sf -o /dev/null -w "%{http_code}" https://fixeet.co/admin/ ; echo
+```
+
+Then open `https://fixeet.co/admin/` in a browser and verify you can log in with GitHub.
 
 ---
 

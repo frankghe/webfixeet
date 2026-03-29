@@ -390,3 +390,58 @@ Ensure Core Web Vitals targets per Section 8.3.
 - Server Components used by default; only Header and ContactForm are client components
 - When real images are added, use `next/image` with proper sizing and lazy loading (hero image should use `priority` prop for preloading)
 - Build passes, all 47 tests pass, lint clean
+
+---
+
+## WI-10: CMS Integration (Sveltia CMS)
+**status=completed**
+**priority=10**
+
+Set up Sveltia CMS for git-based blog content management, adapted from the AIgent website CMS setup. Includes preventive fixes for 3 deployment issues discovered during AIgent's CMS deployment.
+
+### Scope
+
+#### CMS Admin Interface
+- Sveltia CMS served as a static SPA from `public/admin/`
+- CMS config with blog collection supporting 2 locales (he, en)
+- GitHub OAuth authentication via dedicated proxy service
+
+#### Deployment Fixes (Lessons from AIgent)
+1. **Next.js standalone doesn't serve public/ files** — Caddy serves `/admin/*` directly from host filesystem
+2. **i18n middleware intercepts /admin** — Added `admin` to middleware exclusion pattern in `src/proxy.ts`
+3. **/admin without trailing slash** — Added `redir /admin /admin/ permanent` in Caddyfile
+
+#### OAuth Proxy
+- Docker service (`cms-oauth`) on port 3003 using `njfamirm/decap-cms-github-backend`
+- Caddy route for `cms-auth.fixeet.co`
+
+### Dependencies
+- None (CMS is independent of existing pages)
+
+### Acceptance Criteria
+- `/admin/` serves the Sveltia CMS interface
+- `/admin` redirects to `/admin/`
+- i18n middleware does not intercept `/admin` paths
+- OAuth proxy runs on port 3003
+- CMS config defines blog collection with he/en locales
+- Build passes
+
+### Completion Summary
+- Created `public/admin/index.html` (Sveltia CMS SPA)
+- Created `public/admin/config.yml` (blog collection with he/en locales, fixeet.co repo)
+- Fixed `src/proxy.ts` middleware to exclude `/admin` from i18n routing
+- Updated `deploy/Caddyfile` and `deploy/Caddyfile.snippet`: admin file serving from host filesystem, `/admin` → `/admin/` redirect, `cms-auth.fixeet.co` route to OAuth proxy
+- Added `cms-oauth` service to `deploy/docker-compose.prod.yml` (port 3003, `njfamirm/decap-cms-github-backend`)
+- Added OAuth env vars (`CMS_GITHUB_CLIENT_ID`, `CMS_GITHUB_CLIENT_SECRET`) to `deploy/.env.template`
+- Added CMS setup instructions to `deploy/INSTALL.md` (Step 11, substeps 11a–11f)
+- Updated `deploy/INSTALL.md` architecture diagram to include `/admin/*` serving and `cms-auth.fixeet.co`
+- Created `docs/cms.md` with full CMS integration plan and lessons learned from AIgent deployment
+- All 3 preventive deployment fixes applied (static file serving, middleware exclusion, trailing slash redirect)
+- Build passes, all tests pass
+
+### Follow-up (Manual/Operational — separate from this work item)
+- Create GitHub OAuth App for Fixeet CMS
+- Add DNS A record for `cms-auth.fixeet.co`
+- Add OAuth credentials to `.env.local` on VPS
+- Deploy and verify full CMS login flow
+- Future phases: content migration (blog data layer), blog display pages, translation workflow

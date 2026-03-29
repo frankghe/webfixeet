@@ -1,4 +1,14 @@
 fixeet.co {
+    # CMS admin — redirect /admin to /admin/ (bare path doesn't match handle_path)
+    redir /admin /admin/ permanent
+
+    # CMS admin — serve static files from host filesystem
+    # (Next.js standalone mode doesn't serve public/ files)
+    handle_path /admin/* {
+        root * /opt/webfixeet/public/admin
+        file_server
+    }
+
     reverse_proxy localhost:3001
 
     # Security headers

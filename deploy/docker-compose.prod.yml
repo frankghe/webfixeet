@@ -23,3 +23,15 @@ services:
       timeout: 10s
       retries: 3
       start_period: 15s
+
+  # CMS OAuth proxy — authenticates admin users via GitHub OAuth
+  # Required for Sveltia/Decap CMS admin panel at /admin
+  cms-oauth:
+    image: ghcr.io/njfamirm/decap-cms-github-backend:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3003:3000"
+    environment:
+      OAUTH_GITHUB_CLIENT_ID: "${CMS_GITHUB_CLIENT_ID}"
+      OAUTH_GITHUB_CLIENT_SECRET: "${CMS_GITHUB_CLIENT_SECRET}"
+      OAUTH_GITHUB_SCOPE: "repo"
