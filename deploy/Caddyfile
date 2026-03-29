@@ -12,6 +12,16 @@
 # Fixeet website (Next.js in Docker, port 3001)
 # ===========================================================================
 fixeet.co {
+    # CMS admin — redirect /admin to /admin/ (bare path doesn't match handle_path)
+    redir /admin /admin/ permanent
+
+    # CMS admin — serve static files from host filesystem
+    # (Next.js standalone mode doesn't serve public/ files)
+    handle_path /admin/* {
+        root * /opt/webfixeet/public/admin
+        file_server
+    }
+
     reverse_proxy localhost:3001
 
     # Security headers
@@ -34,9 +44,24 @@ www.fixeet.co {
 }
 
 # ===========================================================================
+# Fixeet CMS OAuth proxy (for Sveltia/Decap CMS GitHub authentication)
+# ===========================================================================
+cms-auth.fixeet.co {
+    reverse_proxy localhost:3003
+}
+
+# ===========================================================================
 # AIgent website (Next.js in Docker, port 3002)
 # ===========================================================================
 aigent.biz {
+    # CMS admin — serve static files directly from the repo
+    redir /admin /admin/ permanent
+    handle_path /admin/* {
+        root * /opt/webaigent/public/admin
+        try_files {path} /index.html
+        file_server
+    }
+
     reverse_proxy localhost:3002
 
     # Security headers
@@ -56,6 +81,13 @@ aigent.biz {
 
 www.aigent.biz {
     redir https://aigent.biz{uri} permanent
+}
+
+# ===========================================================================
+# CMS OAuth proxy for Sveltia/Decap CMS (Docker, port 3003)
+# ===========================================================================
+cms-auth.aigent.biz {
+    reverse_proxy localhost:3003
 }
 
 # ===========================================================================
