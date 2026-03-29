@@ -59,14 +59,20 @@ jobs:
             # Build and restart
             docker compose -f deploy/docker-compose.prod.yml build --no-cache
             docker compose -f deploy/docker-compose.prod.yml up -d --remove-orphans
-            docker compose -f deploy/docker-compose.prod.yml up -d --remove-orphans
 
-            # Wait for container to start
-            sleep 5
-
-            # Health check
+            # Health check — retry up to 30s for container startup
             echo "=== Health Check ==="
-            curl -sf -o /dev/null -w "%{http_code}" http://localhost:3001/ && echo " [OK] webfixeet" || echo " [FAIL] webfixeet"
+            for i in 1 2 3 4 5 6; do
+              if curl -sf -o /dev/null http://localhost:3001/; then
+                echo "[OK] webfixeet is healthy"
+                exit 0
+              fi
+              echo "Attempt $i: waiting for container..."
+              sleep 5
+            done
+            echo "[FAIL] webfixeet did not start within 30s"
+            docker compose -f deploy/docker-compose.prod.yml logs --tail=50
+            exit 1
 
   # ---------------------------------------------------------------------------
   # Deploy to staging
@@ -96,9 +102,16 @@ jobs:
             docker compose -f deploy/docker-compose.prod.yml build --no-cache
             docker compose -f deploy/docker-compose.prod.yml up -d --remove-orphans
 
-            # Wait for container to start
-            sleep 5
-
-            # Health check
+            # Health check — retry up to 30s for container startup
             echo "=== Staging Health Check ==="
-            curl -sf -o /dev/null -w "%{http_code}" http://localhost:3001/ && echo " [OK] webfixeet" || echo " [FAIL] webfixeet"
+            for i in 1 2 3 4 5 6; do
+              if curl -sf -o /dev/null http://localhost:3001/; then
+                echo "[OK] webfixeet staging is healthy"
+                exit 0
+              fi
+              echo "Attempt $i: waiting for container..."
+              sleep 5
+            done
+            echo "[FAIL] webfixeet staging did not start within 30s"
+            docker compose -f deploy/docker-compose.prod.yml logs --tail=50
+            exit 1

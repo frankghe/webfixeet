@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| Last Updated | 2026-03-24 |
+| Last Updated | 2026-03-29 |
 | Target | OVH VPS (shared with AIgent website and Meetr platform) |
 
 ## Prerequisites
@@ -116,26 +116,46 @@ sudo journalctl -u webfixeet -f
 
 ## Updating (Deploying Changes)
 
-### Standard Update
+### CI/CD via GitHub Actions (Primary Method)
+
+Deployments are automated via `.github/workflows/deploy.yml`. Push to a deploy branch to trigger:
+
+```bash
+# Deploy to production
+git push origin main:deploy/prod
+
+# Deploy to staging/test
+git push origin main:deploy/test
+```
+
+The workflow:
+1. Runs lint and tests
+2. SSHs into the VPS and pulls the deploy branch
+3. Builds the Docker image with `docker compose build --no-cache`
+4. Starts the container with `docker compose up -d`
+5. Runs a health check (retries up to 30s, fails the workflow if unhealthy)
+
+On failure, container logs are printed to the GitHub Actions output for debugging.
+
+### Manual Update (Fallback)
 
 ```bash
 cd /opt/webfixeet
 git pull origin main
-npm ci --production
-npm run build
-sudo systemctl restart webfixeet
+docker compose -f deploy/docker-compose.prod.yml build --no-cache
+docker compose -f deploy/docker-compose.prod.yml up -d --remove-orphans
 ```
 
 ### Quick Reference
 
 | Step | Command |
 |------|---------|
-| Pull latest code | `git pull origin main` |
-| Install deps | `npm ci --production` |
-| Build | `npm run build` |
-| Restart | `sudo systemctl restart webfixeet` |
-| Check status | `sudo systemctl status webfixeet` |
-| View logs | `sudo journalctl -u webfixeet -f` |
+| Deploy to prod (CI/CD) | `git push origin main:deploy/prod` |
+| Deploy to staging (CI/CD) | `git push origin main:deploy/test` |
+| Manual build | `docker compose -f deploy/docker-compose.prod.yml build --no-cache` |
+| Manual restart | `docker compose -f deploy/docker-compose.prod.yml up -d --remove-orphans` |
+| Check status | `docker compose -f deploy/docker-compose.prod.yml ps` |
+| View logs | `docker compose -f deploy/docker-compose.prod.yml logs -f` |
 
 ### When Caddy Config Changes
 
