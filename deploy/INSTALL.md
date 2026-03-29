@@ -273,7 +273,21 @@ Then open `https://fixeet.co/admin/` in a browser and verify you can log in with
    | `VPS_USER` | `meetr` |
    | `VPS_SSH_KEY` | Contents of `~/.ssh/webfixeet_deploy` (private key) |
 
-2. **Activate the workflow**:
+2. **Allow passwordless sudo for Caddy operations** (needed for auto-updating the Caddyfile on deploy):
+
+   ```bash
+   ssh meetr@<VPS_IP>
+   sudo visudo -f /etc/sudoers.d/meetr-caddy
+   ```
+
+   Add:
+   ```
+   meetr ALL=(ALL) NOPASSWD: /usr/bin/cp deploy/Caddyfile /etc/caddy/Caddyfile
+   meetr ALL=(ALL) NOPASSWD: /usr/bin/caddy validate --config /etc/caddy/Caddyfile
+   meetr ALL=(ALL) NOPASSWD: /usr/bin/systemctl reload caddy
+   ```
+
+3. **Activate the workflow**:
 
    ```bash
    # On your local machine
@@ -285,7 +299,7 @@ Then open `https://fixeet.co/admin/` in a browser and verify you can log in with
    git push
    ```
 
-3. **Create deployment branches** (first time only):
+4. **Create deployment branches** (first time only):
 
    ```bash
    git checkout -b deploy/prod

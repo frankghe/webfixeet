@@ -57,12 +57,16 @@ jobs:
             git clean -ffd
 
             # Update Caddyfile if changed and reload Caddy
+            # Requires sudoers rule — see deploy/INSTALL.md
             if ! diff -q deploy/Caddyfile /etc/caddy/Caddyfile > /dev/null 2>&1; then
               echo "=== Updating Caddyfile ==="
-              sudo cp deploy/Caddyfile /etc/caddy/Caddyfile
-              sudo caddy validate --config /etc/caddy/Caddyfile
-              sudo systemctl reload caddy
-              echo "[OK] Caddyfile updated and Caddy reloaded"
+              if sudo -n cp deploy/Caddyfile /etc/caddy/Caddyfile 2>/dev/null && \
+                 sudo -n caddy validate --config /etc/caddy/Caddyfile && \
+                 sudo -n systemctl reload caddy; then
+                echo "[OK] Caddyfile updated and Caddy reloaded"
+              else
+                echo "[WARN] Cannot update Caddyfile (no passwordless sudo). Update manually."
+              fi
             else
               echo "[OK] Caddyfile unchanged"
             fi
