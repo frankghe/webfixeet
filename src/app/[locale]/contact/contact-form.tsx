@@ -248,7 +248,7 @@ export function ContactForm() {
         onChange={handleChange}
         aria-hidden="true"
         tabIndex={-1}
-        className="absolute -left-[9999px]"
+        className="absolute opacity-0 w-0 h-0 overflow-hidden pointer-events-none"
         autoComplete="off"
       />
 
