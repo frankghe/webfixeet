@@ -56,6 +56,17 @@ jobs:
             git reset --hard origin/deploy/prod
             git clean -ffd
 
+            # Update Caddyfile if changed and reload Caddy
+            if ! diff -q deploy/Caddyfile /etc/caddy/Caddyfile > /dev/null 2>&1; then
+              echo "=== Updating Caddyfile ==="
+              sudo cp deploy/Caddyfile /etc/caddy/Caddyfile
+              sudo caddy validate --config /etc/caddy/Caddyfile
+              sudo systemctl reload caddy
+              echo "[OK] Caddyfile updated and Caddy reloaded"
+            else
+              echo "[OK] Caddyfile unchanged"
+            fi
+
             # Build and restart
             docker compose -f deploy/docker-compose.prod.yml build --no-cache
             docker compose -f deploy/docker-compose.prod.yml up -d --remove-orphans
@@ -97,6 +108,17 @@ jobs:
             git checkout deploy/test
             git reset --hard origin/deploy/test
             git clean -ffd
+
+            # Update Caddyfile if changed and reload Caddy
+            if ! diff -q deploy/Caddyfile /etc/caddy/Caddyfile > /dev/null 2>&1; then
+              echo "=== Updating Caddyfile ==="
+              sudo cp deploy/Caddyfile /etc/caddy/Caddyfile
+              sudo caddy validate --config /etc/caddy/Caddyfile
+              sudo systemctl reload caddy
+              echo "[OK] Caddyfile updated and Caddy reloaded"
+            else
+              echo "[OK] Caddyfile unchanged"
+            fi
 
             # Build and restart
             docker compose -f deploy/docker-compose.prod.yml build --no-cache
