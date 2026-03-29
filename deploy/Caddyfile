@@ -19,6 +19,7 @@ fixeet.co {
     # (Next.js standalone mode doesn't serve public/ files)
     handle_path /admin/* {
         root * /opt/webfixeet/public/admin
+        try_files {path} /index.html
         file_server
     }
 
