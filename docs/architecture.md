@@ -63,6 +63,7 @@ A single OVH VPS hosts all services. A host-level Caddy instance handles TLS ter
 | Reverse Proxy | Caddy (host) | 80, 443 | all domains | TLS termination, domain routing |
 | Fixeet Website | Next.js (Docker) | 127.0.0.1:3001 | fixeet.co | Fixeet marketing site (this project) |
 | AIgent Website | Next.js (Docker) | 127.0.0.1:3000 | aigent.com | AIgent marketing site |
+| CMS OAuth Proxy | Docker | 127.0.0.1:3003 | cms-auth.fixeet.co | GitHub OAuth for CMS admin |
 | Meetr Platform | FastAPI (Docker) | 127.0.0.1:8001 | meetr.aigent.biz, meetr.fixeet.co | AI meeting scheduling service |
 | Callr Service | FastAPI (Docker) | 127.0.0.1:8000 | meetr.aigent.biz/callr | Call/messaging service |
 
@@ -85,6 +86,17 @@ A unified host-level Caddyfile (`deploy/Caddyfile`, installed to `/etc/caddy/Cad
 - **Caddy**: Runs as a systemd service (`caddy.service`, installed with the package)
 - **WebFixeet**: Runs via Docker Compose with `restart: unless-stopped`
 - **AIgent stack**: Runs via its own Docker Compose with `restart: unless-stopped`
+
+## CMS (Blog Content Management)
+
+The site uses [Sveltia CMS](https://github.com/sveltia/sveltia-cms) — a git-based, open-source CMS that runs as a static SPA at `/admin/`. Blog content is stored as markdown files in `content/blog/{locale}/` and committed directly to the git repo.
+
+**Key components:**
+- **Admin UI**: `public/admin/index.html` — served by Caddy from the host filesystem (not by Next.js, which doesn't serve `public/` files in standalone mode)
+- **CMS Config**: `public/admin/config.yml` — defines the blog collection schema with i18n support (he/en)
+- **OAuth Proxy**: Docker service on port 3003, authenticates admin users via GitHub OAuth through `cms-auth.fixeet.co`
+
+See `docs/cms.md` for the full CMS integration plan, implementation phases, and lessons learned from the AIgent deployment.
 
 ## Domain Strategy
 

@@ -53,7 +53,7 @@ The site supports Hebrew (primary, RTL) and English (LTR) via [next-intl](https:
 - **Default locale**: Hebrew (`he`) — visiting `/` redirects to `/he/`
 - **Translation files**: `messages/he.json` and `messages/en.json`
 - **RTL/LTR**: The `<html>` element gets `dir="rtl"` or `dir="ltr"` and `lang` attribute based on locale
-- **Middleware**: `src/proxy.ts` handles locale detection and routing (named `proxy.ts` per Next.js 16 convention)
+- **Middleware**: `src/proxy.ts` handles locale detection and routing (named `proxy.ts` per Next.js 16 convention). Excludes `/admin` paths to avoid intercepting the CMS admin panel
 - **Navigation helpers**: Use `Link`, `redirect`, `usePathname`, `useRouter` from `@/i18n/navigation` instead of Next.js built-ins for locale-aware navigation
 - **Server Components**: Use `getTranslations` from `next-intl/server` (async)
 - **Client Components**: Use `useTranslations` from `next-intl` (hook)
