@@ -30,7 +30,7 @@ services:
     image: ghcr.io/njfamirm/decap-cms-github-backend:latest
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3003:3000"
+      - "127.0.0.1:3004:3000"
     environment:
       OAUTH_GITHUB_CLIENT_ID: "${CMS_GITHUB_CLIENT_ID}"
       OAUTH_GITHUB_CLIENT_SECRET: "${CMS_GITHUB_CLIENT_SECRET}"

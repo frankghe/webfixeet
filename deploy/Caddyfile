@@ -48,7 +48,7 @@ www.fixeet.co {
 # Fixeet CMS OAuth proxy (for Sveltia/Decap CMS GitHub authentication)
 # ===========================================================================
 cms-auth.fixeet.co {
-    reverse_proxy localhost:3003
+    reverse_proxy localhost:3004
 }
 
 # ===========================================================================
