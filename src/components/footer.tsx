@@ -49,20 +49,20 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-semibold">{t("legal")}</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/privacy"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {t("privacyPolicy")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/terms"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {t("termsOfService")}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
