@@ -445,3 +445,44 @@ Set up Sveltia CMS for git-based blog content management, adapted from the AIgen
 - Add OAuth credentials to `.env.local` on VPS
 - Deploy and verify full CMS login flow
 - Future phases: content migration (blog data layer), blog display pages, translation workflow
+
+---
+
+## WI-11: Brand Palette Alignment (J2)
+**status=completed**
+**priority=11**
+
+Align the website's color palette, typography, and component styling to the approved J2 brand guide (`docs/brand_guide.md`).
+
+### Scope
+
+#### Color Palette (globals.css)
+- Replaced all oklch warm-toned CSS custom properties with the J2 brand hex values
+- Light mode: Scaffold `#FAFBFC`, Ardoise primary `#5A6A74`, Orange accent `#E87020`, Teal success `#28A89A`, cool neutral surfaces
+- Dark mode: Dark Background `#0E1114`, Dark Surface `#1A2028`, Accent Bright `#FF8C42`, Teal Bright `#40BEB2`
+- Added `--success`, `--success-foreground`, `--warning`, `--warning-foreground` to `@theme inline` for Tailwind utility support
+- Updated border radius from 10px to 12px per brand guide
+- Semantic colors: destructive `#E7000B`, warning `#DE9300`
+
+#### Typography
+- Switched from Geist Sans/Mono to Inter (Google Fonts) with weights 400, 500, 600, 700
+- System monospace stack for code/technical text per brand guide
+- Added `latin-ext` subset for broader character coverage
+
+#### Component Color Role Alignment
+- Logo: "Fix" in accent orange, "eet" in primary ardoise (header + footer)
+- Hero SVG: checkmarks and DONE badges changed from orange to teal (brand: teal = success/completion)
+- Solution section icons: CheckCircle2 changed from accent to success (teal)
+- Contact form success state: replaced hardcoded `green-*` Tailwind classes with brand `success` CSS variable
+- Pricing checkmarks: changed from `text-primary` to `text-success` (teal for validation)
+- Pricing CTAs: highlighted tier and enterprise CTA explicitly use accent orange
+
+### Dependencies
+- docs/brand_guide.md (J2 palette specification)
+
+### Acceptance Criteria
+- All CSS custom properties match the J2 brand palette hex values
+- Three-color system enforced: ardoise=structure, orange=action, teal=validation
+- Dark mode uses brand-specified dark palette
+- Typography uses Inter font family
+- Build passes, all 47 tests pass

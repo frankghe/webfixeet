@@ -101,12 +101,12 @@ export function ContactForm() {
       <div
         role="status"
         aria-live="polite"
-        className="rounded-lg border border-green-200 bg-green-50 p-8 text-center dark:border-green-800 dark:bg-green-950"
+        className="rounded-lg border border-success/30 bg-success/5 p-8 text-center"
       >
-        <h3 className="text-lg font-semibold text-green-800 dark:text-green-200">
+        <h3 className="text-lg font-semibold text-success">
           {t("success.title")}
         </h3>
-        <p className="mt-2 text-green-700 dark:text-green-300">
+        <p className="mt-2 text-success/80">
           {t("success.description")}
         </p>
       </div>

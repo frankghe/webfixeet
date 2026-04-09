@@ -65,7 +65,7 @@ export function Header() {
           className="flex-shrink-0 text-3xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity"
         >
           <span className="text-accent">Fix</span>
-          <span>eet</span>
+          <span className="text-primary">eet</span>
         </Link>
 
         {/* Desktop nav */}
@@ -151,7 +151,7 @@ export function Header() {
               onClick={() => setOpen(false)}
             >
               <span className="text-accent">Fix</span>
-              <span>eet</span>
+              <span className="text-primary">eet</span>
             </Link>
 
             {/* Mobile nav links */}

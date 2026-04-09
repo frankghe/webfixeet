@@ -94,7 +94,8 @@ export function Footer() {
             href="/"
             className="text-lg font-bold text-foreground hover:text-foreground/80 transition-colors"
           >
-            Fixeet
+            <span className="text-accent">Fix</span>
+            <span className="text-primary">eet</span>
           </Link>
           <p className="text-sm text-muted-foreground">
             {t("copyright", { year: new Date().getFullYear() })}

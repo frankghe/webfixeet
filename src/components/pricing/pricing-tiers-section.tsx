@@ -136,7 +136,7 @@ export function PricingTiersSection() {
                   {tier.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
                       {feature.included ? (
-                        <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                        <Check className="mt-0.5 size-4 shrink-0 text-success" />
                       ) : (
                         <Minus className="mt-0.5 size-4 shrink-0 text-muted-foreground/40" />
                       )}
@@ -162,7 +162,8 @@ export function PricingTiersSection() {
                       variant: tier.highlighted ? "default" : "outline",
                       size: "lg",
                     }),
-                    "w-full"
+                    "w-full",
+                    tier.highlighted && "bg-accent text-accent-foreground hover:bg-accent/90"
                   )}
                 >
                   {tier.cta}

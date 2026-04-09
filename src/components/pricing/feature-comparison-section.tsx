@@ -96,7 +96,7 @@ export function FeatureComparisonSection() {
       return <span className="text-sm font-medium text-foreground">{value}</span>
     }
     return value ? (
-      <Check className="mx-auto size-4 text-primary" aria-label="Included" />
+      <Check className="mx-auto size-4 text-success" aria-label="Included" />
     ) : (
       <Minus
         className="mx-auto size-4 text-muted-foreground/40"

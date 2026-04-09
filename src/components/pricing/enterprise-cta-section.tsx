@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl"
 import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 import { Link } from "@/i18n/navigation"
 
 export function EnterpriseCtaSection() {
@@ -23,7 +24,7 @@ export function EnterpriseCtaSection() {
           <div>
             <Link
               href="/contact"
-              className={buttonVariants({ variant: "default", size: "lg" })}
+              className={cn(buttonVariants({ variant: "default", size: "lg" }), "bg-accent text-accent-foreground hover:bg-accent/90")}
             >
               {t("contactForEnterprise")}
             </Link>

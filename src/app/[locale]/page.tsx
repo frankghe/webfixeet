@@ -196,15 +196,15 @@ export default async function Home({ params }: Props) {
 
                   {/* Item 1 — resolved */}
                   <rect x="256" y="90" width="150" height="28" rx="5" fill="var(--muted)" fillOpacity="0.4" />
-                  {/* Check circle filled — done */}
-                  <circle cx="270" cy="104" r="8" fill="var(--accent)" fillOpacity="0.15" stroke="var(--accent)" strokeWidth="1.5" />
-                  <polyline points="265,104 269,108 276,99" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  {/* Check circle filled — done (teal = success) */}
+                  <circle cx="270" cy="104" r="8" fill="var(--success)" fillOpacity="0.15" stroke="var(--success)" strokeWidth="1.5" />
+                  <polyline points="265,104 269,108 276,99" stroke="var(--success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   <rect x="284" y="100" width="70" height="5" rx="2" fill="var(--muted-foreground)" fillOpacity="0.35" />
                   <rect x="284" y="108" width="45" height="4" rx="2" fill="var(--muted-foreground)" fillOpacity="0.2" />
                   {/* Status badge — closed */}
-                  <rect x="360" y="99" width="36" height="14" rx="7" fill="var(--accent)" fillOpacity="0.18" />
+                  <rect x="360" y="99" width="36" height="14" rx="7" fill="var(--success)" fillOpacity="0.18" />
                   <text x="378" y="109" textAnchor="middle" fontSize="7" fontFamily="sans-serif"
-                    fill="var(--accent)" fontWeight="700">DONE</text>
+                    fill="var(--success)" fontWeight="700">DONE</text>
 
                   {/* Item 2 — in progress */}
                   <rect x="256" y="126" width="150" height="28" rx="5" fill="var(--muted)" fillOpacity="0.4" />
@@ -230,13 +230,13 @@ export default async function Home({ params }: Props) {
 
                   {/* Item 4 — resolved */}
                   <rect x="256" y="198" width="150" height="28" rx="5" fill="var(--muted)" fillOpacity="0.4" />
-                  <circle cx="270" cy="212" r="8" fill="var(--accent)" fillOpacity="0.15" stroke="var(--accent)" strokeWidth="1.5" />
-                  <polyline points="265,212 269,216 276,207" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="270" cy="212" r="8" fill="var(--success)" fillOpacity="0.15" stroke="var(--success)" strokeWidth="1.5" />
+                  <polyline points="265,212 269,216 276,207" stroke="var(--success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   <rect x="284" y="208" width="55" height="5" rx="2" fill="var(--muted-foreground)" fillOpacity="0.35" />
                   <rect x="284" y="216" width="35" height="4" rx="2" fill="var(--muted-foreground)" fillOpacity="0.2" />
-                  <rect x="360" y="207" width="36" height="14" rx="7" fill="var(--accent)" fillOpacity="0.18" />
+                  <rect x="360" y="207" width="36" height="14" rx="7" fill="var(--success)" fillOpacity="0.18" />
                   <text x="378" y="217" textAnchor="middle" fontSize="7" fontFamily="sans-serif"
-                    fill="var(--accent)" fontWeight="700">DONE</text>
+                    fill="var(--success)" fontWeight="700">DONE</text>
 
                   {/* Progress bar area */}
                   <line x1="256" y1="244" x2="406" y2="244" stroke="var(--muted-foreground)" strokeWidth="0.5" strokeOpacity="0.4" />
@@ -367,7 +367,7 @@ export default async function Home({ params }: Props) {
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
             {solutionPoints.map(({ key, icon: Icon }) => (
               <div key={key} className="flex flex-col items-center text-center">
-                <Icon aria-hidden="true" className="size-8 text-accent" />
+                <Icon aria-hidden="true" className="size-8 text-success" />
                 <p className="mt-4 text-lg">{t(`solution.points.${key}`)}</p>
               </div>
             ))}
