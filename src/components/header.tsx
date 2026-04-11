@@ -114,8 +114,10 @@ export function Header() {
             ))}
           </div>
 
-          <Link
-            href="/contact"
+          <a
+            href="https://app.fixeet.co"
+            target="_blank"
+            rel="noopener noreferrer"
             data-track="header-request-demo"
             className={cn(
               buttonVariants({ size: "lg" }),
@@ -123,7 +125,7 @@ export function Header() {
             )}
           >
             {t("requestDemo")}
-          </Link>
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -204,8 +206,10 @@ export function Header() {
             </div>
 
             {/* Mobile CTA */}
-            <Link
-              href="/contact"
+            <a
+              href="https://app.fixeet.co"
+              target="_blank"
+              rel="noopener noreferrer"
               data-track="mobile-request-demo"
               onClick={() => setOpen(false)}
               className={cn(
@@ -214,7 +218,7 @@ export function Header() {
               )}
             >
               {t("requestDemo")}
-            </Link>
+            </a>
           </SheetContent>
         </Sheet>
       </div>

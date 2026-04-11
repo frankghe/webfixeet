@@ -71,7 +71,7 @@ export default async function Home({ params }: Props) {
                 <Button
                   size="lg"
                   className="bg-accent text-accent-foreground hover:bg-accent/90"
-                  render={<Link href="/contact" data-track="hero-request-demo" />}
+                  render={<a href="https://app.fixeet.co" target="_blank" rel="noopener noreferrer" data-track="hero-request-demo" />}
                 >
                   {t("hero.cta")}
                 </Button>
@@ -478,7 +478,7 @@ export default async function Home({ params }: Props) {
             <Button
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90"
-              render={<Link href="/contact" data-track="secondary-request-demo" />}
+              render={<a href="https://app.fixeet.co" target="_blank" rel="noopener noreferrer" data-track="secondary-request-demo" />}
             >
               {t("secondaryCta.requestDemo")}
             </Button>

@@ -35,10 +35,10 @@ describe("Header", () => {
     expect(screen.getAllByRole("link", { name: "Contact" }).length).toBeGreaterThanOrEqual(1);
   });
 
-  it("renders Request a Demo CTA button on desktop", () => {
+  it("renders Access the App CTA button on desktop", () => {
     renderWithI18n(<Header />);
-    const demoElements = screen.getAllByText("Request a Demo");
-    expect(demoElements.length).toBeGreaterThanOrEqual(1);
+    const appElements = screen.getAllByText("Access the App");
+    expect(appElements.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders inline locale switcher buttons", () => {

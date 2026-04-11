@@ -28,7 +28,7 @@
     "pricing": "Pricing",
     "blog": "Blog",
     "contact": "Contact",
-    "requestDemo": "Request a Demo",
+    "requestDemo": "Access the App",
     "languageSwitcher": "עברית",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -142,7 +142,7 @@
     "hero": {
       "title": "Manage Construction Defects Without the Chaos",
       "subtitle": "One platform connecting residents, contractors, project managers, and tradespeople — from defect report to verified resolution.",
-      "cta": "Request a Demo",
+      "cta": "Access the App",
       "learnMore": "Learn More",
       "imageAlt": "Fixeet platform illustration"
     },
@@ -228,7 +228,7 @@
     },
     "secondaryCta": {
       "title": "Ready to Transform Your Defect Management?",
-      "requestDemo": "Request a Demo",
+      "requestDemo": "Access the App",
       "contactUs": "Contact Us"
     },
     "comingSoon": "Coming Soon"

@@ -6,7 +6,7 @@ describe("Home page translations", () => {
   it("English translations have all required Home keys", () => {
     expect(en.Home.hero.title).toBe("Manage Construction Defects Without the Chaos");
     expect(en.Home.hero.subtitle).toBeTruthy();
-    expect(en.Home.hero.cta).toBe("Request a Demo");
+    expect(en.Home.hero.cta).toBe("Access the App");
     expect(en.Home.hero.learnMore).toBe("Learn More");
     expect(en.Home.hero.imageAlt).toBeTruthy();
     expect(en.Home.comingSoon).toBe("Coming Soon");
@@ -15,7 +15,7 @@ describe("Home page translations", () => {
   it("Hebrew translations have all required Home keys", () => {
     expect(he.Home.hero.title).toBe("נהל ליקויי בנייה בלי הכאוס");
     expect(he.Home.hero.subtitle).toBeTruthy();
-    expect(he.Home.hero.cta).toBe("בקש הדגמה");
+    expect(he.Home.hero.cta).toBe("כניסה לאפליקציה");
     expect(he.Home.hero.learnMore).toBe("למד עוד");
     expect(he.Home.hero.imageAlt).toBeTruthy();
     expect(he.Home.comingSoon).toBe("בקרוב");
