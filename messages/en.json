@@ -32,7 +32,8 @@
     "languageSwitcher": "עברית",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "app": "App"
   },
   "Footer": {
     "copyright": "© {year} Fixeet. All rights reserved.",
@@ -362,6 +363,34 @@
     "backToBlog": "Back to Blog",
     "thumbnail": "Thumbnail",
     "moreArticlesComing": "More articles coming soon..."
+  },
+  "App": {
+    "meta": {
+      "title": "Get the App — Fixeet",
+      "description": "Access Fixeet on Web, Android, or iOS. Manage construction defects from any device."
+    },
+    "hero": {
+      "title": "Get the Fixeet App",
+      "subtitle": "Access your defect management dashboard from any device. Choose your platform below."
+    },
+    "platforms": {
+      "web": {
+        "name": "Web App",
+        "description": "Access Fixeet directly from your browser. No installation needed — works on any device with a modern browser.",
+        "cta": "Open Web App"
+      },
+      "android": {
+        "name": "Android",
+        "description": "Get the native Android experience. Optimized for phones and tablets with offline support and push notifications.",
+        "cta": "Get on Google Play"
+      },
+      "ios": {
+        "name": "iOS",
+        "description": "The full Fixeet experience on iPhone and iPad. Stay updated with real-time notifications and seamless performance.",
+        "cta": "Get on App Store"
+      }
+    },
+    "comingSoon": "Coming Soon"
   },
   "BlogPosts": {
     "streamlining-construction-defect-tracking": {

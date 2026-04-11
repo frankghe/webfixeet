@@ -21,6 +21,7 @@ const navLinks = [
   { href: "/pricing" as const, labelKey: "pricing" as const },
   { href: "/blog" as const, labelKey: "blog" as const },
   { href: "/contact" as const, labelKey: "contact" as const },
+  { href: "/app" as const, labelKey: "app" as const },
 ];
 
 const localeLabels: Record<string, string> = {
@@ -114,18 +115,16 @@ export function Header() {
             ))}
           </div>
 
-          <a
-            href="https://app.fixeet.co"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-track="header-request-demo"
+          <Link
+            href="/app"
+            data-track="header-access-app"
             className={cn(
               buttonVariants({ size: "lg" }),
               "bg-accent text-accent-foreground hover:bg-accent/90 px-5 text-base font-semibold"
             )}
           >
             {t("requestDemo")}
-          </a>
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -206,11 +205,9 @@ export function Header() {
             </div>
 
             {/* Mobile CTA */}
-            <a
-              href="https://app.fixeet.co"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-track="mobile-request-demo"
+            <Link
+              href="/app"
+              data-track="mobile-access-app"
               onClick={() => setOpen(false)}
               className={cn(
                 buttonVariants({ size: "lg" }),
@@ -218,7 +215,7 @@ export function Header() {
               )}
             >
               {t("requestDemo")}
-            </a>
+            </Link>
           </SheetContent>
         </Sheet>
       </div>
