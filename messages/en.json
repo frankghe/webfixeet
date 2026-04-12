@@ -325,6 +325,7 @@
     "contractorManagement": "Contractor management",
     "visitManagement": "Visit management",
     "projectsProgressDashboard": "Projects progress dashboard",
+    "exportPdf": "Export report in PDF",
     "emailSupport": "Email support",
     "optionalAi": "Optional AI Assistants",
     "aiScheduling": "AI-powered visit scheduling",
