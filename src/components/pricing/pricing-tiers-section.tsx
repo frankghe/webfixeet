@@ -1,7 +1,7 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { Check, Minus } from "lucide-react"
+import { Check, Minus, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -23,76 +23,77 @@ export function PricingTiersSection() {
       name: t("starter"),
       audience: t("starterAudience"),
       description: t("starterDesc"),
-      price: t("comingSoon"),
+      price: t("free"),
+      priceDetail: null,
       cta: t("getStarted"),
       ctaHref: "/contact",
       highlighted: false,
       features: [
-        { label: t("projectsPerMonth", { count: 5 }), included: true },
-        { label: t("defectsPerMonth", { count: 50 }), included: true },
+        { label: t("upToMembers", { count: 2 }), included: true },
+        { label: t("oneProject"), included: true },
+        { label: t("unlimited") + " " + t("defects").toLowerCase(), included: true },
+        { label: t("defectLifecycle"), included: true },
+        { label: t("joinOrganizations"), included: true },
         { label: t("photoDocumentation"), included: true },
         { label: t("videoDocumentation"), included: false },
-        { label: t("basicReporting"), included: true },
-        { label: t("advancedReporting"), included: false },
-        { label: t("multiStakeholderAccess"), included: false },
-        { label: t("visitScheduling"), included: false },
+        { label: t("teamManagement"), included: false },
+        { label: t("contractorManagement"), included: false },
+        { label: t("visitManagement"), included: false },
         { label: t("emailSupport"), included: true },
-        { label: t("prioritySupport"), included: false },
-        { label: t("dedicatedAM"), included: false },
-        { label: t("customIntegrations"), included: false },
-        { label: t("apiAccess"), included: false },
       ],
+      optionalAi: false,
     },
     {
-      key: "professional",
-      name: t("professional"),
-      audience: t("professionalAudience"),
-      description: t("professionalDesc"),
-      price: t("comingSoon"),
+      key: "pro",
+      name: t("pro"),
+      audience: t("proAudience"),
+      description: t("proDesc"),
+      price: `${t("nis")}99`,
+      priceDetail: t("perMonthPerUser"),
       cta: t("getStarted"),
       ctaHref: "/contact",
       highlighted: true,
-      badge: t("mostPopular"),
+      badge: t("recommended"),
       features: [
-        { label: t("projectsPerMonth", { count: 25 }), included: true },
-        { label: t("defectsPerMonth", { count: 500 }), included: true },
+        { label: t("upToMembers", { count: 10 }), included: true },
+        { label: t("oneProjectDepth2"), included: true },
+        { label: t("unlimited") + " " + t("defects").toLowerCase(), included: true },
+        { label: t("defectLifecycle"), included: true },
+        { label: t("joinOrganizations"), included: true },
         { label: t("photoDocumentation"), included: true },
         { label: t("videoDocumentation"), included: true },
-        { label: t("basicReporting"), included: true },
-        { label: t("advancedReporting"), included: true },
-        { label: t("multiStakeholderAccess"), included: true },
-        { label: t("visitScheduling"), included: true },
+        { label: t("teamManagement"), included: true },
+        { label: t("contractorManagement"), included: false },
+        { label: t("visitManagement"), included: true },
         { label: t("emailSupport"), included: true },
-        { label: t("prioritySupport"), included: true },
-        { label: t("dedicatedAM"), included: false },
-        { label: t("customIntegrations"), included: false },
-        { label: t("apiAccess"), included: false },
       ],
+      optionalAi: true,
     },
     {
       key: "enterprise",
       name: t("enterprise"),
       audience: t("enterpriseAudience"),
       description: t("enterpriseDesc"),
-      price: t("custom"),
+      price: `${t("nis")}79`,
+      priceDetail: t("perMonthPerUser"),
       cta: t("contactUs"),
       ctaHref: "/contact",
       highlighted: false,
       features: [
-        { label: t("unlimitedProjects"), included: true },
-        { label: t("unlimitedDefects"), included: true },
+        { label: t("startsFrom", { count: 10 }), included: true },
+        { label: t("unlimitedProjects") + " · " + t("unlimitedDepth"), included: true },
+        { label: t("unlimited") + " " + t("defects").toLowerCase(), included: true },
+        { label: t("defectLifecycle"), included: true },
+        { label: t("joinOrganizations"), included: true },
         { label: t("photoDocumentation"), included: true },
         { label: t("videoDocumentation"), included: true },
-        { label: t("basicReporting"), included: true },
-        { label: t("advancedReporting"), included: true },
-        { label: t("multiStakeholderAccess"), included: true },
-        { label: t("visitScheduling"), included: true },
+        { label: t("teamManagement"), included: true },
+        { label: t("contractorManagement"), included: true },
+        { label: t("visitManagement"), included: true },
+        { label: t("projectsProgressDashboard"), included: true },
         { label: t("emailSupport"), included: true },
-        { label: t("prioritySupport"), included: true },
-        { label: t("dedicatedAM"), included: true },
-        { label: t("customIntegrations"), included: true },
-        { label: t("apiAccess"), included: true },
       ],
+      optionalAi: true,
     },
   ]
 
@@ -126,9 +127,14 @@ export function PricingTiersSection() {
                 </p>
                 <CardDescription className="mt-1">{tier.description}</CardDescription>
                 <div className="mt-4">
-                  <span className="text-2xl font-bold text-foreground">
+                  <span className="text-3xl font-bold text-foreground">
                     {tier.price}
                   </span>
+                  {tier.priceDetail && (
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {tier.priceDetail}
+                    </p>
+                  )}
                 </div>
               </CardHeader>
               <CardContent className="flex-1 pt-4">
@@ -153,6 +159,23 @@ export function PricingTiersSection() {
                     </li>
                   ))}
                 </ul>
+                {tier.optionalAi && (
+                  <div className="mt-4 pt-4 border-t border-foreground/10">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+                      {t("optionalAi")}
+                    </p>
+                    <ul className="space-y-2">
+                      <li className="flex items-start gap-2.5">
+                        <Sparkles className="mt-0.5 size-4 shrink-0 text-accent" />
+                        <span className="text-sm text-foreground">{t("aiScheduling")}</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Sparkles className="mt-0.5 size-4 shrink-0 text-accent" />
+                        <span className="text-sm text-foreground">{t("aiDocumentSearch")}</span>
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </CardContent>
               <CardFooter>
                 <Link
@@ -163,7 +186,8 @@ export function PricingTiersSection() {
                       size: "lg",
                     }),
                     "w-full",
-                    tier.highlighted && "bg-accent text-accent-foreground hover:bg-accent/90"
+                    tier.highlighted && "bg-accent text-accent-foreground hover:bg-accent/90",
+                    tier.key === "enterprise" && "bg-accent text-accent-foreground hover:bg-accent/90"
                   )}
                 >
                   {tier.cta}

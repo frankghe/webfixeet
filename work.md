@@ -1,5 +1,27 @@
 # Work Items
 
+## WI-12: Pricing Page Restructure
+**status=completed**
+**priority=12**
+
+Restructure the pricing page around 3 construction-specific bundles with real pricing.
+
+### Scope
+- Starter (Free): For trial users and private owners — 2 members, 1 project, unlimited defects, photo docs, defect lifecycle, join orgs
+- Pro (₪99/month/user): For contractors and inspectors — 10 members, 1 project (depth 2), unlimited defects, photo+video, team mgmt, visit mgmt, optional AI
+- Enterprise (₪79/month/user, starts from 10 members): For construction companies — unlimited projects/depth, all features + contractor mgmt, progress dashboard, optional AI
+
+### Completion Summary
+- Rewrote `PricingPage` namespace in both `messages/en.json` and `messages/he.json` with new tier definitions, features, prices, and updated FAQs
+- Updated `src/components/pricing/pricing-tiers-section.tsx`: new 3-tier structure with real prices (Free / ₪99 / ₪79), Pro highlighted with "Recommended" badge, Optional AI sub-section with Sparkles icons for Pro and Enterprise, Enterprise CTA in accent orange
+- Updated `src/components/pricing/feature-comparison-section.tsx`: renamed "professional" to "pro" throughout, 14-row feature matrix with construction-specific features, optional AI rows with Sparkles icon treatment
+- Enterprise CTA section copy updated via translation files (starts from 10 members messaging)
+- FAQs updated to reflect new pricing structure (free starter, NIS amounts, project depth explanation, AI assistants)
+- Build passes, all 47 tests pass
+
+---
+
+
 ## WI-1: Internationalization (i18n) Setup
 **status=completed**
 **priority=1** (foundation — all other work items depend on this)

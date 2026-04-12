@@ -1,7 +1,7 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { Check, Minus } from "lucide-react"
+import { Check, Minus, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 type FeatureValue = boolean | string
@@ -9,7 +9,7 @@ type FeatureValue = boolean | string
 interface Feature {
   labelKey: string
   starter: FeatureValue
-  professional: FeatureValue
+  pro: FeatureValue
   enterprise: FeatureValue
 }
 
@@ -18,80 +18,99 @@ export function FeatureComparisonSection() {
 
   const features: Feature[] = [
     {
-      labelKey: "projectsLabel",
-      starter: "5",
-      professional: "25",
+      labelKey: "teamMembers",
+      starter: "2",
+      pro: "10",
+      enterprise: "10+",
+    },
+    {
+      labelKey: "projects",
+      starter: t("oneProject"),
+      pro: t("oneProjectDepth2"),
       enterprise: t("unlimitedProjects"),
     },
     {
-      labelKey: "defectsPerMonthLabel",
-      starter: "50",
-      professional: "500",
-      enterprise: t("unlimitedDefects"),
+      labelKey: "defects",
+      starter: t("unlimited"),
+      pro: t("unlimited"),
+      enterprise: t("unlimited"),
+    },
+    {
+      labelKey: "defectLifecycle",
+      starter: true,
+      pro: true,
+      enterprise: true,
+    },
+    {
+      labelKey: "joinOrganizations",
+      starter: true,
+      pro: true,
+      enterprise: true,
     },
     {
       labelKey: "photoDocumentation",
       starter: true,
-      professional: true,
+      pro: true,
       enterprise: true,
     },
     {
       labelKey: "videoDocumentation",
       starter: false,
-      professional: true,
+      pro: true,
       enterprise: true,
     },
     {
-      labelKey: "basicReporting",
+      labelKey: "teamManagement",
+      starter: false,
+      pro: true,
+      enterprise: true,
+    },
+    {
+      labelKey: "contractorManagement",
+      starter: false,
+      pro: false,
+      enterprise: true,
+    },
+    {
+      labelKey: "visitManagement",
+      starter: false,
+      pro: true,
+      enterprise: true,
+    },
+    {
+      labelKey: "projectsProgressDashboard",
+      starter: false,
+      pro: false,
+      enterprise: true,
+    },
+    {
+      labelKey: "emailSupport",
       starter: true,
-      professional: true,
+      pro: true,
       enterprise: true,
     },
     {
-      labelKey: "advancedReporting",
+      labelKey: "aiScheduling",
       starter: false,
-      professional: true,
-      enterprise: true,
+      pro: "optionalAi",
+      enterprise: "optionalAi",
     },
     {
-      labelKey: "multiStakeholderAccess",
+      labelKey: "aiDocumentSearch",
       starter: false,
-      professional: true,
-      enterprise: true,
-    },
-    {
-      labelKey: "visitScheduling",
-      starter: false,
-      professional: true,
-      enterprise: true,
-    },
-    {
-      labelKey: "prioritySupport",
-      starter: false,
-      professional: true,
-      enterprise: true,
-    },
-    {
-      labelKey: "dedicatedAM",
-      starter: false,
-      professional: false,
-      enterprise: true,
-    },
-    {
-      labelKey: "customIntegrations",
-      starter: false,
-      professional: false,
-      enterprise: true,
-    },
-    {
-      labelKey: "apiAccess",
-      starter: false,
-      professional: false,
-      enterprise: true,
+      pro: "optionalAi",
+      enterprise: "optionalAi",
     },
   ]
 
   function renderValue(value: FeatureValue) {
+    if (value === "optionalAi") {
+      return (
+        <span className="inline-flex items-center gap-1 text-xs font-medium text-accent">
+          <Sparkles className="size-3.5" />
+        </span>
+      )
+    }
     if (typeof value === "string") {
       return <span className="text-sm font-medium text-foreground">{value}</span>
     }
@@ -107,7 +126,7 @@ export function FeatureComparisonSection() {
 
   const tiers = [
     t("starter"),
-    t("professional"),
+    t("pro"),
     t("enterprise"),
   ]
 
@@ -155,7 +174,7 @@ export function FeatureComparisonSection() {
                     {renderValue(feature.starter)}
                   </td>
                   <td className="py-3.5 px-6 text-center">
-                    {renderValue(feature.professional)}
+                    {renderValue(feature.pro)}
                   </td>
                   <td className="py-3.5 px-6 text-center">
                     {renderValue(feature.enterprise)}
@@ -168,7 +187,7 @@ export function FeatureComparisonSection() {
 
         {/* Mobile cards */}
         <div className="lg:hidden space-y-6">
-          {(["starter", "professional", "enterprise"] as const).map(
+          {(["starter", "pro", "enterprise"] as const).map(
             (tierKey, tierIdx) => {
               const tierName = tiers[tierIdx]
               return (
