@@ -53,9 +53,8 @@ export function PricingTiersSection() {
       priceDetail: t("perMonthPerUser"),
       cta: t("comingSoon"),
       ctaHref: "/contact",
-      highlighted: true,
+      highlighted: false,
       disabled: true,
-      badge: t("recommended"),
       features: [
         { label: t("upToMembers", { count: 10 }), included: true },
         { label: t("oneProjectDepth2"), included: true },
@@ -110,19 +109,8 @@ export function PricingTiersSection() {
           {tiers.map((tier) => (
             <Card
               key={tier.key}
-              className={cn(
-                "relative flex flex-col overflow-visible",
-                tier.highlighted &&
-                  "ring-2 ring-accent/20 border-accent shadow-lg mt-4 lg:mt-0"
-              )}
+              className="relative flex flex-col"
             >
-              {tier.highlighted && tier.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                  <span className="inline-flex items-center rounded-full bg-accent px-4 py-1.5 text-sm font-semibold text-accent-foreground whitespace-nowrap shadow-sm">
-                    {tier.badge}
-                  </span>
-                </div>
-              )}
               <CardHeader className="pb-0">
                 <CardTitle className="text-xl font-bold">{tier.name}</CardTitle>
                 <p className="text-sm font-medium text-muted-foreground">
