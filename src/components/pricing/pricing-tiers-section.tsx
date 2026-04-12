@@ -26,8 +26,9 @@ export function PricingTiersSection() {
       price: t("free"),
       priceDetail: null,
       cta: t("getStarted"),
-      ctaHref: "/contact",
+      ctaHref: "/app",
       highlighted: false,
+      disabled: false,
       features: [
         { label: t("upToMembers", { count: 2 }), included: true },
         { label: t("oneProject"), included: true },
@@ -50,9 +51,10 @@ export function PricingTiersSection() {
       description: t("proDesc"),
       price: `${t("nis")}99`,
       priceDetail: t("perMonthPerUser"),
-      cta: t("getStarted"),
+      cta: t("comingSoon"),
       ctaHref: "/contact",
       highlighted: true,
+      disabled: true,
       badge: t("recommended"),
       features: [
         { label: t("upToMembers", { count: 10 }), included: true },
@@ -76,9 +78,10 @@ export function PricingTiersSection() {
       description: t("enterpriseDesc"),
       price: `${t("nis")}79`,
       priceDetail: t("perMonthPerUser"),
-      cta: t("contactUs"),
+      cta: t("comingSoon"),
       ctaHref: "/contact",
       highlighted: false,
+      disabled: true,
       features: [
         { label: t("startsFrom", { count: 10 }), included: true },
         { label: t("unlimitedProjects") + " · " + t("unlimitedDepth"), included: true },
@@ -178,20 +181,33 @@ export function PricingTiersSection() {
                 )}
               </CardContent>
               <CardFooter>
-                <Link
-                  href={tier.ctaHref}
-                  className={cn(
-                    buttonVariants({
-                      variant: tier.highlighted ? "default" : "outline",
-                      size: "lg",
-                    }),
-                    "w-full",
-                    tier.highlighted && "bg-accent text-accent-foreground hover:bg-accent/90",
-                    tier.key === "enterprise" && "bg-accent text-accent-foreground hover:bg-accent/90"
-                  )}
-                >
-                  {tier.cta}
-                </Link>
+                {tier.disabled ? (
+                  <span
+                    className={cn(
+                      buttonVariants({
+                        variant: "outline",
+                        size: "lg",
+                      }),
+                      "w-full pointer-events-none opacity-50"
+                    )}
+                    aria-disabled="true"
+                  >
+                    {tier.cta}
+                  </span>
+                ) : (
+                  <Link
+                    href={tier.ctaHref}
+                    className={cn(
+                      buttonVariants({
+                        variant: "default",
+                        size: "lg",
+                      }),
+                      "w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                    )}
+                  >
+                    {tier.cta}
+                  </Link>
+                )}
               </CardFooter>
             </Card>
           ))}
