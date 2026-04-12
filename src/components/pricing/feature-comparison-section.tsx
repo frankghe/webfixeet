@@ -84,6 +84,12 @@ export function FeatureComparisonSection() {
       enterprise: true,
     },
     {
+      labelKey: "documentManagement",
+      starter: true,
+      pro: true,
+      enterprise: true,
+    },
+    {
       labelKey: "exportPdf",
       starter: false,
       pro: true,
