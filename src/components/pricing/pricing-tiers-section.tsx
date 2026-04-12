@@ -131,8 +131,8 @@ export function PricingTiersSection() {
                   )}
                 </div>
               </CardHeader>
-              <CardContent className="flex-1 pt-4">
-                <ul className="space-y-2.5">
+              <CardContent className="flex-1 pt-4 flex flex-col">
+                <ul className="space-y-2.5 flex-1">
                   {tier.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
                       {feature.included ? (
