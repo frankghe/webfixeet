@@ -18,16 +18,16 @@ export function FeatureComparisonSection() {
 
   const features: Feature[] = [
     {
-      labelKey: "teamMembers",
-      starter: "2",
-      pro: "10",
+      labelKey: "activeProjects",
+      starter: "1",
+      pro: "2-10",
       enterprise: "10+",
     },
     {
-      labelKey: "projects",
-      starter: t("oneProject"),
-      pro: t("oneProjectDepth2"),
-      enterprise: t("unlimitedProjects"),
+      labelKey: "inactiveProjects",
+      starter: t("unlimited"),
+      pro: t("unlimited"),
+      enterprise: t("unlimited"),
     },
     {
       labelKey: "defects",

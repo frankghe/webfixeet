@@ -30,8 +30,7 @@ export function PricingTiersSection() {
       highlighted: false,
       disabled: false,
       features: [
-        { label: t("upToMembers", { count: 2 }), included: true },
-        { label: t("oneProject"), included: true },
+        { label: t("oneActiveProject"), included: true },
         { label: t("unlimited") + " " + t("defects").toLowerCase(), included: true },
         { label: t("defectLifecycle"), included: true },
         { label: t("joinOrganizations"), included: true },
@@ -51,15 +50,14 @@ export function PricingTiersSection() {
       name: t("pro"),
       audience: t("proAudience"),
       description: t("proDesc"),
-      price: `${t("nis")}99`,
+      price: `${t("nis")}50`,
       priceDetail: t("perMonthPerUser"),
       cta: t("comingSoon"),
       ctaHref: "/contact",
       highlighted: false,
       disabled: true,
       features: [
-        { label: t("upToMembers", { count: 10 }), included: true },
-        { label: t("oneProjectDepth2"), included: true },
+        { label: t("startsFrom", { count: 2 }), included: true },
         { label: t("unlimited") + " " + t("defects").toLowerCase(), included: true },
         { label: t("defectLifecycle"), included: true },
         { label: t("joinOrganizations"), included: true },
@@ -79,7 +77,7 @@ export function PricingTiersSection() {
       name: t("enterprise"),
       audience: t("enterpriseAudience"),
       description: t("enterpriseDesc"),
-      price: `${t("nis")}79`,
+      price: `${t("nis")}30`,
       priceDetail: t("perMonthPerUser"),
       cta: t("comingSoon"),
       ctaHref: "/contact",
@@ -127,10 +125,12 @@ export function PricingTiersSection() {
                   <span className="text-3xl font-bold text-foreground">
                     {tier.price}
                   </span>
-                  {tier.priceDetail && (
+                  {tier.priceDetail ? (
                     <p className="text-sm text-muted-foreground mt-1">
                       {tier.priceDetail}
                     </p>
+                  ) : (
+                    <p className="text-sm mt-1">&nbsp;</p>
                   )}
                 </div>
               </CardHeader>
