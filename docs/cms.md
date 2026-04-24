@@ -5,7 +5,7 @@
 | Last Updated | 2026-03-29 |
 | Project | WebFixeet (fixeet.co) |
 | Repository | frankghe/webfixeet |
-| Status | Phase 2 (CMS Admin) completed; Phases 3-5 pending |
+| Status | Phases 1-3 completed; Phases 4-5 pending |
 
 ## Goal
 
@@ -361,16 +361,16 @@ Include this redirect in the Caddyfile from day one.
 
 Before going live with the blog:
 
-- [ ] **Phase 1**: Content folder created, markdown parsing library installed
-- [ ] **Phase 1**: Translation API endpoint deployed and tested
+- [x] **Phase 1**: Content folder created, markdown parsing library installed
+- [ ] **Phase 4**: Translation API endpoint deployed and tested
 - [ ] **Phase 2**: Sveltia CMS deployed at `/admin`
 - [ ] **Phase 2**: OAuth2 proxy running on `cms-auth.fixeet.co:3003`
 - [ ] **Phase 2**: Team members can log in and create posts
 - [ ] **Phase 2**: Git commits are working (posts saved to repo)
 - [ ] **Caddy config**: `/admin` routes configured (including redirect from `/admin` → `/admin/`)
 - [ ] **i18n middleware**: `admin` added to exclusion pattern in `src/proxy.ts`
-- [ ] **Phase 3**: Blog post pages render correctly
-- [ ] **Phase 3**: Meta tags and OG images display in social shares
+- [x] **Phase 3**: Blog post pages render correctly
+- [x] **Phase 3**: Meta tags and OG images display in social shares
 - [ ] **Phase 4**: Tags and search working
 - [ ] **Phase 5**: Team documentation created
 - [ ] **Phase 5**: Monitoring set up for API errors
@@ -430,9 +430,9 @@ COPY public ./public
 
 | Phase | Status | Notes |
 |-------|--------|-------|
-| **Phase 1** | Not Started | Content folder structure, markdown parsing, translation API |
+| **Phase 1** | Completed | Content folder structure (`content/blog/{he,en}/`), markdown parsing (gray-matter), blog types/library |
 | **Phase 2** | Completed | Sveltia CMS deployed at `/admin`, OAuth proxy configured |
-| **Phase 3** | Pending | Blog post pages (`/blog`, `/blog/[slug]`), rendering, SEO |
+| **Phase 3** | Completed | Blog pages read from markdown files, ReactMarkdown rendering, SEO meta tags, sitemap includes blog routes |
 | **Phase 4** | Pending | Tags, search, related posts, RSS feed |
 | **Phase 5** | Pending | Launch documentation, monitoring, team training |
 

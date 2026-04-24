@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
-import type { BlogCategory } from "@/lib/blog-data"
+import type { BlogCategory } from "@/lib/blog-types"
 
 interface CategoryFilterProps {
   categories: BlogCategory[]

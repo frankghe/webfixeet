@@ -1,11 +1,13 @@
 "use client"
 
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { ArrowLeft } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import type { BlogPost } from "@/lib/blog-data"
+import type { BlogPost } from "@/lib/blog-types"
 
 interface BlogPostContentProps {
   post: BlogPost
@@ -14,8 +16,6 @@ interface BlogPostContentProps {
 
 export function BlogPostContent({ post, relatedPosts }: BlogPostContentProps) {
   const t = useTranslations("BlogPage")
-
-  const paragraphs = post.body.split("\n\n")
 
   return (
     <article className="pb-16 lg:pb-20">
@@ -42,21 +42,10 @@ export function BlogPostContent({ post, relatedPosts }: BlogPostContentProps) {
           </div>
         </header>
 
-        <div className="prose prose-neutral dark:prose-invert max-w-none space-y-4">
-          {paragraphs.map((paragraph, index) => {
-            if (paragraph.startsWith("## ")) {
-              return (
-                <h2 key={index} className="text-2xl font-bold text-foreground mt-8 mb-4">
-                  {paragraph.replace("## ", "")}
-                </h2>
-              )
-            }
-            return (
-              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
-                {paragraph}
-              </p>
-            )
-          })}
+        <div className="prose prose-neutral dark:prose-invert max-w-none">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {post.body}
+          </ReactMarkdown>
         </div>
 
         {relatedPosts.length > 0 && (

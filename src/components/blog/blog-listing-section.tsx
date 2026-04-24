@@ -2,25 +2,22 @@
 
 import { useState } from "react"
 import { useTranslations } from "next-intl"
-import { blogPosts, categories, type BlogCategory, type BlogPost } from "@/lib/blog-data"
+import { categories, type BlogCategory, type BlogPost } from "@/lib/blog-types"
 import { CategoryFilter } from "./category-filter"
 import { BlogCard } from "./blog-card"
 
-export function BlogListingSection() {
+interface BlogListingSectionProps {
+  posts: BlogPost[]
+}
+
+export function BlogListingSection({ posts }: BlogListingSectionProps) {
   const t = useTranslations("BlogPage")
-  const tPosts = useTranslations("BlogPosts")
 
   const [selectedCategory, setSelectedCategory] = useState<BlogCategory | null>(null)
 
-  const translatedPosts: BlogPost[] = blogPosts.map((post) => ({
-    ...post,
-    title: tPosts(`${post.slug}.title`),
-    excerpt: tPosts(`${post.slug}.excerpt`),
-  }))
-
   const filteredPosts = selectedCategory
-    ? translatedPosts.filter((post) => post.category === selectedCategory)
-    : translatedPosts
+    ? posts.filter((post) => post.category === selectedCategory)
+    : posts
 
   return (
     <section aria-label="Blog articles" className="pb-16 lg:pb-20">

@@ -1,10 +1,7 @@
-"use client"
-
-import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import type { BlogPost } from "@/lib/blog-data"
+import type { BlogPost } from "@/lib/blog-types"
 import { getBlogThumbnail } from "@/components/blog/blog-thumbnails"
 
 interface BlogCardProps {
@@ -12,8 +9,6 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post }: BlogCardProps) {
-  const t = useTranslations("BlogPage")
-
   return (
     <Link href={`/blog/${post.slug}`} className="group">
       <Card className="h-full border shadow-sm transition-shadow group-hover:shadow-md">
