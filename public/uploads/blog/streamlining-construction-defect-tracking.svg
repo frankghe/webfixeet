@@ -55,8 +55,8 @@
   <text x="106" y="232" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#737373" letter-spacing="1" font-weight="600">OLD WAY</text>
 
   <!-- CENTER: Arrow transition -->
-  <path d="M188 135 C210 135 220 135 236 135" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <path d="M230 128 L238 135 L230 142" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M188 135 C210 135 220 135 236 135" stroke="#E87020" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M230 128 L238 135 L230 142" stroke="#E87020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
   <!-- RIGHT: Digital tablet -->
   <rect x="252" y="37" width="182" height="188" rx="13" fill="#e5e5e5" fill-opacity="0.6"/>
@@ -72,12 +72,12 @@
 
   <!-- Checklist item 1 — done -->
   <rect x="270" y="84" width="142" height="26" rx="5" fill="#e5e5e5" fill-opacity="0.35"/>
-  <circle cx="284" cy="97" r="8" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-width="1.5"/>
-  <polyline points="279,97 283,101 290,92" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="284" cy="97" r="8" fill="#E87020" fill-opacity="0.15" stroke="#E87020" stroke-width="1.5"/>
+  <polyline points="279,97 283,101 290,92" stroke="#E87020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <rect x="298" y="93" width="60" height="4.5" rx="2" fill="#737373" fill-opacity="0.4"/>
   <rect x="298" y="100" width="38" height="3.5" rx="1.5" fill="#737373" fill-opacity="0.25"/>
-  <rect x="366" y="91" width="36" height="13" rx="6.5" fill="#3b82f6" fill-opacity="0.18"/>
-  <text x="384" y="100.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#3b82f6" font-weight="700">DONE</text>
+  <rect x="366" y="91" width="36" height="13" rx="6.5" fill="#E87020" fill-opacity="0.18"/>
+  <text x="384" y="100.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#E87020" font-weight="700">DONE</text>
 
   <!-- Checklist item 2 — in progress -->
   <rect x="270" y="118" width="142" height="26" rx="5" fill="#e5e5e5" fill-opacity="0.35"/>
@@ -89,20 +89,20 @@
 
   <!-- Checklist item 3 — done -->
   <rect x="270" y="152" width="142" height="26" rx="5" fill="#e5e5e5" fill-opacity="0.35"/>
-  <circle cx="284" cy="165" r="8" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-width="1.5"/>
-  <polyline points="279,165 283,169 290,160" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="284" cy="165" r="8" fill="#E87020" fill-opacity="0.15" stroke="#E87020" stroke-width="1.5"/>
+  <polyline points="279,165 283,169 290,160" stroke="#E87020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <rect x="298" y="161" width="56" height="4.5" rx="2" fill="#737373" fill-opacity="0.4"/>
   <rect x="298" y="168" width="40" height="3.5" rx="1.5" fill="#737373" fill-opacity="0.25"/>
-  <rect x="366" y="159" width="36" height="13" rx="6.5" fill="#3b82f6" fill-opacity="0.18"/>
-  <text x="384" y="168.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#3b82f6" font-weight="700">DONE</text>
+  <rect x="366" y="159" width="36" height="13" rx="6.5" fill="#E87020" fill-opacity="0.18"/>
+  <text x="384" y="168.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#E87020" font-weight="700">DONE</text>
 
   <!-- Progress bar -->
   <rect x="270" y="190" width="142" height="5" rx="2.5" fill="#737373" fill-opacity="0.15"/>
-  <rect x="270" y="190" width="92" height="5" rx="2.5" fill="#3b82f6" fill-opacity="0.7"/>
+  <rect x="270" y="190" width="92" height="5" rx="2.5" fill="#E87020" fill-opacity="0.7"/>
   <text x="270" y="208" font-size="7.5" font-family="sans-serif" fill="#737373" font-weight="500">8 of 12 resolved</text>
 
   <!-- Notification badge -->
-  <circle cx="415" cy="42" r="7" fill="#3b82f6"/>
+  <circle cx="415" cy="42" r="7" fill="#E87020"/>
   <text x="415" y="46" text-anchor="middle" font-size="8" font-family="sans-serif" fill="white" font-weight="700">2</text>
 
   <!-- DIGITAL label -->

@@ -35,10 +35,10 @@
   <line x1="28" y1="216" x2="172" y2="216" stroke="#171717" stroke-width="1.4"/>
 
   <!-- Shield / Guarantee symbol -->
-  <ellipse cx="370" cy="120" rx="55" ry="60" fill="#3b82f6" fill-opacity="0.06"/>
-  <path d="M370 68 L415 88 L415 120 Q415 152 370 168 Q325 152 325 120 L325 88 Z" stroke="#3b82f6" stroke-width="2" fill="#3b82f6" fill-opacity="0.1"/>
-  <polyline points="352,118 364,130 390,104" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="370" y="150" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#3b82f6" font-weight="700" letter-spacing="1">BEDEK</text>
+  <ellipse cx="370" cy="120" rx="55" ry="60" fill="#E87020" fill-opacity="0.06"/>
+  <path d="M370 68 L415 88 L415 120 Q415 152 370 168 Q325 152 325 120 L325 88 Z" stroke="#E87020" stroke-width="2" fill="#E87020" fill-opacity="0.1"/>
+  <polyline points="352,118 364,130 390,104" stroke="#E87020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="370" y="150" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#E87020" font-weight="700" letter-spacing="1">BEDEK</text>
 
   <!-- Timeline strip -->
   <line x1="40" y1="248" x2="440" y2="248" stroke="#171717" stroke-width="1.5" stroke-opacity="0.5"/>
@@ -50,13 +50,13 @@
   <text x="100" y="236" text-anchor="middle" font-size="6.5" font-family="sans-serif" fill="#737373" font-weight="600">HANDOVER</text>
 
   <!-- Warranty period band -->
-  <rect x="100" y="244" width="220" height="8" rx="2" fill="#3b82f6" fill-opacity="0.2"/>
-  <rect x="100" y="244" width="220" height="8" rx="2" stroke="#3b82f6" stroke-width="0.8" stroke-opacity="0.6"/>
-  <text x="210" y="241" text-anchor="middle" font-size="6.5" font-family="sans-serif" fill="#3b82f6" font-weight="700" letter-spacing="0.8">WARRANTY PERIOD</text>
+  <rect x="100" y="244" width="220" height="8" rx="2" fill="#E87020" fill-opacity="0.2"/>
+  <rect x="100" y="244" width="220" height="8" rx="2" stroke="#E87020" stroke-width="0.8" stroke-opacity="0.6"/>
+  <text x="210" y="241" text-anchor="middle" font-size="6.5" font-family="sans-serif" fill="#E87020" font-weight="700" letter-spacing="0.8">WARRANTY PERIOD</text>
 
   <!-- Milestone: 7-year mark -->
-  <line x1="210" y1="240" x2="210" y2="256" stroke="#3b82f6" stroke-width="1.2" stroke-opacity="0.7"/>
-  <circle cx="210" cy="248" r="5" fill="#3b82f6" fill-opacity="0.3" stroke="#3b82f6" stroke-width="1.5"/>
+  <line x1="210" y1="240" x2="210" y2="256" stroke="#E87020" stroke-width="1.2" stroke-opacity="0.7"/>
+  <circle cx="210" cy="248" r="5" fill="#E87020" fill-opacity="0.3" stroke="#E87020" stroke-width="1.5"/>
 
   <!-- Milestone: End -->
   <line x1="320" y1="240" x2="320" y2="256" stroke="#171717" stroke-width="1.2" stroke-opacity="0.5"/>
@@ -77,8 +77,8 @@
   <circle cx="436" cy="68" r="2" fill="#171717"/>
 
   <!-- Connecting line: building to shield -->
-  <path d="M158 137 C210 137 270 120 325 118" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5 3" stroke-opacity="0.6" fill="none"/>
-  <circle cx="158" cy="137" r="3" fill="#3b82f6" fill-opacity="0.7"/>
+  <path d="M158 137 C210 137 270 120 325 118" stroke="#E87020" stroke-width="1.5" stroke-dasharray="5 3" stroke-opacity="0.6" fill="none"/>
+  <circle cx="158" cy="137" r="3" fill="#E87020" fill-opacity="0.7"/>
 
   <!-- Connecting line: building to timeline -->
   <path d="M98 216 L100 244" stroke="#171717" stroke-width="1" stroke-dasharray="4 3" stroke-opacity="0.4" fill="none"/>
