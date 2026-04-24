@@ -5,7 +5,7 @@ category: "Best Practices"
 author: "Fixeet Team"
 date: "2026-03-15"
 readTime: "4 min read"
-coverImage: ""
+coverImage: "/uploads/blog/reducing-repeat-visits-construction-sites.svg"
 ---
 
 ביקורים חוזרים הם אחד ממניעי העלות הגדולים ביותר בניהול ליקויי בנייה. כל נסיעת חזרה מיותרת מבזבזת זמן קבלן, מעכבת תיקונים אחרים ומתסכלת דיירים. הנה חמש אסטרטגיות מוכחות לעשות את זה נכון בפעם הראשונה.

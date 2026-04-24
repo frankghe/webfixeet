@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
@@ -13,7 +14,17 @@ export function BlogCard({ post }: BlogCardProps) {
     <Link href={`/blog/${post.slug}`} className="group">
       <Card className="h-full border shadow-sm transition-shadow group-hover:shadow-md">
         <div className="aspect-[16/9] bg-muted/50 rounded-t-xl overflow-hidden">
-          {getBlogThumbnail(post.slug)}
+          {post.coverImage ? (
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              width={480}
+              height={270}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            getBlogThumbnail(post.slug)
+          )}
         </div>
         <CardHeader>
           <CardTitle className="text-lg group-hover:text-accent transition-colors line-clamp-2">

@@ -5,7 +5,7 @@ category: "Industry Insights"
 author: "Fixeet Team"
 date: "2026-03-10"
 readTime: "6 min read"
-coverImage: ""
+coverImage: "/uploads/blog/warranty-period-management-israel.svg"
 ---
 
 The construction warranty period (תקופת בדק) in Israel presents unique challenges that generic project management tools weren't designed to handle. With thousands of new apartments delivered annually, the scale of defect management is enormous.

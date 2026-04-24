@@ -5,7 +5,7 @@ category: "Defect Management"
 author: "Fixeet Team"
 date: "2026-03-20"
 readTime: "5 min read"
-coverImage: ""
+coverImage: "/uploads/blog/streamlining-construction-defect-tracking.svg"
 ---
 
 ניהול ליקויי בנייה בתקופת הבדק התבסס באופן מסורתי על גיליונות אלקטרוניים, שיחות טלפון וקבוצות וואטסאפ. גישה מפוצלת זו מובילה לאובדן מידע, עיכובים בתיקונים ותסכול דיירים.

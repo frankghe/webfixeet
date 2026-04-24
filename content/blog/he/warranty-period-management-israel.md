@@ -5,7 +5,7 @@ category: "Industry Insights"
 author: "Fixeet Team"
 date: "2026-03-10"
 readTime: "6 min read"
-coverImage: ""
+coverImage: "/uploads/blog/warranty-period-management-israel.svg"
 ---
 
 תקופת הבדק בבנייה בישראל מציבה אתגרים ייחודיים שכלי ניהול פרויקטים גנריים לא תוכננו להתמודד איתם. עם אלפי דירות חדשות שנמסרות מדי שנה, היקף ניהול הליקויים הוא עצום.

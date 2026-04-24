@@ -5,7 +5,7 @@ category: "Best Practices"
 author: "Fixeet Team"
 date: "2026-03-15"
 readTime: "4 min read"
-coverImage: ""
+coverImage: "/uploads/blog/reducing-repeat-visits-construction-sites.svg"
 ---
 
 Repeat visits are one of the biggest cost drivers in construction defect management. Every unnecessary return trip wastes contractor time, delays other repairs, and frustrates residents. Here are five proven strategies to get it right the first time.

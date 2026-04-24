@@ -5,7 +5,7 @@ category: "Defect Management"
 author: "Fixeet Team"
 date: "2026-03-20"
 readTime: "5 min read"
-coverImage: ""
+coverImage: "/uploads/blog/streamlining-construction-defect-tracking.svg"
 ---
 
 Managing construction defects during the warranty period has traditionally relied on spreadsheets, phone calls, and WhatsApp groups. This fragmented approach leads to lost information, delayed repairs, and frustrated residents.
