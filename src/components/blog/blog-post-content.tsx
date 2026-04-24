@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { useTranslations } from "next-intl"
@@ -41,6 +42,19 @@ export function BlogPostContent({ post, relatedPosts }: BlogPostContentProps) {
             <Badge variant="secondary">{post.category}</Badge>
           </div>
         </header>
+
+        {post.coverImage && (
+          <div className="mb-10 aspect-[16/9] overflow-hidden rounded-xl">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              width={1200}
+              height={675}
+              className="w-full h-full object-cover"
+              priority
+            />
+          </div>
+        )}
 
         <div className="prose prose-neutral dark:prose-invert max-w-none">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
