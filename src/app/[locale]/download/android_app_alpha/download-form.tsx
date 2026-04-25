@@ -121,6 +121,7 @@ export function DownloadForm() {
               disabled={!agreed}
               render={
                 agreed ? (
+                  // eslint-disable-next-line @next/next/no-html-link-for-pages -- file download, not navigation
                   <a
                     href="/api/download/android_app_alpha"
                     data-track="download-android-alpha"
