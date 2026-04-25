@@ -20,15 +20,16 @@ export function DownloadForm() {
           <li>{t("terms.feedback")}</li>
         </ul>
 
-        <div className="mt-6 flex items-start gap-3">
+        <div className="mt-6 rounded-lg border-2 border-accent/40 bg-accent/5 p-4 flex items-start gap-3">
           <Checkbox
             id="agree"
+            className="mt-0.5 h-5 w-5 border-2 border-accent data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground"
             checked={agreed}
             onCheckedChange={(checked) => setAgreed(checked === true)}
           />
           <label
             htmlFor="agree"
-            className="cursor-pointer text-sm leading-relaxed"
+            className="cursor-pointer text-sm font-medium leading-relaxed"
           >
             {t("agree")}
           </label>
