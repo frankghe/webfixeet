@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -38,6 +39,9 @@ export default async function AppPage({ params }: Props) {
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
+            <Badge className="mb-4 bg-accent text-accent-foreground">
+              {t("hero.badge")}
+            </Badge>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               {t("hero.title")}
             </h1>
@@ -79,10 +83,8 @@ export default async function AppPage({ params }: Props) {
                   size="lg"
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                   render={
-                    <a
-                      href="https://app.fixeet.co"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href="/contact"
                       data-track="app-page-web-cta"
                     />
                   }
@@ -125,9 +127,17 @@ export default async function AppPage({ params }: Props) {
               <p className="mt-3 flex-1 text-center text-muted-foreground">
                 {t("platforms.android.description")}
               </p>
-              <div className="mt-6 flex flex-col items-center gap-3">
-                <Badge variant="secondary">{t("comingSoon")}</Badge>
-                <Button size="lg" className="w-full" disabled>
+              <div className="mt-6">
+                <Button
+                  size="lg"
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                  render={
+                    <Link
+                      href="/contact"
+                      data-track="app-page-android-cta"
+                    />
+                  }
+                >
                   {t("platforms.android.cta")}
                 </Button>
               </div>
@@ -154,9 +164,17 @@ export default async function AppPage({ params }: Props) {
               <p className="mt-3 flex-1 text-center text-muted-foreground">
                 {t("platforms.ios.description")}
               </p>
-              <div className="mt-6 flex flex-col items-center gap-3">
-                <Badge variant="secondary">{t("comingSoon")}</Badge>
-                <Button size="lg" className="w-full" disabled>
+              <div className="mt-6">
+                <Button
+                  size="lg"
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                  render={
+                    <Link
+                      href="/contact"
+                      data-track="app-page-ios-cta"
+                    />
+                  }
+                >
                   {t("platforms.ios.cta")}
                 </Button>
               </div>

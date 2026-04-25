@@ -377,30 +377,30 @@
   },
   "App": {
     "meta": {
-      "title": "Get the App — Fixeet",
-      "description": "Access Fixeet on Web, Android, or iOS. Manage construction defects from any device."
+      "title": "Join the Alpha — Fixeet",
+      "description": "Fixeet is in alpha. Join our early adopter program and help shape the future of construction defect management."
     },
     "hero": {
-      "title": "Get the Fixeet App",
-      "subtitle": "Access your defect management dashboard from any device. Choose your platform below."
+      "badge": "Alpha",
+      "title": "Access to Fixeet Platform",
+      "subtitle": "We're building the future of construction defect management and we're looking for early adopters to help shape the product."
     },
     "platforms": {
       "web": {
         "name": "Web App",
         "description": "Access Fixeet directly from your browser. No installation needed — works on any device with a modern browser.",
-        "cta": "Open Web App"
+        "cta": "Become an Alpha Tester"
       },
       "android": {
         "name": "Android",
         "description": "Get the native Android experience. Optimized for phones and tablets with offline support and push notifications.",
-        "cta": "Get on Google Play"
+        "cta": "Become an Alpha Tester"
       },
       "ios": {
         "name": "iOS",
         "description": "The full Fixeet experience on iPhone and iPad. Stay updated with real-time notifications and seamless performance.",
-        "cta": "Get on App Store"
+        "cta": "Become an Alpha Tester"
       }
-    },
-    "comingSoon": "Coming Soon"
+    }
   }
 }
