@@ -84,7 +84,7 @@ export default async function AppPage({ params }: Props) {
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                   render={
                     <Link
-                      href="/contact"
+                      href="/contact?ref=alpha"
                       data-track="app-page-web-cta"
                     />
                   }
@@ -100,24 +100,25 @@ export default async function AppPage({ params }: Props) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-16 w-16"
-                  viewBox="0 0 24 24"
+                  viewBox="0 0 192 192"
                   aria-hidden="true"
                 >
-                  <path
-                    fill="#34A853"
-                    d="M1 2.43c0-.33.09-.65.25-.93L12.04 12 1.25 22.5A1.77 1.77 0 0 1 1 21.57V2.43z"
-                  />
-                  <path
-                    fill="#FBBC04"
-                    d="M17.25 7.26 12.04 12l5.21 4.74 3.6-2.06c.66-.38 1.06-1.06 1.06-1.8 0-.74-.4-1.42-1.06-1.8l-3.6-2.82z"
-                  />
+                  <path fill="none" d="M0 0h192v192H0V0z" />
                   <path
                     fill="#4285F4"
-                    d="m1.25 22.5 10.79-10.5 5.21 4.74-13.13 7.2a1.77 1.77 0 0 1-2.87-1.44z"
+                    d="M21.7 22.592c-.4 1.599-.7 3.298-.7 5.097v136.522c0 1.799.2 3.398.7 5.097l76.052-75.357L21.7 22.592z"
+                  />
+                  <path
+                    fill="#34A853"
+                    d="m95.753 95.95 38.076-37.679-82.748-47.473C47.983 8.999 44.485 8 40.887 8 31.693 8 23.998 14.196 21.7 22.592L95.753 95.95z"
                   />
                   <path
                     fill="#EA4335"
-                    d="M17.25 7.26 4.12 .06A1.77 1.77 0 0 0 1.25 1.5L12.04 12l5.21-4.74z"
+                    d="M95.153 92.052 21.6 169.308v.1C23.898 177.804 31.593 184 40.788 184c3.698 0 7.096-.999 10.094-2.698l.2-.1 82.748-47.273-38.677-41.877z"
+                  />
+                  <path
+                    fill="#FBBC04"
+                    d="m169.507 78.86-35.778-20.588-40.175 35.48 40.375 39.977 35.578-20.288c6.196-3.298 10.493-9.794 10.493-17.29-.1-7.497-4.297-13.993-10.493-17.291z"
                   />
                 </svg>
               </div>
@@ -133,7 +134,7 @@ export default async function AppPage({ params }: Props) {
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                   render={
                     <Link
-                      href="/contact"
+                      href="/contact?ref=alpha"
                       data-track="app-page-android-cta"
                     />
                   }
@@ -170,7 +171,7 @@ export default async function AppPage({ params }: Props) {
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                   render={
                     <Link
-                      href="/contact"
+                      href="/contact?ref=alpha"
                       data-track="app-page-ios-cta"
                     />
                   }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,6 +23,8 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
   const t = useTranslations("Contact");
+  const searchParams = useSearchParams();
+  const isAlphaRef = searchParams.get("ref") === "alpha";
 
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -29,7 +32,7 @@ export function ContactForm() {
     phone: "",
     role: "",
     companyName: "",
-    message: "",
+    message: isAlphaRef ? t("alphaRequest.message") : "",
     honeypot: "",
   });
 

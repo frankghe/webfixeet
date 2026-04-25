@@ -286,6 +286,11 @@
       "email": "info@fixeet.co",
       "location": "Tel Aviv, Israel",
       "responseTime": "We respond within 1 business day"
+    },
+    "alphaRequest": {
+      "title": "Alpha Access Request",
+      "subtitle": "Fill out the form below to request access to the Fixeet platform as an alpha user.",
+      "message": "I would like to request access to the Fixeet platform as an alpha user."
     }
   },
   "PricingPage": {
@@ -389,17 +394,53 @@
       "web": {
         "name": "Web App",
         "description": "Access Fixeet directly from your browser. No installation needed — works on any device with a modern browser.",
-        "cta": "Become an Alpha Tester"
+        "cta": "Become an Alpha User"
       },
       "android": {
         "name": "Android",
         "description": "Get the native Android experience. Optimized for phones and tablets with offline support and push notifications.",
-        "cta": "Become an Alpha Tester"
+        "cta": "Become an Alpha User"
       },
       "ios": {
         "name": "iOS",
         "description": "The full Fixeet experience on iPhone and iPad. Stay updated with real-time notifications and seamless performance.",
-        "cta": "Become an Alpha Tester"
+        "cta": "Become an Alpha User"
+      }
+    }
+  },
+  "Download": {
+    "meta": {
+      "title": "Download Fixeet — Alpha",
+      "description": "Download the Fixeet mobile app alpha version. Join our early partner program and help shape the future of construction defect management."
+    },
+    "hero": {
+      "badge": "Alpha",
+      "title": "Fixeet Platform",
+      "subtitle": "Thank you for your interest in Fixeet. The mobile app is available exclusively to our early partners."
+    },
+    "terms": {
+      "title": "Before you download, please note:",
+      "notProduction": "This is an alpha version and is not intended for production use.",
+      "expectIssues": "You may encounter bugs, crashes, or missing features.",
+      "feedback": "By downloading, you agree to provide feedback to help us improve the product.",
+      "bugReports": "You commit to submitting bug reports for any issues you encounter."
+    },
+    "agree": "I understand and agree to the terms above.",
+    "platforms": {
+      "web": {
+        "name": "Web App",
+        "description": "Access Fixeet directly from your browser. No installation needed — works on any device with a modern browser.",
+        "cta": "Open Web App"
+      },
+      "android": {
+        "name": "Android",
+        "description": "Download the Fixeet alpha app for Android phones and tablets.",
+        "cta": "Download for Android"
+      },
+      "ios": {
+        "name": "iOS",
+        "description": "Access the Fixeet alpha app on iPhone and iPad via TestFlight.",
+        "cta": "Access the iOS App"
       }
     }
   }

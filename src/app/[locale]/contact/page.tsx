@@ -3,6 +3,7 @@ import { ContactForm } from "./contact-form";
 
 type Props = {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ ref?: string }>;
 };
 
 export async function generateMetadata({
@@ -26,10 +27,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function ContactPage({ params }: Props) {
+export default async function ContactPage({ params, searchParams }: Props) {
   const { locale } = await params;
+  const { ref } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Contact" });
+  const isAlpha = ref === "alpha";
 
   return (
     <>
@@ -37,10 +40,10 @@ export default async function ContactPage({ params }: Props) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              {t("title")}
+              {isAlpha ? t("alphaRequest.title") : t("title")}
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              {t("subtitle")}
+              {isAlpha ? t("alphaRequest.subtitle") : t("subtitle")}
             </p>
           </div>
 
