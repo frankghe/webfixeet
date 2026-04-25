@@ -24,7 +24,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function ContactForm() {
   const t = useTranslations("Contact");
   const searchParams = useSearchParams();
-  const isAlphaRef = searchParams.get("ref") === "alpha";
+  const isAlphaRef = searchParams?.get("ref") === "alpha";
 
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
