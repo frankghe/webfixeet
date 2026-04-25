@@ -13,10 +13,10 @@ describe("Home page translations", () => {
   });
 
   it("Hebrew translations have all required Home keys", () => {
-    expect(he.Home.hero.title).toBe("נהל ליקויי בנייה בלי הכאוס");
+    expect(he.Home.hero.title).toBe("נהלו ליקויי בנייה ללא כאוס");
     expect(he.Home.hero.subtitle).toBeTruthy();
-    expect(he.Home.hero.cta).toBe("כניסה לאפליקציה");
-    expect(he.Home.hero.learnMore).toBe("למד עוד");
+    expect(he.Home.hero.cta).toBe("גשו לאפליקציה");
+    expect(he.Home.hero.learnMore).toBe("למידע נוסף");
     expect(he.Home.hero.imageAlt).toBeTruthy();
     expect(he.Home.comingSoon).toBe("בקרוב");
   });
