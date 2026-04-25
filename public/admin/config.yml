@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: frankghe/webfixeet
-  branch: main
+  branch: blog
   base_url: https://cms-auth.fixeet.co   # OAuth proxy URL
 
 media_folder: "public/uploads"
