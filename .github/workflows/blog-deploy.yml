@@ -9,6 +9,9 @@ on:
     branches:
       - blog
 
+permissions:
+  contents: write
+
 jobs:
   merge-and-deploy:
     name: Merge blog into main & deploy/prod
