@@ -12,15 +12,23 @@ function readMarkdownFile(filePath: string): BlogPost | null {
   if (!fs.existsSync(filePath)) return null
   const raw = fs.readFileSync(filePath, "utf-8")
   const { data, content } = matter(raw)
+
+  // gray-matter parses unquoted YAML values into native types (e.g. dates
+  // become Date objects, numbers become numbers). The CMS saves frontmatter
+  // without quotes, so we coerce all fields to strings to prevent React from
+  // choking on non-string values.
+  const str = (v: unknown): string =>
+    v instanceof Date ? v.toISOString().split("T")[0] : String(v ?? "")
+
   return {
     slug: path.basename(filePath, ".md"),
-    title: data.title,
-    excerpt: data.excerpt,
-    category: data.category as BlogCategory,
-    author: data.author,
-    date: data.date,
-    readTime: data.readTime,
-    coverImage: data.coverImage || "",
+    title: str(data.title),
+    excerpt: str(data.excerpt),
+    category: str(data.category) as BlogCategory,
+    author: str(data.author),
+    date: str(data.date),
+    readTime: str(data.readTime),
+    coverImage: str(data.coverImage),
     body: content.trim(),
   }
 }
