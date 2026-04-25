@@ -18,10 +18,10 @@ export async function generateMetadata({
     title: t("meta.title"),
     description: t("meta.description"),
     alternates: {
-      canonical: `https://fixeet.co/${locale}/download/android_app_alpha`,
+      canonical: `https://fixeet.co/${locale}/alpha_access`,
       languages: {
-        he: "https://fixeet.co/he/download/android_app_alpha",
-        en: "https://fixeet.co/en/download/android_app_alpha",
+        he: "https://fixeet.co/he/alpha_access",
+        en: "https://fixeet.co/en/alpha_access",
       },
     },
   };
