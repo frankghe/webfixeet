@@ -1,11 +1,11 @@
 ---
-title: "5 Ways to Reduce Repeat Visits to Construction Sites"
-excerpt: "Practical strategies for getting defect repairs right the first time, saving time and money for contractors and residents alike."
-category: "Best Practices"
-author: "Fixeet Team"
-date: "2026-03-15"
-readTime: "7 min read"
-coverImage: "/uploads/blog/reducing-repeat-visits-construction-sites.svg"
+title: 5 Ways to Reduce Repeat Visits to Construction Sites
+excerpt: Practical strategies for getting defect repairs right the first time, saving time and money for contractors and residents alike.
+category: Best Practices
+author: Fixeet Team
+date: 2026-03-15
+readTime: 7 min read
+coverImage: /uploads/blog/reducing-repeat-visits-construction-sites.svg
 ---
 
 Repeat visits are one of the biggest hidden cost drivers in construction defect management. Every unnecessary return trip wastes contractor time, delays other repairs, and frustrates residents who have to rearrange their schedules for yet another appointment. According to industry estimates, between 20% and 30% of all site visits during the warranty period could be avoided with better planning and coordination.
