@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   merge-and-deploy:
@@ -39,3 +40,8 @@ jobs:
           git checkout deploy/prod
           git merge origin/blog --no-edit -m "chore: merge blog content into deploy/prod"
           git push origin deploy/prod
+
+      - name: Trigger deploy workflow
+        run: gh workflow run deploy.yml --ref deploy/prod
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
