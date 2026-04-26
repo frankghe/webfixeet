@@ -4,10 +4,42 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+
+const PLATFORM_URLS: Record<string, string> = {
+  web: "https://app.fixeet.co",
+  android: "/api/download/android_app_alpha",
+  ios: "https://testflight.apple.com/join/89MFmf86",
+};
 
 export function DownloadForm() {
   const t = useTranslations("Download");
+  const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
+  const [loading, setLoading] = useState<string | null>(null);
+
+  const isValid = agreed && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  async function handleAccess(platform: string) {
+    setLoading(platform);
+    try {
+      await fetch("/api/alpha-access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, platform }),
+      });
+    } catch {
+      // Don't block user access if notification fails
+    }
+
+    const url = PLATFORM_URLS[platform];
+    if (platform === "android") {
+      window.location.href = url;
+    } else {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+    setLoading(null);
+  }
 
   return (
     <>
@@ -20,7 +52,20 @@ export function DownloadForm() {
           <li>{t("terms.feedback")}</li>
         </ul>
 
-        <div className="mt-6 rounded-lg border-2 border-accent/40 bg-accent/5 p-4 flex items-start gap-3">
+        <div className="mt-6 space-y-2">
+          <label htmlFor="email" className="text-sm font-medium">
+            {t("email.label")}
+          </label>
+          <Input
+            id="email"
+            type="email"
+            placeholder={t("email.placeholder")}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <div className="mt-4 rounded-lg border-2 border-accent/40 bg-accent/5 p-4 flex items-start gap-3">
           <Checkbox
             id="agree"
             className="mt-0.5 h-5 w-5 border-2 border-accent data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground"
@@ -64,19 +109,10 @@ export function DownloadForm() {
             <Button
               size="lg"
               className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-              disabled={!agreed}
-              render={
-                agreed ? (
-                  <a
-                    href="https://app.fixeet.co"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-track="download-web-cta"
-                  />
-                ) : undefined
-              }
+              disabled={!isValid || loading === "web"}
+              onClick={() => handleAccess("web")}
             >
-              {t("platforms.web.cta")}
+              {loading === "web" ? "..." : t("platforms.web.cta")}
             </Button>
           </div>
         </div>
@@ -119,18 +155,10 @@ export function DownloadForm() {
             <Button
               size="lg"
               className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-              disabled={!agreed}
-              render={
-                agreed ? (
-                  // eslint-disable-next-line @next/next/no-html-link-for-pages -- file download, not navigation
-                  <a
-                    href="/api/download/android_app_alpha"
-                    data-track="download-android-alpha"
-                  />
-                ) : undefined
-              }
+              disabled={!isValid || loading === "android"}
+              onClick={() => handleAccess("android")}
             >
-              {t("platforms.android.cta")}
+              {loading === "android" ? "..." : t("platforms.android.cta")}
             </Button>
           </div>
         </div>
@@ -160,19 +188,10 @@ export function DownloadForm() {
             <Button
               size="lg"
               className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-              disabled={!agreed}
-              render={
-                agreed ? (
-                  <a
-                    href="https://testflight.apple.com/join/89MFmf86"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-track="download-ios-alpha"
-                  />
-                ) : undefined
-              }
+              disabled={!isValid || loading === "ios"}
+              onClick={() => handleAccess("ios")}
             >
-              {t("platforms.ios.cta")}
+              {loading === "ios" ? "..." : t("platforms.ios.cta")}
             </Button>
           </div>
         </div>

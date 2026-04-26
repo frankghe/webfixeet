@@ -425,6 +425,10 @@
       "feedback": "By downloading, you agree to provide feedback to help us improve the product.",
       "bugReports": "You commit to submitting bug reports for any issues you encounter."
     },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "your@email.com"
+    },
     "agree": "I understand and agree to the terms above.",
     "platforms": {
       "web": {
