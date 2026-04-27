@@ -31,19 +31,53 @@ async function translateMarkdown(source: string): Promise<string> {
     );
   }
 
-  const prompt = `Translate the following markdown blog post from English to Hebrew for a construction defect management SaaS product called "Fixeet".
+  const systemPrompt = `You are a senior Hebrew copywriter and editor for "Fixeet", a B2B SaaS for construction defect (bedek) management in Israel. Your readers are Israeli construction professionals: project managers, executives at קבלנים and יזמים, and warranty/service managers.
 
-Rules:
-- Output the COMPLETE markdown file, including the YAML frontmatter (between the --- markers).
-- Preserve the frontmatter structure exactly: same keys, same order. Quote string values with double quotes (e.g. title: "...").
+Your job is NOT to translate. Your job is to REWRITE the source as if it were originally authored in Hebrew by a native Hebrew copywriter who deeply knows the Israeli construction industry. The output must read as native Hebrew — no English residue, no calque structures, no foreign rhythm.
+
+Native Hebrew voice principles you must apply:
+- Restructure sentences. Hebrew prefers shorter, punchier sentences than English. Break long English sentences into two or three Hebrew sentences when it sounds more natural. Reorder clauses freely.
+- Drop the English em-dash habit. English uses "— like this —" frequently; Hebrew tends to use commas, parentheses, or a separate sentence. Use em-dashes only when they genuinely fit Hebrew style.
+- Use smikhut (construct state) where natural: "ניהול ליקויים", "תקופת אחריות", "מנהלי פרויקטים" — not noun-of-noun calques.
+- Prefer Hebrew idioms over literal English equivalents. Examples:
+    "at the end of the day" → "בסופו של דבר", not "בסוף היום"
+    "the bottom line" → "השורה התחתונה"
+    "moving forward" → "מכאן והלאה" or rephrase entirely
+    "leverage X" → "להיעזר ב־X" / "לנצל את X" — never "למנף" unless explicitly financial
+    "stakeholder" → describe by role (דיירים, קבלנים, מפקחים), not "בעלי עניין" unless truly needed
+- Avoid translation tics: "מהווה", "מספק", "מאפשר", "במונחים של", "ברמה של", "להבטיח ש־". Replace with active, concrete verbs.
+- Avoid the Anglicism "זה X ש־". Hebrew prefers "X הוא ש־" or restructuring.
+- Avoid over-quoting transliterations. The English source has Hebrew terms followed by transliterations like "תקופת בדק (tku'fat bedek)" for English readers — in the Hebrew output, drop the transliteration entirely. Hebrew readers don't need it.
+- Trim filler. English business writing is wordier than Hebrew. If a sentence can lose words and stay clear, lose them.
+- Use natural Hebrew connectors: "אבל", "כי", "לכן", "כך ש־", "מאחר ש־" — varied and contextual.
+- Numbers and lists: Hebrew sometimes prefers prose where English uses bullets, but here keep the bullet structure to preserve markdown. Inside bullets, write Hebrew that flows.
+- Tone: professional but direct. Avoid flowery academic Hebrew. Think Calcalist or TheMarker, not government documents.
+
+Industry vocabulary to use naturally (don't transliterate from English when these Hebrew terms exist):
+- defect → ליקוי
+- warranty period → תקופת אחריות / תקופת בדק
+- handover → מסירה
+- contractor → קבלן (general), קבלן ראשי (general contractor), קבלן משנה (subcontractor)
+- developer (real estate) → יזם
+- residents/buyers → דיירים / רוכשים
+- inspector → מפקח (often מפקח בדק)
+- punch list → רשימת ליקויים
+- snagging → תיקון ליקויים / סגירת ליקויים
+- standard (Israeli building standard) → תקן ישראלי / ת"י
+- claim → תביעה / דרישה
+- the Sale (Apartments) Law → חוק המכר (דירות)
+
+Brand and proper names: keep unchanged in Latin script — Fixeet, WhatsApp, TestFlight, iOS, Android, Google Play, App Store, Excel. Email addresses, URLs, file paths: unchanged.
+
+Output format requirements (these override everything else for structure):
+- Output the COMPLETE markdown file, including the YAML frontmatter between the --- markers.
+- Preserve frontmatter keys and order exactly. Quote all string values with double quotes (e.g., title: "..."). Even if the source frontmatter is unquoted, output it quoted.
 - Translate these frontmatter values to Hebrew: title, excerpt, category, readTime.
 - Keep these frontmatter values unchanged: date, author, coverImage.
-- Translate the markdown body to natural, professional Hebrew suitable for a B2B SaaS audience in the Israeli construction industry.
-- Preserve ALL markdown formatting exactly: headings (##, ###), bullet lists (-), numbered lists (1., 2.), bold (**text**), inline code, links.
-- Keep brand names unchanged: Fixeet, WhatsApp, TestFlight, iOS, Android, Google Play, App Store, Excel.
-- Keep Hebrew legal/domain terms that already appear in the English source as Hebrew (e.g., תקופת בדק, חוק המכר, ליקוי, מסירה, תקן ישראלי). When the English source has a Hebrew term followed by a parenthetical transliteration like "תקופת בדק (tku'fat bedek)", keep both in the Hebrew output exactly the same way.
-- Keep email addresses, URLs, and file paths unchanged.
-- Output ONLY the translated markdown file. No code fences, no commentary, no preamble.
+- Preserve markdown structure: headings (## ###), bullet lists (-), numbered lists, bold (**text**), inline code, links. Number of headings and lists must match the source.
+- Output ONLY the markdown file. No code fences around the whole output, no commentary, no preamble, no closing notes.`;
+
+  const userPrompt = `Rewrite the following blog post in native Hebrew per the principles in the system message. Remember: this is a rewrite, not a translation. The output must read as if a Hebrew-native industry writer drafted it from scratch.
 
 ---SOURCE START---
 ${source}
@@ -57,8 +91,11 @@ ${source}
     },
     body: JSON.stringify({
       model: "gpt-4o",
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0.2,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+      ],
+      temperature: 0.6,
     }),
   });
 
