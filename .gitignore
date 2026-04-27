@@ -38,3 +38,7 @@ next-env.d.ts
 # Playwright
 e2e/screenshots/
 e2e/results/
+
+# downloads (APK and other binaries served at runtime; dir tracked via .gitkeep)
+/downloads/*
+!/downloads/.gitkeep
