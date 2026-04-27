@@ -58,6 +58,12 @@ jobs:
             # recreates missing source paths as root:root, breaking ownership.
             git clean -ffd -e downloads
 
+            # Ensure downloads/ exists with the same ownership as the project
+            # root before docker compose runs, so Docker never creates it as
+            # root:root. git reset can remove the dir if it becomes empty.
+            mkdir -p downloads
+            sudo -n chown --reference=. downloads 2>/dev/null || true
+
             # Update Caddyfile if changed and reload Caddy
             # Requires sudoers rule — see deploy/INSTALL.md
             if ! diff -q deploy/Caddyfile /etc/caddy/Caddyfile > /dev/null 2>&1; then
@@ -116,6 +122,12 @@ jobs:
             # Preserve downloads/ — bind-mounted by docker compose; Docker
             # recreates missing source paths as root:root, breaking ownership.
             git clean -ffd -e downloads
+
+            # Ensure downloads/ exists with the same ownership as the project
+            # root before docker compose runs, so Docker never creates it as
+            # root:root. git reset can remove the dir if it becomes empty.
+            mkdir -p downloads
+            sudo -n chown --reference=. downloads 2>/dev/null || true
 
             # Update Caddyfile if changed and reload Caddy
             if ! diff -q deploy/Caddyfile /etc/caddy/Caddyfile > /dev/null 2>&1; then
