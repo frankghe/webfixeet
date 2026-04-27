@@ -1,10 +1,10 @@
 ---
 title: Construction Warranty Period Management in Israel
 excerpt: Understanding the unique challenges of the bedek period in Israeli construction and how technology is transforming the process.
-category: תובנות תעשייה
+category: Industry Insights
 author: Fixeet Team
 date: 2026-03-10
-readTime: 9 דקות קריאה
+readTime: 9 min read
 coverImage: /uploads/blog/warranty-period-management-israel.svg
 ---
 
