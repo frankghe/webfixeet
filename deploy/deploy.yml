@@ -54,7 +54,9 @@ jobs:
             git fetch origin deploy/prod
             git checkout deploy/prod
             git reset --hard origin/deploy/prod
-            git clean -ffd
+            # Preserve downloads/ — bind-mounted by docker compose; Docker
+            # recreates missing source paths as root:root, breaking ownership.
+            git clean -ffd -e downloads
 
             # Update Caddyfile if changed and reload Caddy
             # Requires sudoers rule — see deploy/INSTALL.md
@@ -111,7 +113,9 @@ jobs:
             git fetch origin deploy/test
             git checkout deploy/test
             git reset --hard origin/deploy/test
-            git clean -ffd
+            # Preserve downloads/ — bind-mounted by docker compose; Docker
+            # recreates missing source paths as root:root, breaking ownership.
+            git clean -ffd -e downloads
 
             # Update Caddyfile if changed and reload Caddy
             if ! diff -q deploy/Caddyfile /etc/caddy/Caddyfile > /dev/null 2>&1; then
