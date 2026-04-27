@@ -1,11 +1,11 @@
 ---
-title: "Construction Warranty Period Management in Israel"
-excerpt: "Understanding the unique challenges of the bedek period in Israeli construction and how technology is transforming the process."
-category: "Industry Insights"
-author: "Fixeet Team"
-date: "2026-03-10"
-readTime: "9 min read"
-coverImage: "/uploads/blog/warranty-period-management-israel.svg"
+title: Construction Warranty Period Management in Israel
+excerpt: Understanding the unique challenges of the bedek period in Israeli construction and how technology is transforming the process.
+category: תובנות תעשייה
+author: Fixeet Team
+date: 2026-03-10
+readTime: 9 דקות קריאה
+coverImage: /uploads/blog/warranty-period-management-israel.svg
 ---
 
 The construction warranty period — known in Israel as תקופת בדק (tku'fat bedek) — is one of the most complex and high-stakes phases of any residential construction project. It's the period after apartment handover during which the construction company is legally obligated to repair defects at its own expense. For construction companies, it represents a significant financial liability. For apartment buyers, it's a critical consumer protection mechanism. And for everyone involved, it's frequently a source of frustration.
