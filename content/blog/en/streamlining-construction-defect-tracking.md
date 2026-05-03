@@ -1,11 +1,11 @@
 ---
-title: "Streamlining Construction Defect Tracking"
-excerpt: "How digital tools are replacing spreadsheets and WhatsApp groups for managing construction defects during the warranty period."
-category: "Defect Management"
-author: "Fixeet Team"
-date: "2026-03-20"
-readTime: "8 min read"
-coverImage: "/uploads/blog/streamlining-construction-defect-tracking.svg"
+title: Streamlining Construction Defect Tracking
+excerpt: How digital tools are replacing spreadsheets and WhatsApp groups for managing construction defects during the warranty period.
+category: ניהול ליקויים
+author: Fixeet Team
+date: 2026-03-20
+readTime: 8 דקות קריאה
+coverImage: /uploads/blog/streamlining-construction-defect-tracking.svg
 ---
 
 Managing construction defects during the warranty period has traditionally relied on spreadsheets, phone calls, and WhatsApp groups. This fragmented approach leads to lost information, delayed repairs, and frustrated residents. As the Israeli construction industry delivers tens of thousands of new apartments each year, the gap between how defects are tracked and how they should be tracked keeps widening.
