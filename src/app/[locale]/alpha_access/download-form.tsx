@@ -20,6 +20,7 @@ export function DownloadForm() {
   const isValid = agreed && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   async function handleAccess(platform: string) {
+    if (!isValid || loading) return;
     setLoading(platform);
     try {
       await fetch("/api/alpha-access", {
@@ -39,6 +40,8 @@ export function DownloadForm() {
     }
     setLoading(null);
   }
+
+  const buttonGateClass = !isValid ? "opacity-50 pointer-events-none" : "";
 
   return (
     <>
@@ -108,8 +111,8 @@ export function DownloadForm() {
           <div className="mt-6">
             <Button
               size="lg"
-              className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-              disabled={!isValid || loading === "web"}
+              className={`w-full bg-accent text-accent-foreground hover:bg-accent/90 ${buttonGateClass}`}
+              aria-disabled={!isValid || loading === "web"}
               onClick={() => handleAccess("web")}
             >
               {loading === "web" ? "..." : t("platforms.web.cta")}
@@ -154,8 +157,8 @@ export function DownloadForm() {
           <div className="mt-6">
             <Button
               size="lg"
-              className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-              disabled={!isValid || loading === "android"}
+              className={`w-full bg-accent text-accent-foreground hover:bg-accent/90 ${buttonGateClass}`}
+              aria-disabled={!isValid || loading === "android"}
               onClick={() => handleAccess("android")}
             >
               {loading === "android" ? "..." : t("platforms.android.cta")}
@@ -187,8 +190,8 @@ export function DownloadForm() {
           <div className="mt-6">
             <Button
               size="lg"
-              className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-              disabled={!isValid || loading === "ios"}
+              className={`w-full bg-accent text-accent-foreground hover:bg-accent/90 ${buttonGateClass}`}
+              aria-disabled={!isValid || loading === "ios"}
               onClick={() => handleAccess("ios")}
             >
               {loading === "ios" ? "..." : t("platforms.ios.cta")}
