@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 
 const PLATFORM_URLS: Record<string, string> = {
@@ -66,11 +65,12 @@ export function DownloadForm() {
         </div>
 
         <div className="mt-4 rounded-lg border-2 border-accent/40 bg-accent/5 p-4 flex items-start gap-3">
-          <Checkbox
+          <input
             id="agree"
-            className="mt-0.5 h-5 w-5 border-2 border-accent data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground"
+            type="checkbox"
+            className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-accent"
             checked={agreed}
-            onCheckedChange={(checked) => setAgreed(checked === true)}
+            onChange={(e) => setAgreed(e.target.checked)}
           />
           <label
             htmlFor="agree"
