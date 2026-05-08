@@ -1,63 +1,13 @@
-"use client";
-
-import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-
-const PLATFORM_URLS: Record<string, string> = {
-  web: "https://app.fixeet.co",
-  android: "/api/download/android_app_alpha",
-  ios: "https://testflight.apple.com/join/89MFmf86",
-};
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function DownloadForm() {
   const t = useTranslations("Download");
-  const [loading, setLoading] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  const emailRef = useRef<HTMLInputElement>(null);
-  const agreeRef = useRef<HTMLInputElement>(null);
-
-  function handleAccess(platform: string) {
-    if (loading) return;
-
-    const email = emailRef.current?.value.trim() ?? "";
-    const agreed = agreeRef.current?.checked ?? false;
-
-    if (!agreed) {
-      setError(t("error.acceptTerms"));
-      return;
-    }
-    if (!EMAIL_REGEX.test(email)) {
-      setError(t("error.invalidEmail"));
-      return;
-    }
-    setError(null);
-    setLoading(platform);
-
-    // Fire-and-forget tracking. iOS Safari only allows window.open from
-    // within the original user-gesture; awaiting fetch first breaks that
-    // chain and the popup gets blocked.
-    fetch("/api/alpha-access", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, platform }),
-    }).catch(() => {});
-
-    const url = PLATFORM_URLS[platform];
-    if (platform === "android") {
-      window.location.href = url;
-    } else {
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-  }
 
   const buttonClass =
     "w-full h-9 px-4 rounded-lg bg-accent text-accent-foreground font-medium text-sm transition-opacity active:opacity-80";
 
   return (
-    <>
+    <form action="/api/alpha-access" method="POST">
       {/* Terms Card */}
       <div className="mx-auto max-w-3xl rounded-xl border bg-background p-8 shadow-sm">
         <h2 className="text-xl font-semibold">{t("terms.title")}</h2>
@@ -72,13 +22,14 @@ export function DownloadForm() {
             {t("email.label")}
           </label>
           <input
-            ref={emailRef}
             id="email"
+            name="email"
             type="email"
             inputMode="email"
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck={false}
+            required
             placeholder={t("email.placeholder")}
             className="h-9 w-full rounded-lg border-2 border-muted-foreground bg-transparent px-2.5 py-1.5 text-base outline-none focus:border-accent"
           />
@@ -86,9 +37,10 @@ export function DownloadForm() {
 
         <div className="mt-4 rounded-lg border-2 border-accent/40 bg-accent/5 p-4 flex items-start gap-3">
           <input
-            ref={agreeRef}
             id="agree"
+            name="agreed"
             type="checkbox"
+            required
             className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-accent"
           />
           <label
@@ -98,15 +50,6 @@ export function DownloadForm() {
             {t("agree")}
           </label>
         </div>
-
-        {error ? (
-          <p
-            role="alert"
-            className="mt-4 text-sm text-destructive font-medium"
-          >
-            {error}
-          </p>
-        ) : null}
       </div>
 
       {/* Platform Cards */}
@@ -135,11 +78,13 @@ export function DownloadForm() {
           </p>
           <div className="mt-6">
             <button
-              type="button"
+              type="submit"
+              name="platform"
+              value="web"
+              formTarget="_blank"
               className={buttonClass}
-              onClick={() => handleAccess("web")}
             >
-              {loading === "web" ? "..." : t("platforms.web.cta")}
+              {t("platforms.web.cta")}
             </button>
           </div>
         </div>
@@ -180,11 +125,12 @@ export function DownloadForm() {
           </p>
           <div className="mt-6">
             <button
-              type="button"
+              type="submit"
+              name="platform"
+              value="android"
               className={buttonClass}
-              onClick={() => handleAccess("android")}
             >
-              {loading === "android" ? "..." : t("platforms.android.cta")}
+              {t("platforms.android.cta")}
             </button>
           </div>
         </div>
@@ -212,15 +158,17 @@ export function DownloadForm() {
           </p>
           <div className="mt-6">
             <button
-              type="button"
+              type="submit"
+              name="platform"
+              value="ios"
+              formTarget="_blank"
               className={buttonClass}
-              onClick={() => handleAccess("ios")}
             >
-              {loading === "ios" ? "..." : t("platforms.ios.cta")}
+              {t("platforms.ios.cta")}
             </button>
           </div>
         </div>
       </div>
-    </>
+    </form>
   );
 }
