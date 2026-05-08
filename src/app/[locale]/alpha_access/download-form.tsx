@@ -19,7 +19,7 @@ export function DownloadForm() {
   const emailRef = useRef<HTMLInputElement>(null);
   const agreeRef = useRef<HTMLInputElement>(null);
 
-  async function handleAccess(platform: string) {
+  function handleAccess(platform: string) {
     if (loading) return;
 
     const email = emailRef.current?.value.trim() ?? "";
@@ -34,17 +34,16 @@ export function DownloadForm() {
       return;
     }
     setError(null);
-
     setLoading(platform);
-    try {
-      await fetch("/api/alpha-access", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, platform }),
-      });
-    } catch {
-      // Don't block user access if notification fails
-    }
+
+    // Fire-and-forget tracking. iOS Safari only allows window.open from
+    // within the original user-gesture; awaiting fetch first breaks that
+    // chain and the popup gets blocked.
+    fetch("/api/alpha-access", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, platform }),
+    }).catch(() => {});
 
     const url = PLATFORM_URLS[platform];
     if (platform === "android") {
@@ -52,7 +51,6 @@ export function DownloadForm() {
     } else {
       window.open(url, "_blank", "noopener,noreferrer");
     }
-    setLoading(null);
   }
 
   const buttonClass =
