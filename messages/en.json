@@ -430,6 +430,10 @@
       "placeholder": "your@email.com"
     },
     "agree": "I understand and agree to the terms above.",
+    "error": {
+      "invalidEmail": "Please enter a valid email address.",
+      "acceptTerms": "Please accept the terms above to continue."
+    },
     "platforms": {
       "web": {
         "name": "Web App",

@@ -430,6 +430,10 @@
       "placeholder": "your@email.com"
     },
     "agree": "אני מבין ומסכים לתנאים לעיל.",
+    "error": {
+      "invalidEmail": "יש להזין כתובת דוא\"ל תקינה.",
+      "acceptTerms": "יש לאשר את התנאים שלעיל כדי להמשיך."
+    },
     "platforms": {
       "web": {
         "name": "אפליקציית אינטרנט",

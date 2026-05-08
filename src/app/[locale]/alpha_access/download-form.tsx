@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 const PLATFORM_URLS: Record<string, string> = {
   web: "https://app.fixeet.co",
@@ -11,16 +9,32 @@ const PLATFORM_URLS: Record<string, string> = {
   ios: "https://testflight.apple.com/join/89MFmf86",
 };
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export function DownloadForm() {
   const t = useTranslations("Download");
-  const [email, setEmail] = useState("");
-  const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const isValid = agreed && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const agreeRef = useRef<HTMLInputElement>(null);
 
   async function handleAccess(platform: string) {
-    if (!isValid || loading) return;
+    if (loading) return;
+
+    const email = emailRef.current?.value.trim() ?? "";
+    const agreed = agreeRef.current?.checked ?? false;
+
+    if (!agreed) {
+      setError(t("error.acceptTerms"));
+      return;
+    }
+    if (!EMAIL_REGEX.test(email)) {
+      setError(t("error.invalidEmail"));
+      return;
+    }
+    setError(null);
+
     setLoading(platform);
     try {
       await fetch("/api/alpha-access", {
@@ -41,7 +55,8 @@ export function DownloadForm() {
     setLoading(null);
   }
 
-  const buttonGateClass = !isValid ? "opacity-50 pointer-events-none" : "";
+  const buttonClass =
+    "w-full h-9 px-4 rounded-lg bg-accent text-accent-foreground font-medium text-sm transition-opacity active:opacity-80";
 
   return (
     <>
@@ -58,22 +73,25 @@ export function DownloadForm() {
           <label htmlFor="email" className="text-sm font-medium">
             {t("email.label")}
           </label>
-          <Input
+          <input
+            ref={emailRef}
             id="email"
             type="email"
+            inputMode="email"
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
             placeholder={t("email.placeholder")}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            className="h-9 w-full rounded-lg border-2 border-muted-foreground bg-transparent px-2.5 py-1.5 text-base outline-none focus:border-accent"
           />
         </div>
 
         <div className="mt-4 rounded-lg border-2 border-accent/40 bg-accent/5 p-4 flex items-start gap-3">
           <input
+            ref={agreeRef}
             id="agree"
             type="checkbox"
             className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-accent"
-            checked={agreed}
-            onChange={(e) => setAgreed(e.target.checked)}
           />
           <label
             htmlFor="agree"
@@ -82,6 +100,15 @@ export function DownloadForm() {
             {t("agree")}
           </label>
         </div>
+
+        {error ? (
+          <p
+            role="alert"
+            className="mt-4 text-sm text-destructive font-medium"
+          >
+            {error}
+          </p>
+        ) : null}
       </div>
 
       {/* Platform Cards */}
@@ -109,14 +136,13 @@ export function DownloadForm() {
             {t("platforms.web.description")}
           </p>
           <div className="mt-6">
-            <Button
-              size="lg"
-              className={`w-full bg-accent text-accent-foreground hover:bg-accent/90 ${buttonGateClass}`}
-              aria-disabled={!isValid || loading === "web"}
+            <button
+              type="button"
+              className={buttonClass}
               onClick={() => handleAccess("web")}
             >
               {loading === "web" ? "..." : t("platforms.web.cta")}
-            </Button>
+            </button>
           </div>
         </div>
 
@@ -155,14 +181,13 @@ export function DownloadForm() {
             {t("platforms.android.description")}
           </p>
           <div className="mt-6">
-            <Button
-              size="lg"
-              className={`w-full bg-accent text-accent-foreground hover:bg-accent/90 ${buttonGateClass}`}
-              aria-disabled={!isValid || loading === "android"}
+            <button
+              type="button"
+              className={buttonClass}
               onClick={() => handleAccess("android")}
             >
               {loading === "android" ? "..." : t("platforms.android.cta")}
-            </Button>
+            </button>
           </div>
         </div>
 
@@ -188,14 +213,13 @@ export function DownloadForm() {
             {t("platforms.ios.description")}
           </p>
           <div className="mt-6">
-            <Button
-              size="lg"
-              className={`w-full bg-accent text-accent-foreground hover:bg-accent/90 ${buttonGateClass}`}
-              aria-disabled={!isValid || loading === "ios"}
+            <button
+              type="button"
+              className={buttonClass}
               onClick={() => handleAccess("ios")}
             >
               {loading === "ios" ? "..." : t("platforms.ios.cta")}
-            </Button>
+            </button>
           </div>
         </div>
       </div>
