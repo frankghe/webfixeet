@@ -1,13 +1,48 @@
+"use client";
+
+import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+
+const PLATFORM_URLS: Record<string, string> = {
+  web: "https://app.fixeet.co",
+  android: "/api/download/android_app_alpha",
+  ios: "https://testflight.apple.com/join/89MFmf86",
+};
 
 export function DownloadForm() {
   const t = useTranslations("Download");
+  const [email, setEmail] = useState("");
+  const [agreed, setAgreed] = useState(false);
+  const [loading, setLoading] = useState<string | null>(null);
 
-  const buttonClass =
-    "w-full h-9 px-4 rounded-lg bg-accent text-accent-foreground font-medium text-sm transition-opacity active:opacity-80";
+  const isValid = agreed && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  async function handleAccess(platform: string) {
+    setLoading(platform);
+    try {
+      await fetch("/api/alpha-access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, platform }),
+      });
+    } catch {
+      // Don't block user access if notification fails
+    }
+
+    const url = PLATFORM_URLS[platform];
+    if (platform === "android") {
+      window.location.href = url;
+    } else {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+    setLoading(null);
+  }
 
   return (
-    <form action="/api/alpha-access" method="POST">
+    <>
       {/* Terms Card */}
       <div className="mx-auto max-w-3xl rounded-xl border bg-background p-8 shadow-sm">
         <h2 className="text-xl font-semibold">{t("terms.title")}</h2>
@@ -21,27 +56,21 @@ export function DownloadForm() {
           <label htmlFor="email" className="text-sm font-medium">
             {t("email.label")}
           </label>
-          <input
+          <Input
             id="email"
-            name="email"
             type="email"
-            inputMode="email"
-            autoCapitalize="off"
-            autoCorrect="off"
-            spellCheck={false}
-            required
             placeholder={t("email.placeholder")}
-            className="h-9 w-full rounded-lg border-2 border-muted-foreground bg-transparent px-2.5 py-1.5 text-base outline-none focus:border-accent"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
         <div className="mt-4 rounded-lg border-2 border-accent/40 bg-accent/5 p-4 flex items-start gap-3">
-          <input
+          <Checkbox
             id="agree"
-            name="agreed"
-            type="checkbox"
-            required
-            className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-accent"
+            className="mt-0.5 h-5 w-5 border-2 border-accent data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground"
+            checked={agreed}
+            onCheckedChange={(checked) => setAgreed(checked === true)}
           />
           <label
             htmlFor="agree"
@@ -77,15 +106,14 @@ export function DownloadForm() {
             {t("platforms.web.description")}
           </p>
           <div className="mt-6">
-            <button
-              type="submit"
-              name="platform"
-              value="web"
-              formTarget="_blank"
-              className={buttonClass}
+            <Button
+              size="lg"
+              className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+              disabled={!isValid || loading === "web"}
+              onClick={() => handleAccess("web")}
             >
-              {t("platforms.web.cta")}
-            </button>
+              {loading === "web" ? "..." : t("platforms.web.cta")}
+            </Button>
           </div>
         </div>
 
@@ -124,14 +152,14 @@ export function DownloadForm() {
             {t("platforms.android.description")}
           </p>
           <div className="mt-6">
-            <button
-              type="submit"
-              name="platform"
-              value="android"
-              className={buttonClass}
+            <Button
+              size="lg"
+              className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+              disabled={!isValid || loading === "android"}
+              onClick={() => handleAccess("android")}
             >
-              {t("platforms.android.cta")}
-            </button>
+              {loading === "android" ? "..." : t("platforms.android.cta")}
+            </Button>
           </div>
         </div>
 
@@ -157,18 +185,17 @@ export function DownloadForm() {
             {t("platforms.ios.description")}
           </p>
           <div className="mt-6">
-            <button
-              type="submit"
-              name="platform"
-              value="ios"
-              formTarget="_blank"
-              className={buttonClass}
+            <Button
+              size="lg"
+              className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+              disabled={!isValid || loading === "ios"}
+              onClick={() => handleAccess("ios")}
             >
-              {t("platforms.ios.cta")}
-            </button>
+              {loading === "ios" ? "..." : t("platforms.ios.cta")}
+            </Button>
           </div>
         </div>
       </div>
-    </form>
+    </>
   );
 }
